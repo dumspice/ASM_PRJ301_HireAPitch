@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="./asset/stylesheet/reset.css"/>
+        <link href="./asset/stylesheet/reset.css"/ rel="stylesheet">
         <link href="./asset/stylesheet/headerstyle.css" rel="stylesheet">
         
     </head>
@@ -58,7 +58,7 @@
       <div class="header_right">
         <div class="header_CTO">
           <div class="login">
-            <a href="">
+              <a href="<%=request.getContextPath()%>/UserLogin.jsp">
               <img src="./asset/icon/Vector.svg" alt="" />
               <p class="desc">
                 Đăng nhập
@@ -70,8 +70,7 @@
               </p>
             </a>
             <div class="login_sub_menu">
-              <a href="">Admin</a>
-              <a href="">User</a>
+              <a href="<%=request.getContextPath()%>/UserRegister.jsp">Đăng ký tài khoản</a>
             </div>
           </div>
           <div class="clear"></div>
