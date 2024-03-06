@@ -19,6 +19,10 @@ body {
   font-size: 1.6rem;
 }
 
+.clear{
+    clear: both;
+}
+
 .container {
   background-image: url(../img/loginBackground.png);
   height: 100vh;
@@ -37,7 +41,7 @@ body {
   margin: 0 auto;
   border-radius: 10px;
   background: #fff;
-  min-width: 500px;
+  width: 40%;
   padding: 16px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: 500;
@@ -52,9 +56,13 @@ body {
   text-transform: uppercase;
 }
 
+.register{
+  width: 80%;
+  margin: 0 auto;
+}
+
 input[type="text"],
-input[type="email"],
-input[type="password"] {
+input[type="email"] {
   width: 100%;
   border: none;
   background-color: #d9d9d9;
@@ -63,6 +71,28 @@ input[type="password"] {
   margin: 20px 0 40px;
   cursor: pointer;
 }
+
+input[type="password"]{
+    width: 100%;
+  border: none;
+  background-color: #d9d9d9;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 20px 0 40px;
+  cursor: pointer;
+
+}
+.pass{
+  width: 45%;
+  float: left;
+  margin-right: 10%;
+}
+
+.re_pass{
+  width: 45%;
+  float: left;
+}
+
 
 input[type="text"]:hover,
 input[type="email"]:hover,

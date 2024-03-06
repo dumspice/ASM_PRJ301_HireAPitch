@@ -15,22 +15,20 @@
     </head>
     <body>
         <div class="wrapper">
-      <form action="" class="form__login--user">
-        <div class="login__heading">
-          <h1>Đăng nhập</h1>
+            <form action="" class="form__login--user">
+                <div class="login__heading">
+                    <h1>Đăng nhập</h1>
+                </div>
+                <div class="login">
+                    <label for="user">Tên đăng nhập</label>
+                    <input type="text" name="phoneNum" id="user" required />
+                    <br />
+                    <label for="pass">Mật khẩu</label>
+                    <input type="password" name="password" id="pass" required />
+                </div>
+                <a href="<%=request.getContextPath()%>/UserRegister.jsp" id="UserRegister">Đăng ký</a>
+                <input type="submit" value="Đăng nhập" id="form__user--btn" />
+            </form>
         </div>
-        <div class="login">
-          <label for="user">Số điện thoại</label>
-          <input type="text" name="phoneNum" id="user" required />
-          <br />
-          <label for="pass">Mật khẩu</label>
-          <input type="password" name="password" id="pass" required />
-        </div>
-          <a href="<%=request.getContextPath()%>/UserRegister.jsp" id="UserRegister">Đăng ký</a>
-        <a href="" id="ForgottenPass">Quên mật khẩu</a>
-        <br />
-        <input type="submit" value="Đăng nhập" id="form__user--btn" />
-      </form>
-    </div>
     </body>
 </html>

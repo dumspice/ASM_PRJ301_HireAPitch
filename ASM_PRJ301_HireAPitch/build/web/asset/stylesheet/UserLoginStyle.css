@@ -78,15 +78,10 @@ a {
   float: left;
 }
 
-#ForgottenPass {
-  float: right;
-}
-
 #form__user--btn {
   float: right;
   color: #d9d9d9;
   font-size: 1.7rem;
-  margin-top: 40px;
   margin-bottom: 20px;
   border: none;
   background: #33742d;
