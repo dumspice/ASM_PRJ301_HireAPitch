@@ -9,8 +9,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="asset/stylesheet/UserLoginStyle.css" rel="stylesheet">
-        <link href="asset/stylesheet/reset.css" rel="stylesheet">
+        <link href="asset/stylesheet/UserLoginStyle.css" rel="stylesheet" type="text/css">
+        <link href="asset/stylesheet/reset.css" rel="stylesheet" type="text/css">
         <title>UserLogin</title>
     </head>
     <body>
