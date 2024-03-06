@@ -10,8 +10,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="./asset/stylesheet/reset.css" rel="stylesheet">
-        <link href="./asset/stylesheet/mainpagestyle.css" rel="stylesheet">
+        <link href="./asset/stylesheet/reset.css" rel="stylesheet" type="text/css">
+        <link href="./asset/stylesheet/mainpagestyle.css" rel="stylesheet" type="text/css">
         <title>JSP Page</title>
         <style>
 
@@ -44,7 +44,7 @@
                                         <option value="11">Sân 11</option>
                                     </select>
                                     
-                                    <input type="submit" value="Tìm sân">
+                                     <input type="submit" value="Tìm sân">
                                 </form>
                             </div>
                         </div>

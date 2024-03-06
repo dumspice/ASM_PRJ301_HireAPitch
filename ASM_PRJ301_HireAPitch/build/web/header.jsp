@@ -9,8 +9,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="./asset/stylesheet/reset.css"/ rel="stylesheet">
-        <link href="./asset/stylesheet/headerstyle.css" rel="stylesheet">
+        <link href="./asset/stylesheet/reset.css" rel="stylesheet" type="text/css">
+        <link href="./asset/stylesheet/headerstyle.css" rel="stylesheet" type="text/css">
         
     </head>
     <body>
@@ -25,32 +25,12 @@
         </a>
         <!-- nav bar -->
         <div class="header_navbar">
-          <div class="header_search">
-            <div class="header_search_content">
-              <form  id="search_form" >
-                <button type="submit" class="button-search">
-                  <img
-                    src="./asset/icon/magnifying-glass-solid 1.svg"
-                    alt="search"
-                  />
-                </button>
-                <input
-                  type="text"
-                  name="keyword"
-                  id="keyword"
-                  placeholder="Tìm kiếm sản phẩm..."
-                  class="input-text"
-                />
-              </form>
-            </div>
-          </div>
+
           <div class="clear"></div>
           <div class="navbar_list">
             <a href="" class="nav_items" title="Quả bóng đá">Quả bóng đá</a>
             <a href="" class="nav_items" title="Áo đấu">Áo đấu</a>
-            <a href="" class="nav_items" title="Găng tay thủ môn"
-              >Găng tay thủ môn</a
-            >
+            <a href="" class="nav_items" title="Găng tay thủ môn">Găng tay thủ môn</a>
             <a href="" class="nav_items" title="Giày đá bóng">Giày đá bóng</a>
           </div>
         </div>

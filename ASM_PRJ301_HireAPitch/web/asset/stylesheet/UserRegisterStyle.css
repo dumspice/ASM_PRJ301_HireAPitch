@@ -8,86 +8,122 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 */
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html {
-  font-size: 62.5%;
+    font-size: 62.5%;
 }
 
 body {
-  font-size: 1.6rem;
+    font-size: 1.6rem;
+}
+
+.clear{
+    clear: both;
 }
 
 .container {
-  background-image: url(../img/loginBackground.png);
-  height: 100vh;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  object-fit: cover;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    background-image: url(../img/loginBackground.png);
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .form__register--user {
-  position: absolute;
-  margin: 0 auto;
-  border-radius: 10px;
-  background: #fff;
-  min-width: 500px;
-  padding: 16px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-weight: 500;
+    position: absolute;
+    margin: 0 auto;
+    border-radius: 10px;
+    background: #fff;
+    width: 40%;
+    padding: 16px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 500;
 }
 
 .register__heading {
-  text-align: center;
-  font-size: 1.6rem;
-  margin-bottom: 38px;
-  padding-top: 20px;
-  font-weight: bold;
-  text-transform: uppercase;
+    text-align: center;
+    font-size: 1.6rem;
+    margin-bottom: 38px;
+    padding-top: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.register{
+    width: 80%;
+    margin: 0 auto;
 }
 
 input[type="text"],
-input[type="email"],
-input[type="password"] {
-  width: 100%;
-  border: none;
-  background-color: #d9d9d9;
-  padding: 10px;
-  border-radius: 5px;
-  margin: 20px 0 40px;
-  cursor: pointer;
+input[type="email"] {
+    width: 100%;
+    border: none;
+    background-color: #d9d9d9;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 20px 0 40px;
+    cursor: pointer;
 }
+
+input[type="password"]{
+    width: 100%;
+    border: none;
+    background-color: #d9d9d9;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 20px 0 40px;
+    cursor: pointer;
+
+}
+.pass{
+    width: 45%;
+    float: left;
+    margin-right: 10%;
+}
+
+.re_pass{
+    width: 45%;
+    float: left;
+}
+
 
 input[type="text"]:hover,
 input[type="email"]:hover,
 inpu[type="password"]:hover {
-  opacity: 1;
-  transition: opacity 100ms linear 0s;
+    opacity: 1;
+    transition: opacity 100ms linear 0s;
 }
 
 span {
-  color: #ff0000;
+    color: #ff0000;
 }
 
 .CTA-action {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .form__register--btn {
-  border: none;
-  outline: none;
-  padding: 25px 50px;
-  cursor: pointer;
-  background: #33742d;
-  font-size: 1.8rem;
-  border-radius: 14px;
-  color: #d9d9d9;
+    border: none;
+    outline: none;
+    padding: 15px 40px;
+    cursor: pointer;
+    background: #33742d;
+    font-size: 1.5rem;
+    border-radius: 14px;
+    color: #d9d9d9;
+    transition: 0.25s;
 }
+
+.form__register--btn:hover{
+    transform: scale(1.1);
+}
+
