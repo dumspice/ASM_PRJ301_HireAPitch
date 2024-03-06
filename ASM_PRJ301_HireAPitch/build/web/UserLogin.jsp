@@ -20,8 +20,8 @@
           <h1>Đăng nhập</h1>
         </div>
         <div class="login">
-          <label for="user">Số điện thoại</label>
-          <input type="text" name="phoneNum" id="user" required />
+          <label for="user">Tên đăng nhập</label>
+          <input type="text" name="user" id="user" required />
           <br />
           <label for="pass">Mật khẩu</label>
           <input type="password" name="password" id="pass" required />
