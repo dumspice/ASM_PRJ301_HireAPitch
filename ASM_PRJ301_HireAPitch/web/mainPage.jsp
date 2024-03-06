@@ -44,7 +44,7 @@
                                         <option value="11">Sân 11</option>
                                     </select>
                                     
-                                    <input type="submit" value="Tìm sân">
+                                     <input type="submit" value="Tìm sân">
                                 </form>
                             </div>
                         </div>
