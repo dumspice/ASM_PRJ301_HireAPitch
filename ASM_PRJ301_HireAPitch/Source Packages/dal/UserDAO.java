@@ -4,10 +4,12 @@
  */
 package dal;
 
-import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import model.User;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -38,6 +40,61 @@ public class UserDAO extends DBContext{
         }
         return list;
     }
+    
+   public boolean phoneExisted(String phone) {
+        ArrayList<User> userList = getAllUsers();
+        for (User user : userList) {
+            if (user.getPhone_number()!= null && user.getPhone_number().equals(phone)) {
+                return true; 
+            }
+        }
+        return false; 
+    }
+    
+ 
+    public boolean emailExisted(String email) {
+        ArrayList<User> userList = getAllUsers();
+        for (User user : userList) {
+            if (user.getEmail() != null && user.getEmail().equals(email)) {
+                return true; 
+            }
+        }
+        return false;
+    }
+    
+  
+    public boolean usernameExisted(String username) {
+        ArrayList<User> userList = getAllUsers();
+        for (User user : userList) {
+            if (user.getUsername() != null && user.getUsername().equals(username)) {
+                return true; 
+            }
+        }
+        return false; 
+    }
+    
+    public void insert(int id, String username, String password, String displayName, String phoneNumber, String email, String avatar) {
+        try {
+            // Prepare SQL statement with parameters
+            String sql = "INSERT INTO [User]([User_id], Username, [Password], Display_name, Phone_number, Email, Avatar) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement st = connection.prepareStatement(sql);
+            // Set values for parameters
+            st.setInt(1, id);
+            st.setString(2, username);
+            st.setString(3, password);
+            st.setString(4, displayName);
+            st.setString(5, phoneNumber);
+            st.setString(6, email);
+            st.setString(7, avatar);
+            
+            // Execute the statement
+            st.executeUpdate();
+            st.close();
+        } catch (SQLException e) {
+            System.out.println("Error occurred while inserting user: " + e.getMessage());
+        }
+    }
+    
     public static void main(String[] args) {
         UserDAO uDao = new UserDAO();
         ArrayList<User> list = uDao.getAllUsers();
