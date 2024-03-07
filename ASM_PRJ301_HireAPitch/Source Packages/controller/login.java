@@ -5,6 +5,7 @@
 
 package controller;
 
+import dal.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,6 +13,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import model.User;
 
 /**
  *
@@ -53,9 +56,25 @@ public class login extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
     throws ServletException, IOException {
-        processRequest(request, response);
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
+        UserDAO uDao = new UserDAO();
+        ArrayList<User> uList = uDao.getAllUsers();
+        boolean isAuthenticated = false;
+        for (User u : uList) {
+            if (u.getUsername().equals(username) && u.getPassword().equals(password)) {
+                isAuthenticated = true;
+                break; // Break the loop if credentials match
+            }
+        }
+        if (isAuthenticated) {
+            resp.sendRedirect("mainPage.jsp"); // Redirect to main page if authenticated
+        } else {
+            req.setAttribute("error", "Incorrect username or password!");
+            req.getRequestDispatcher("/UserLogin.jsp").forward(req, resp); // Forward to login page with error message
+        }
     } 
 
     /** 
