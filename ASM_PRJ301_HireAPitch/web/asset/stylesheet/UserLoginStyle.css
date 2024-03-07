@@ -74,7 +74,7 @@ a {
   color: #000;
 }
 
-#UserRegister {
+/*#UserRegister {
   float: left;
 }
 
@@ -87,4 +87,44 @@ a {
   background: #33742d;
   padding: 14px 20px;
   border-radius: 14px;
+}*/
+#UserRegister,
+#form__user--btn {
+    display: inline-block;
+    width: calc(50% - 5px); /* Adjust width as needed */
+    text-align: center;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
+
+#UserRegister {
+    background-color: #007bff;
+    color: #fff;
+    border: 2px solid transparent;
+}
+
+#form__user--btn {
+    background-color: #28a745;
+    color: #fff;
+    border: 2px solid transparent;
+    width: calc(50% - 5px); /* Adjust width as needed */
+}
+
+/* Hover and active states */
+#UserRegister:hover,
+#form__user--btn:hover {
+    background-color: #0056b3;
+}
+
+#UserRegister:active,
+#form__user--btn:active {
+    border: 2px solid rgba(33,224,163,1);
+    background: rgba(33,224,163,1);
+    transition: none;
+}
+
+
+
