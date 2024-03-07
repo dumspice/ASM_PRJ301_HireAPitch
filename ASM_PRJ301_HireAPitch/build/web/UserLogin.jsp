@@ -16,6 +16,9 @@
     <body>
         <div class="wrapper">
             <form action="login" method="get" class="form__login--user">
+                <div class="home">
+                    <a href="<%=request.getContextPath()%>/mainPage.jsp"><img src="asset/icon/home.svg" class="homepage__icon" alt="..."></a>
+                </div>
                 <div class="login__heading">
                     <h1>Đăng nhập</h1>
                 </div>
@@ -30,8 +33,10 @@
                 <c:if test="${not empty requestScope.error}">
                     <div class="error-message" style="color: red;">${requestScope.error}</div>
                 </c:if>
-                <a href="<%=request.getContextPath()%>/UserRegister.jsp" id="UserRegister">Đăng ký</a>
-                <input type="submit" value="Đăng nhập" id="form__user--btn" />
+                <div class="form--btn">
+                    <a href="<%=request.getContextPath()%>/UserRegister.jsp" id="UserRegister">Đăng ký</a>
+                    <input type="submit" value="Đăng nhập" id="form__user--btn" />
+                </div>
             </form>
         </div>
     </body>
