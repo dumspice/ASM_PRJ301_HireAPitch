@@ -51,6 +51,15 @@ body {
   text-transform: uppercase;
 }
 
+.home{
+    transition: 0.25s;
+}
+
+.homepage__icon:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
 input[type="text"],
 input[type="password"] {
   width: 100%;
@@ -124,6 +133,10 @@ a {
     border: 2px solid rgba(33,224,163,1);
     background: rgba(33,224,163,1);
     transition: none;
+}
+
+.form--btn{
+    margin-top: 18px;
 }
 
 

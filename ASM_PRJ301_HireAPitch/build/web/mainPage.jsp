@@ -3,7 +3,7 @@
     Created on : 27 Feb 2024, 16:20:17
     Author     : dumspicy
 --%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -12,19 +12,21 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="./asset/stylesheet/reset.css" rel="stylesheet" type="text/css">
         <link href="./asset/stylesheet/mainpagestyle.css" rel="stylesheet" type="text/css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <title>JSP Page</title>
         <style>
 
         </style>
     </head>
-    <body style="height: 10000px;">
+    <body>
         <header style="height: 203px;">
             <%@include file="header.jsp" %>
         </header>
         <br/>
         <main>
             <section class="banner__filter">
-                <div class="container">
+                <div class="container" style="max-width: 1070px;">
                     <div class="banner__filter--content">
                         <!--banner left-->
                         <div class="banner__filter--left">
@@ -37,14 +39,14 @@
                                         <option value="TpHCM">Tp Hồ Chí Minh</option>
                                         <option value="DaNang">Đà Nẵng</option>
                                     </select>
-                                     <label for="type">Kích thước sân</label>
-                                     <select name="pitch--type" class="banner__filter--type" id="type">
+                                    <label for="type">Kích thước sân</label>
+                                    <select name="pitch--type" class="banner__filter--type" id="type">
                                         <option value="5">Sân 5</option>
                                         <option value="7">Sân 7</option>
                                         <option value="11">Sân 11</option>
                                     </select>
-                                    
-                                     <input type="submit" value="Tìm sân">
+
+                                    <input type="submit" value="Tìm sân">
                                 </form>
                             </div>
                         </div>
@@ -63,6 +65,39 @@
                 </div>
                 <div class="triangle"></div>
             </section>
+            <!--Product List-->
+            <div class="product__list ">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <c:forEach begin="1" end="12" var="0">
+                            <!--Product Start-->
+                            <div class="col-lg-3 col-md-6 mb-5">
+                                <div class="card h-100 product-card">
+                                    <a href="#!">
+                                        <!--Product Image-->
+                                        <img class="card-img-top" 
+                                             src="https://images.toplist.vn/images/800px/san-bong-nhan-tao-dai-hoc-thuy-loi-1190748.jpg" 
+                                             alt="..."/>
+
+                                        <!--Product Details-->
+                                        <div class="card-body p4 product-card__details">
+                                            <div class="text-right">
+                                                <!--Product name-->
+                                                <h5 class="mb-3">Tên sân: </h5>
+                                                <!--Product Size-->
+                                                <h5 class="mb-3">Kích thước sân: </h5>
+                                                <!--Product Price-->
+                                                <h5 class="mb-3">Tiền thuê: </h5>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </div>
+                </div>
+            </div>
         </main>
+        <%@include file="footer.jsp" %>
     </body>
 </html>
