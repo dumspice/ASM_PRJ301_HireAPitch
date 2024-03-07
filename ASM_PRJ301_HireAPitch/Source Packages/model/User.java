@@ -85,5 +85,10 @@ public class User {
     public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
+
+    @Override
+    public String toString() {
+        return "User{" + "id=" + id + ", username=" + username + ", password=" + password + ", display_name=" + display_name + ", phone_number=" + phone_number + ", email=" + email + ", avatar=" + avatar + '}';
+    }
     
 }
