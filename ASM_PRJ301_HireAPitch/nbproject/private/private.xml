@@ -5,6 +5,7 @@
         <group>
             <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/UserRegister.jsp</file>
             <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/Source%20Packages/controller/login.java</file>
+            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/Source%20Packages/controller/userRegister.java</file>
             <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/UserLogin.jsp</file>
             <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/Source%20Packages/dal/UserDAO.java</file>
         </group>
