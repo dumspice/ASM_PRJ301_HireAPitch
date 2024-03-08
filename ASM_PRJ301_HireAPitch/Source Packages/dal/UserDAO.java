@@ -73,19 +73,18 @@ public class UserDAO extends DBContext{
         return false; 
     }
     
-    public void insert(int id, String username, String password, String displayName, String phoneNumber, String email, String avatar) {
+    public void insert(String username, String password, String displayName, String phoneNumber, String email, String avatar) {
         try {
             // Prepare SQL statement with parameters
-            String sql = "INSERT INTO [User]([User_id], Username, [Password], Display_name, Phone_number, Email, Avatar) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO [User](Username, [Password], Display_name, Phone_number, Email, Avatar) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement st = connection.prepareStatement(sql);
             // Set values for parameters
-            st.setInt(1, id);
-            st.setString(2, username);
-            st.setString(3, password);
-            st.setString(4, displayName);
-            st.setString(5, phoneNumber);
-            st.setString(6, email);
-            st.setString(7, avatar);
+            st.setString(1, username);
+            st.setString(2, password);
+            st.setString(3, displayName);
+            st.setString(4, phoneNumber);
+            st.setString(5, email);
+            st.setString(6, avatar);
             
             // Execute the statement
             st.executeUpdate();
