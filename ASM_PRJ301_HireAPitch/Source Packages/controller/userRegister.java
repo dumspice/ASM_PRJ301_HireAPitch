@@ -107,8 +107,8 @@ public class userRegister extends HttpServlet {
             && request.getAttribute("usernameEmpty") == null
             && request.getAttribute("phoneEmpty") == null
             && request.getAttribute("nameEmpty") == null) {
-        uDao.insert(uDao.getAllUsers().size() + 1, username, pass, name, phone, email, avatar);
-        response.sendRedirect("UserLogin.jsp?username=" + uDao.getAllUsers().size() + 1); 
+        uDao.insert(username, pass, name, phone, email, avatar);
+        response.sendRedirect("UserLogin.jsp?username=" + username); 
         } else {
             request.getRequestDispatcher("UserRegister.jsp").forward(request, response);
         }
