@@ -16,6 +16,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 
 html{
     font-size: 62.5%;
+    font-family: monospace, sans-serif;
 }
 
 body{
@@ -38,6 +39,7 @@ body{
     background-size: cover;
     object-fit: cover;
     position: relative;
+    margin-bottom: 140px;
 }
 
 .banner__filter--content{
@@ -179,3 +181,21 @@ input[type="submit"]:hover{
     left: -1300px;
     transform: rotate(180deg);
 }
+
+/*============ Product list ==============*/
+.product__list{
+    margin-bottom: 140px;
+}
+.product-card{
+    transition: 0.25s;
+}
+
+.product-card:hover{
+    transform: scale(1.1);
+}
+
+.product-card__details h5{
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
