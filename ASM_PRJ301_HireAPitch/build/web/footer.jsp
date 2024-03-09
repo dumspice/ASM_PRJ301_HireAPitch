@@ -32,7 +32,7 @@
                 margin: 0 auto;
                 padding: 0 15px;
                 display: grid;
-                grid-template-columns: repeat(4, 1fr);
+                grid-template-columns: repeat(3, 1fr);
                 gap: 40px;
             }
 
@@ -68,28 +68,13 @@
                 font-size: 20px;
                 margin-right: 10px;
             }
-
+            
             .footer .social-links ul {
                 display: flex;
                 gap: 15px;
             }
 
-            .footer .map {
-                width: 100%;
-                height: 200px;
-                background-color: #34495e;
-                margin-top: 20px;
-                position: relative;
-            }
-
-            .footer .map iframe {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                border: none;
-            }
+            
 
         </style>
     </head>
@@ -118,11 +103,6 @@
                         <li><a href="#" title="Instagram"><i class="fab fa-instagram"></i></a></li>
                         <li><a href="#" title="Pinterest"><i class="fab fa-pinterest"></i></a></li>
                     </ul>
-                </div>
-                <div class="map">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354776825854!2d144.95373631531693!3d-37.81720927975195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0x5045675218ceee0!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sus!4v1626525759053!5m2!1sen!2sus"
-                        allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
         </footer>

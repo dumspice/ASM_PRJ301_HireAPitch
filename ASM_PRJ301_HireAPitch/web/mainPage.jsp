@@ -68,26 +68,27 @@
             <!--Product List-->
             <div class="product__list ">
                 <div class="container">
-                    <div class="row justify-content-center">
-                        <c:forEach begin="1" end="12" var="0">
+                    <div class="product-items row justify-content-center">
+                        <c:forEach items="${ListPitch}" var="p">
                             <!--Product Start-->
                             <div class="col-lg-3 col-md-6 mb-5">
                                 <div class="card h-100 product-card">
-                                    <a href="#!">
+                                    <a href="<%=request.getContextPath()%>/ProductDetails.jsp">
                                         <!--Product Image-->
-                                        <img class="card-img-top" 
-                                             src="https://images.toplist.vn/images/800px/san-bong-nhan-tao-dai-hoc-thuy-loi-1190748.jpg" 
-                                             alt="..."/>
+                                        <img class="product-items__image card-img-top" 
+                                             src="${p.image}" 
+                                             alt="..."
+                                             />
 
                                         <!--Product Details-->
                                         <div class="card-body p4 product-card__details">
                                             <div class="text-right">
                                                 <!--Product name-->
-                                                <h5 class="mb-3">Tên sân: </h5>
+                                                <h5 class="mb-3">Tên sân: <span>${p.pitchName}</span></h5>
                                                 <!--Product Size-->
-                                                <h5 class="mb-3">Kích thước sân: </h5>
+                                                <h5 class="mb-3">Kích thước sân: <span></span></h5>
                                                 <!--Product Price-->
-                                                <h5 class="mb-3">Tiền thuê: </h5>
+                                                <h5 class="mb-3">Tiền thuê: <span></span> </h5>
                                             </div>
                                         </div>
                                     </a>

@@ -15,6 +15,10 @@ body{
     height: 203px;
 }
 
+html{
+    font-family: monospace, sans-serif;
+}
+
 a {
   color: #000;
   text-decoration: none;
@@ -94,7 +98,7 @@ a {
 
 #dropdown-btn {
   position: absolute;
-  right: 10px;
+  right: 2px;
   top: 36px;
 }
 
