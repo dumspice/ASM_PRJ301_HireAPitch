@@ -199,3 +199,9 @@ input[type="submit"]:hover{
     font-weight: 600;
 }
 
+.product-items__image{
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+}
+

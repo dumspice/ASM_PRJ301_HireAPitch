@@ -1,0 +1,122 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 9 Mar 2024, 16:35:55
+    Author     : dumspicy
+*/
+*{
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 1.6rem;
+    font-family: monospace, sans-serif;
+
+}
+
+body{
+    font-size: 62.5%;
+
+}
+
+
+/*================== Common ================*/
+
+.wrapper{
+    max-width: 86.25%;
+    margin: 0 auto;
+}
+
+.product-top--heading{
+    font-size: 2.4rem;
+    font-weight: bold;
+    margin: 0 0 10px;
+}
+
+.product-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 100px 0 15px;
+}
+
+
+/*=================== Product info ===================*/
+
+
+.product-top--address{
+    display: flex;
+    gap: 15px;
+    margin: 0 0 10px;
+}
+
+.product-info--img{
+    width: 100%;
+    border-radius: 10px 10px 2px 2px;
+    object-fit: cover;
+}
+
+
+/*===================== Product details =====================*/
+
+
+.product-top__inner{
+    padding: 15px;
+}
+
+.product-top--heading-h3{
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-left: 3px solid #ffd88a;
+    margin: 0 0 10px;
+    padding: 0 0 0 15px;
+}
+
+.product-top--details__info{
+    margin: 20px 0 0;
+}
+
+.product-details__info-items{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 15px;
+}
+
+.product-details__info-items .right{
+    font-weight: bold;
+}
+
+/*====================== Product details service ========================== */
+
+.product-top__services{
+    background-color: #f3f3f3;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.product-top--heading-h4{
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0 0 10px;
+}
+
+.product-top__services--list-items{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 0 12px;
+}
+
+.items{
+    flex: 0 0 50%;
+    max-width: 50%;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.product__services--img{
+    margin-right: 10px;
+}
+
