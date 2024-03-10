@@ -61,19 +61,12 @@ public class login extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         UserDAO uDao = new UserDAO();
-        ArrayList<User> uList = uDao.getAllUsers();
-        boolean isAuthenticated = false;
-        for (User u : uList) {
-            if (u.getUsername().equals(username) && u.getPassword().equals(password)) {
-                isAuthenticated = true;
-                break; // Break the loop if credentials match
-            }
-        }
-        if (isAuthenticated) {
-            resp.sendRedirect("mainPage.jsp"); // Redirect to main page if authenticated
+        User u = uDao.login(username, password);
+        if (u != null) {
+            resp.sendRedirect("mainPage.jsp");
         } else {
             req.setAttribute("error", "Incorrect username or password!");
-            req.getRequestDispatcher("/UserLogin.jsp").forward(req, resp); // Forward to login page with error message
+            req.getRequestDispatcher("/UserLogin.jsp").forward(req, resp); 
         }
     } 
 
