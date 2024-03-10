@@ -8,47 +8,48 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 */
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html {
-  font-size: 62.5%;
+    font-size: 62.5%;
+    font-family: monospace, sans-serif;
 }
 
 body {
-  font-size: 1.6rem;
+    font-size: 1.6rem;
 }
 
 .wrapper {
-  background-image: url(../img/loginBackground.png);
-  height: 100vh;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  object-fit: cover;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    background-image: url(../img/loginBackground.png);
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .form__login--user {
-  position: absolute;
-  margin: 0 auto;
-  border-radius: 10px;
-  background: #fff;
-  min-width: 500px;
-  padding: 16px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-weight: 500;
+    position: absolute;
+    margin: 0 auto;
+    border-radius: 10px;
+    background: #fff;
+    min-width: 500px;
+    padding: 16px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 500;
 }
 
 .login__heading {
-  text-align: center;
-  font-size: 1.6rem;
-  margin-bottom: 38px;
-  padding-top: 20px;
-  text-transform: uppercase;
+    text-align: center;
+    font-size: 1.6rem;
+    margin-bottom: 38px;
+    padding-top: 20px;
+    text-transform: uppercase;
 }
 
 .home{
@@ -62,25 +63,25 @@ body {
 
 input[type="text"],
 input[type="password"] {
-  width: 100%;
-  border: none;
-  background-color: #d9d9d9;
-  padding: 10px;
-  border-radius: 5px;
-  margin: 20px 0 40px;
+    width: 100%;
+    border: none;
+    background-color: #d9d9d9;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 20px 0 40px;
 }
 
 input[type="text"]:hover,
 input[type="passwrod"]:hover {
-  opacity: 1;
-  transition: opacity 100ms linear 0s;
+    opacity: 1;
+    transition: opacity 100ms linear 0s;
 }
 
 a {
-  margin-top: 18px;
-  display: block;
-  text-decoration: none;
-  color: #000;
+    margin-top: 18px;
+    display: block;
+    text-decoration: none;
+    color: #000;
 }
 
 /*#UserRegister {
