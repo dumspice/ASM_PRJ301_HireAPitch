@@ -3,13 +3,4 @@
     <welcome-file-list>
         <welcome-file>mainPage.jsp</welcome-file>
     </welcome-file-list>
-
-    <servlet>
-        <servlet-name>PitchController</servlet-name>
-        <servlet-class>controller.PitchController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>PitchController</servlet-name>
-        <url-pattern>/pitchcontroller</url-pattern>
-    </servlet-mapping>
 </web-app>
