@@ -17,7 +17,7 @@
         <div class="wrapper">
             <form action="login" method="get" class="form__login--user">
                 <div class="home">
-                    <a href="<%=request.getContextPath()%>/mainPage.jsp"><img src="asset/icon/home.svg" class="homepage__icon" alt="..."></a>
+                    <a href="<%=request.getContextPath()%>/pitchcontroller"><img src="asset/icon/home.svg" class="homepage__icon" alt="..."></a>
                 </div>
                 <div class="login__heading">
                     <h1>Đăng nhập</h1>

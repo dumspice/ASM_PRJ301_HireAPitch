@@ -63,7 +63,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="triangle"></div>
+
             </section>
             <!--Product List-->
             <div class="product__list ">
@@ -84,11 +84,23 @@
                                         <div class="card-body p4 product-card__details">
                                             <div class="text-right">
                                                 <!--Product name-->
-                                                <h5 class="mb-3">Tên sân: <span>${p.pitchName}</span></h5>
+                                                <div class="product-card__info d-flex justify-content-between">                                                
+                                                    <h6 class="mb-3 fw-bold">Tên sân:</h6>
+                                                    <span class="fs-6 fw-normal">${p.pitchName}</span>
+                                                </div>     
                                                 <!--Product Size-->
-                                                <h5 class="mb-3">Kích thước sân: <span>${p.pitchType.type}</span></h5>
+                                                <div class="product-card__info d-flex justify-content-between">
+                                                    <h6 class="mb-3 fw-bold">Kích thước sân:</h6>
+                                                    <span class="fs-6 fw-normal">${p.pitchType.type}</span>
+                                                </div>
                                                 <!--Product Price-->
-                                                <h5 class="mb-3">Tiền thuê: <span>${p.price}</span> </h5>
+                                                <div class="product-card__info d-flex justify-content-between">
+                                                    <h6 class="mb-3 fw-bold">Tiền thuê:</h6>
+                                                    <span class="fs-6 fw-normal">${p.price}</span> 
+                                                </div>
+
+
+
                                             </div>
                                         </div>
                                     </a>
