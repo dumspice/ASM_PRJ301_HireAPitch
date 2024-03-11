@@ -32,18 +32,22 @@
                         <div class="banner__filter--left">
                             <h3 class="banner__left--heading">Tìm sân</h3>
                             <div class="banner__filter--form">
-                                <form action="selectPitch" method="get">
+                                <form action="selectPitch" method="get" id="form-choose-pitch">
                                     <label for="location">Địa điểm</label>
+                                    <c:set var="listAdd" value="${requestScope.listAdd}"/>
                                     <select name="pitch-location" class="banner__filter--location" id="location">
-                                        <option value="1">Hà Nội</option>
-                                        <option value="2">Tp Hồ Chí Minh</option>
-                                        <option value="3">Đà Nẵng</option>
+                                        <option value="0">Chọn địa điểm</option>
+                                        <c:forEach items="${listAdd.keySet()}" var="aid">
+                                            <option value="${aid}"  ${aid == requestScope.pitch-location?"selected":" "}>${listAdd[aid].addressName}</option>
+                                        </c:forEach>
                                     </select>
                                     <label for="type">Kích thước sân</label>
+                                    <c:set var="listPT" value="${requestScope.listPT}"/>
                                     <select name="pitch-type" class="banner__filter--type" id="type">
-                                        <option value="1">Sân 5</option>
-                                        <option value="2">Sân 7</option>
-                                        <option value="3">Sân 11</option>
+                                        <option value="0">Chọn kích thước sân</option>
+                                        <c:forEach items="${listPT.keySet()}" var="ptid">
+                                            <option value="${ptid}" ${ptid == requestScope.pitch-type?"selected":" "}>${listPT[ptid].type}</option>
+                                        </c:forEach>                                   
                                     </select>
 
                                     <input type="submit" value="Tìm sân">

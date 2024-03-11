@@ -103,11 +103,463 @@
                     <div class="accessory col-md-3 col-12">
                         <div class="accessory-inner p-15 bg-white rounded-8">
                             <h4 class="accessory-heading">Cho thuê phụ kiện</h4>
-                            
+
                         </div>
                     </div>
 
                     <div class="time-table col-md-9 col-12">
+                        <div class="book-calendar h-100 bg-white p-5 rounded-8 position-relative">
+                            <div class="header-book d-flex align-items-center justify-content-between mb-4">
+                                <h3 class="calendar-title fb-bold">Lịch đặt sân</h3>
+                                <div class="time-frime">
+                                    <div class="btn btn-frame rounded-8" id="am">Khung sáng</div>
+                                    <div class="btn btn-frame rounded-8" id="pm">Khung chiều</div>
+                                </div>
+                            </div>
+
+                            <div class="book-calendar">
+                                <form class="book-calendar__form">
+                                    <div class="day-of-week">
+                                        <button data-day="T2" class="day">T2</button>
+                                        <button data-day="T3" class="day">T3</button>
+                                        <button data-day="T4" class="day">T4</button>
+                                        <button data-day="T5" class="day">T5</button>
+                                        <button data-day="T6" class="day">T6</button>
+                                        <button data-day="T7" class="day">T7</button>
+                                        <button data-day="CN" class="day">CN</button>
+                                    </div>
+                                    <div class="table-price">
+                                        <div class="table">
+                                            <div data-day="T2" class="row">
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">05:00 - 06:30</span>
+                                                    </div>
+                                                </div>
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">06:30 - 08:00</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">08:00 - 09:30</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">09:30 - 11:00</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">11:00 - 12:30</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="set-yard pm d-none">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">14:00 - 15:30</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="set-yard pm d-none">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">15:30 - 17:00</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="set-yard pm d-none">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">17:00 - 18:30</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="set-yard pm d-none">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">18:30 - 20:00</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="set-yard pm d-none">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">20:00 - 21:30</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+<!--                                            <div data-day="T3" class="row">
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">05:00 - 06:30</span>
+                                                    </div>
+                                                </div>
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">06:30 - 08:00</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">08:00 - 09:30</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">09:30 - 11:00</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">11:00 - 12:30</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="set-yard pm">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">14:00 - 15:30</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="set-yard pm">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">15:30 - 17:00</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="set-yard pm">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">17:00 - 18:30</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="set-yard pm">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">18:30 - 20:00</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="set-yard pm">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">20:00 - 21:30</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div data-day="T4" class="row">
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">05:00 - 06:30</span>
+                                                    </div>
+                                                </div>
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">06:30 - 08:00</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">08:00 - 09:30</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">09:30 - 11:00</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">11:00 - 12:30</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="set-yard pm">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">14:00 - 15:30</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="set-yard pm">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">15:30 - 17:00</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="set-yard pm">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">17:00 - 18:30</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="set-yard pm">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">18:30 - 20:00</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="set-yard pm">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">20:00 - 21:30</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div data-day="T5" class="row">
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">05:00 - 06:30</span>
+                                                    </div>
+                                                </div>
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">06:30 - 08:00</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">08:00 - 09:30</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">09:30 - 11:00</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">11:00 - 12:30</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="set-yard pm">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">14:00 - 15:30</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="set-yard pm">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">15:30 - 17:00</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="set-yard pm">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">17:00 - 18:30</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="set-yard pm">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">18:30 - 20:00</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="set-yard pm">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">20:00 - 21:30</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div data-day="T6" class="row">
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">05:00 - 06:30</span>
+                                                    </div>
+                                                </div>
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">06:30 - 08:00</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">08:00 - 09:30</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">09:30 - 11:00</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">11:00 - 12:30</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="set-yard pm">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">14:00 - 15:30</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="set-yard pm">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">15:30 - 17:00</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="set-yard pm">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">17:00 - 18:30</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="set-yard pm">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">18:30 - 20:00</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="set-yard pm">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">20:00 - 21:30</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div data-day="T7" class="row">
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">05:00 - 06:30</span>
+                                                    </div>
+                                                </div>
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">06:30 - 08:00</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">08:00 - 09:30</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">09:30 - 11:00</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">11:00 - 12:30</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="set-yard pm">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">14:00 - 15:30</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="set-yard pm">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">15:30 - 17:00</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="set-yard pm">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">17:00 - 18:30</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="set-yard pm">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">18:30 - 20:00</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="set-yard pm">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">20:00 - 21:30</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-day="CN" class="row">
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">05:00 - 06:30</span>
+                                                    </div>
+                                                </div>
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">06:30 - 08:00</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">08:00 - 09:30</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">09:30 - 11:00</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="set-yard am">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">11:00 - 12:30</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="set-yard pm">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">14:00 - 15:30</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="set-yard pm">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">15:30 - 17:00</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="set-yard pm">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">17:00 - 18:30</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="set-yard pm">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">18:30 - 20:00</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="set-yard pm">
+                                                    <div class="frame-price">
+                                                        <span class="text-nowrap">20:00 - 21:30</span>
+                                                    </div>
+                                                </div>
+                                            </div>-->
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
