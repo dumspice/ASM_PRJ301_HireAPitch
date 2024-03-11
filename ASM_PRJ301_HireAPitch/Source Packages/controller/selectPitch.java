@@ -2,10 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-
 package controller;
 
+import dal.AddressDAO;
 import dal.pitchDAO;
+import dal.pitchTypeDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -14,42 +15,48 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.Map;
+import model.Address;
 import model.Pitch;
+import model.PitchType;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name="selectPitch", urlPatterns={"/selectPitch"})
+@WebServlet(name = "selectPitch", urlPatterns = {"/selectPitch"})
 public class selectPitch extends HttpServlet {
-   
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet selectPitch</title>");  
+            out.println("<title>Servlet selectPitch</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet selectPitch at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet selectPitch at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
-    } 
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -57,23 +64,33 @@ public class selectPitch extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-    throws ServletException, IOException {
-        String t = req.getParameter("pitch-type");
-        String a = req.getParameter("pitch-location");
+            throws ServletException, IOException {
+        int typeId = 0;
+        int addressId = 0;
         try {
-            int type = Integer.parseInt(t);
-            int address = Integer.parseInt(a);
-            pitchDAO pDAO = new pitchDAO();
-            ArrayList<Pitch> listPitch = pDAO.choosePitch(type, address);
-            req.setAttribute("ListPitch", listPitch);
-            req.getRequestDispatcher("mainPage.jsp").forward(req, resp);
-        } catch (NumberFormatException e) {
-            System.out.println(e);
-        }
-    } 
 
-    /** 
+            typeId = Integer.parseInt(req.getParameter("pitch-type"));
+            addressId = Integer.parseInt(req.getParameter("pitch-location"));
+        } catch (Exception e) {
+            typeId = 0;
+            addressId = 0;
+        }
+        pitchDAO pDAO = new pitchDAO();
+        ArrayList<Pitch> listPitch = pDAO.choosePitch(typeId, addressId);
+        AddressDAO aDAO = new AddressDAO();
+        pitchTypeDAO ptDAO = new pitchTypeDAO();
+        Map<Integer, Address> listAdd = aDAO.getMapAllAddress();
+        Map<Integer, PitchType> listPT = ptDAO.getMapAllPitchType();
+        req.setAttribute("ListPitch", listPitch);
+        req.setAttribute("listAdd", listAdd);
+        req.setAttribute("listPT", listPT);
+        req.getRequestDispatcher("mainPage.jsp").forward(req, resp);
+
+    }
+
+    /**
      * Handles the HTTP <code>POST</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -81,12 +98,13 @@ public class selectPitch extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
+     *
      * @return a String containing servlet description
      */
     @Override
