@@ -41,7 +41,31 @@ public class UserDAO extends DBContext{
         return list;
     }
     
-   public boolean phoneExisted(String phone) {
+    public User login(String username, String password) {
+        String sql = "select * from [User] where Username = ? and [Password] = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, username);
+            st.setString(2, password);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                User u = new User();
+                u.setId(rs.getInt(1));
+                u.setUsername(rs.getString(2));
+                u.setPassword(rs.getString(3));
+                u.setDisplay_name(rs.getString(4));
+                u.setPhone_number(rs.getString(5));
+                u.setEmail(rs.getString(6));
+                u.setAvatar(rs.getString(7));
+                return u;
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    
+    public boolean phoneExisted(String phone) {
         ArrayList<User> userList = getAllUsers();
         for (User user : userList) {
             if (user.getPhone_number()!= null && user.getPhone_number().equals(phone)) {
@@ -100,5 +124,6 @@ public class UserDAO extends DBContext{
         for (User u : list) {
             System.out.println(u);
         }
+        
     }
 }
