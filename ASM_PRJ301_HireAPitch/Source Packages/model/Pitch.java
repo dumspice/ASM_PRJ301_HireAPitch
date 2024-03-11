@@ -6,7 +6,7 @@ package model;
 
 /**
  *
- * @author dumspicy
+ * @author Admin
  */
 public class Pitch {
     private int pitchId;
@@ -14,22 +14,22 @@ public class Pitch {
     private String address;
     private float price;
     private String image;
-    private int pitchTypeId;
+    private PitchType pitchType;
     private int addressId;
-    private int staffId;
+    private Staff staff;
 
     public Pitch() {
     }
 
-    public Pitch(int pitchId, String pitchName, String address, float price, String image, int pitchTypeId, int addressId, int staffId) {
+    public Pitch(int pitchId, String pitchName, String address, float price, String image, PitchType pitchType, int addressId, Staff staff) {
         this.pitchId = pitchId;
         this.pitchName = pitchName;
         this.address = address;
         this.price = price;
         this.image = image;
-        this.pitchTypeId = pitchTypeId;
+        this.pitchType = pitchType;
         this.addressId = addressId;
-        this.staffId = staffId;
+        this.staff = staff;
     }
 
     public int getPitchId() {
@@ -72,12 +72,12 @@ public class Pitch {
         this.image = image;
     }
 
-    public int getPitchTypeId() {
-        return pitchTypeId;
+    public PitchType getPitchType() {
+        return pitchType;
     }
 
-    public void setPitchTypeId(int pitchTypeId) {
-        this.pitchTypeId = pitchTypeId;
+    public void setPitchType(PitchType pitchType) {
+        this.pitchType = pitchType;
     }
 
     public int getAddressId() {
@@ -88,17 +88,18 @@ public class Pitch {
         this.addressId = addressId;
     }
 
-    public int getStaffId() {
-        return staffId;
+    public Staff getStaff() {
+        return staff;
     }
 
-    public void setStaffId(int staffId) {
-        this.staffId = staffId;
+    public void setStaff(Staff staff) {
+        this.staff = staff;
     }
 
     @Override
     public String toString() {
-        return "Pitch{" + "pitchId=" + pitchId + ", pitchName=" + pitchName + ", address=" + address + ", price=" + price + ", image=" + image + ", pitchTypeId=" + pitchTypeId + ", addressId=" + addressId + ", staffId=" + staffId + '}';
+        return "Pitch{" + "pitchId=" + pitchId + ", pitchName=" + pitchName + ", address=" + address + ", price=" + price + ", image=" + image + ", pitchType=" + pitchType + ", addressId=" + addressId + ", staff=" + staff + '}';
     }
+    
     
 }

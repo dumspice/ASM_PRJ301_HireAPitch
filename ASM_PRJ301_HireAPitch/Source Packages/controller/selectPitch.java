@@ -5,7 +5,7 @@
 
 package controller;
 
-import dal.UserDAO;
+import dal.pitchDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,16 +13,15 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
-import model.User;
+import model.Pitch;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name="login", urlPatterns={"/login"})
-public class login extends HttpServlet {
+@WebServlet(name="selectPitch", urlPatterns={"/selectPitch"})
+public class selectPitch extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -39,10 +38,10 @@ public class login extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet login</title>");  
+            out.println("<title>Servlet selectPitch</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet login at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet selectPitch at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,17 +58,17 @@ public class login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
     throws ServletException, IOException {
-        String username = req.getParameter("username");
-        String password = req.getParameter("password");
-        UserDAO uDao = new UserDAO();
-        User u = uDao.login(username, password);
-        if (u != null) {
-            HttpSession session = req.getSession();
-            session.setAttribute("user", u);
-            resp.sendRedirect("pitchcontroller");
-        } else {
-            req.setAttribute("error", "Incorrect username or password!");
-            req.getRequestDispatcher("/UserLogin.jsp").forward(req, resp); 
+        String t = req.getParameter("pitch-type");
+        String a = req.getParameter("pitch-location");
+        try {
+            int type = Integer.parseInt(t);
+            int address = Integer.parseInt(a);
+            pitchDAO pDAO = new pitchDAO();
+            ArrayList<Pitch> listPitch = pDAO.choosePitch(type, address);
+            req.setAttribute("ListPitch", listPitch);
+            req.getRequestDispatcher("mainPage.jsp").forward(req, resp);
+        } catch (NumberFormatException e) {
+            System.out.println(e);
         }
     } 
 
