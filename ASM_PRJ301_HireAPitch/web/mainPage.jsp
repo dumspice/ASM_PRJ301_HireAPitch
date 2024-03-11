@@ -73,7 +73,7 @@
                             <!--Product Start-->
                             <div class="col-lg-3 col-md-6 mb-5">
                                 <div class="card h-100 product-card">
-                                    <a href="<%=request.getContextPath()%>/ProductDetails.jsp">
+                                    <a href="<%=request.getContextPath()%>/ProductDetails.jsp?pitchId=${p.pitchId}">
                                         <!--Product Image-->
                                         <img class="product-items__image card-img-top" 
                                              src="${p.image}" 

@@ -72,6 +72,33 @@ public class pitchDAO extends DBContext{
         return list;
     }
     
+    public Pitch getPitchById(int id) {
+        ArrayList<Pitch> list = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM Pitch WHERE Pitch_id = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Pitch p = new Pitch();
+                p.setPitchId(rs.getInt(1));
+                p.setPitchName(rs.getString(2));
+                p.setAddress(rs.getString(3));
+                p.setPrice(rs.getFloat(4));
+                p.setImage(rs.getString(5));
+                p.setPitchType(getPitchTypeById(rs.getInt(6)));
+                p.setAddressId(rs.getInt(7));
+                p.setStaff(getStaffById(rs.getInt(8)));
+                return p;
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+    
     public PitchType getPitchTypeById(int id) {
        String sql = "select * from Type_Pitch where Type_id_Pitch = ?";
        try {

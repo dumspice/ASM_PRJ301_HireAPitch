@@ -4,6 +4,9 @@
     Author     : dumspicy
 --%>
 
+<%@page import="dal.pitchDAO"%>
+<%@page import="model.Pitch"%>
+<%@page import="model.Staff"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,18 +23,24 @@
             <%@include file="header.jsp" %>
         </header>
         <br/>
+        <%
+            String pitchId = request.getParameter("pitchId");
+            int id = Integer.parseInt(pitchId);
+            pitchDAO pDao = new pitchDAO();
+            Pitch p = pDao.getPitchById(id);
+        %>
         <div class="product-details">
             <div class="container">
                 <!--Product info-->
                 <div class="product-top row">
 
                     <div class="product-top--info col-lg-8">
-                        <h1 class="product-top--heading">Sân Thành Phát</h1>
+                        <h1 class="product-top--heading"><%=p.getPitchName()%></h1>
                         <div class="product-top--address">
                             <img src="asset/icon/location-dot-solid.svg" class="product-top--address__logo"/>
-                            <p class="product-top--address__info">Số 2, Hoàng Minh Giám, Cầu Giấy</p>
+                            <p class="product-top--address__info"><%=p.getAddress()%></p>
                         </div>
-                        <img src="https://giaydabongtot.com/wp-content/uploads/2020/09/Dia-chi-san-bong-da-thanh-phat-hoang-minh-giam-cau-giay-ha-noi.jpg" class="product-info--img"/>
+                        <img src="<%=p.getImage()%>" class="product-info--img"/>
                     </div>
 
                     <div class="product-top--details col-lg-4">
@@ -48,11 +57,11 @@
                                 </div>
                                 <div class="product-details__info-items">     
                                     <span class="left">Giá sân:</span>
-                                    <span class="right">Liên hệ</span>
+                                    <span class="right"><%=p.getPrice()%></span>
                                 </div>                                
                                 <div class="product-details__info-items">   
                                     <span class="left">Số điện thoại:</span>
-                                    <span class="right">0123456789</span>
+                                    <span class="right"><%=p.getStaff().getPhoneNumber()%></span>
                                 </div>
 
                             </div>
