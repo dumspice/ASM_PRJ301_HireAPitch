@@ -32,18 +32,18 @@
                         <div class="banner__filter--left">
                             <h3 class="banner__left--heading">Tìm sân</h3>
                             <div class="banner__filter--form">
-                                <form>
+                                <form action="selectPitch" method="get">
                                     <label for="location">Địa điểm</label>
-                                    <select name="pitch--location" class="banner__filter--location" id="location">
-                                        <option value="HaNoi">Hà Nội</option>
-                                        <option value="TpHCM">Tp Hồ Chí Minh</option>
-                                        <option value="DaNang">Đà Nẵng</option>
+                                    <select name="pitch-location" class="banner__filter--location" id="location">
+                                        <option value="1">Hà Nội</option>
+                                        <option value="2">Tp Hồ Chí Minh</option>
+                                        <option value="3">Đà Nẵng</option>
                                     </select>
                                     <label for="type">Kích thước sân</label>
-                                    <select name="pitch--type" class="banner__filter--type" id="type">
-                                        <option value="5">Sân 5</option>
-                                        <option value="7">Sân 7</option>
-                                        <option value="11">Sân 11</option>
+                                    <select name="pitch-type" class="banner__filter--type" id="type">
+                                        <option value="1">Sân 5</option>
+                                        <option value="2">Sân 7</option>
+                                        <option value="3">Sân 11</option>
                                     </select>
 
                                     <input type="submit" value="Tìm sân">
@@ -69,7 +69,7 @@
             <div class="product__list ">
                 <div class="container">
                     <div class="product-items row justify-content-center">
-                        <c:forEach items="${ListPitch}" var="p">
+                        <c:forEach items="${requestScope.ListPitch}" var="p">
                             <!--Product Start-->
                             <div class="col-lg-3 col-md-6 mb-5">
                                 <div class="card h-100 product-card">
@@ -86,9 +86,9 @@
                                                 <!--Product name-->
                                                 <h5 class="mb-3">Tên sân: <span>${p.pitchName}</span></h5>
                                                 <!--Product Size-->
-                                                <h5 class="mb-3">Kích thước sân: <span></span></h5>
+                                                <h5 class="mb-3">Kích thước sân: <span>${p.pitchType.type}</span></h5>
                                                 <!--Product Price-->
-                                                <h5 class="mb-3">Tiền thuê: <span></span> </h5>
+                                                <h5 class="mb-3">Tiền thuê: <span>${p.price}</span> </h5>
                                             </div>
                                         </div>
                                     </a>

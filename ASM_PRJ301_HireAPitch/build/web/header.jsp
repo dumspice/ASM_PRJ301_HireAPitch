@@ -3,7 +3,7 @@
     Created on : 27 Feb 2024, 16:04:55
     Author     : dumspicy
 --%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,7 +17,7 @@
         <div class="header_wrapper">
       <!-- logo -->
       <div class="header_left">
-          <a href="<%=request.getContextPath()%>/mainPage.jsp" class="header_logo" rel="homepage">
+          <a href="pitchcontroller" class="header_logo" rel="homepage">
           <img
             src="./asset/img/Xanh lá và Trắng Con hưu đực Bóng đá Việt Biểu trưng.png"
             alt="Logo page"
@@ -37,6 +37,7 @@
       </div>
       <div class="header_right">
         <div class="header_CTO">
+            <c:if test="${sessionScope.user == null}">
           <div class="login">
               <a href="<%=request.getContextPath()%>/UserLogin.jsp">
               <img src="./asset/icon/Vector.svg" alt="" />
@@ -53,6 +54,12 @@
               <a href="<%=request.getContextPath()%>/UserRegister.jsp">Đăng ký tài khoản</a>
             </div>
           </div>
+            </c:if>
+            <c:if test="${sessionScope.user != null}">
+                <div class="logout">
+                    <a href="logout">Đăng xuất</a>
+                </div>
+            </c:if>
           <div class="clear"></div>
           <div class="shopping-cart">
             <a href="">
