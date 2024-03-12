@@ -17,7 +17,7 @@
         <div class="header_wrapper">
       <!-- logo -->
       <div class="header_left">
-          <a href="pitchcontroller" class="header_logo" rel="homepage">
+          <a href="<%=request.getContextPath()%>/selectPitch" class="header_logo" rel="homepage">
           <img
             src="./asset/img/Xanh lá và Trắng Con hưu đực Bóng đá Việt Biểu trưng.png"
             alt="Logo page"
