@@ -138,10 +138,37 @@ public class pitchDAO extends DBContext {
         }
         return null;
     }
+    
+    public ArrayList<Pitch> getLastestPitch() {
+        ArrayList<Pitch> list = new ArrayList<>();
+        try {
+            String sql = "select top 4 * from Pitch\n"
+                    + "order by Pitch_id desc";
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                Pitch p = new Pitch();
+                p.setPitchId(rs.getInt(1));
+                p.setPitchName(rs.getString(2));
+                p.setAddress(rs.getString(3));
+                p.setPrice(rs.getFloat(4));
+                p.setImage(rs.getString(5));
+                p.setPitchType(getPitchTypeById(rs.getInt(6)));
+                p.setAddressId(rs.getInt(7));
+                p.setStaff(getStaffById(rs.getInt(8)));
+                list.add(p);
+            }
+            rs.close();
+            st.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return list;
+    }
 
     public static void main(String[] args) {
         pitchDAO pDAO = new pitchDAO();
-        ArrayList<Pitch> listP = pDAO.getAllPitch();
+        ArrayList<Pitch> listP = pDAO.getLastestPitch();
         for (Pitch pitch : listP) {
             System.out.println(pitch);
         }

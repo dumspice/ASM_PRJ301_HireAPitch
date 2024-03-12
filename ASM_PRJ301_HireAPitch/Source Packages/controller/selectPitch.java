@@ -68,7 +68,6 @@ public class selectPitch extends HttpServlet {
         int typeId = 0;
         int addressId = 0;
         try {
-
             typeId = Integer.parseInt(req.getParameter("pitch-type"));
             addressId = Integer.parseInt(req.getParameter("pitch-location"));
         } catch (Exception e) {
@@ -85,7 +84,6 @@ public class selectPitch extends HttpServlet {
         req.setAttribute("listAdd", listAdd);
         req.setAttribute("listPT", listPT);
         req.getRequestDispatcher("mainPage.jsp").forward(req, resp);
-
     }
 
     /**
