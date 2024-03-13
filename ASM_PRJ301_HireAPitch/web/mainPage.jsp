@@ -88,7 +88,9 @@
                                                 <!--Product Size-->
                                                 <h5 class="mb-3">Loại sân: <span>${p.pitchType.type}</span></h5>
                                                 <!--Product Price-->
+
                                                 <h5 class="mb-3">Giá thuê: <span><fmt:formatNumber value="${p.price}" pattern="###,###" /></span> </h5>
+
                                             </div>
                                         </div>
                                     </a>

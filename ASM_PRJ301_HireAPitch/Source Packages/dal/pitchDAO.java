@@ -102,6 +102,33 @@ public class pitchDAO extends DBContext {
         }
         return null;
     }
+    
+    public ArrayList<Pitch> getPitchByName(String name) {
+        ArrayList<Pitch> list = new ArrayList<>();
+        try {
+            String sql = "select * from Pitch where Pitch_name like ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1,"%" + name + "%");
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Pitch p = new Pitch();
+                p.setPitchId(rs.getInt(1));
+                p.setPitchName(rs.getString(2));
+                p.setAddress(rs.getString(3));
+                p.setPrice(rs.getInt(4));
+                p.setImage(rs.getString(5));
+                p.setPitchType(getPitchTypeById(rs.getInt(6)));
+                p.setAddressId(rs.getInt(7));
+                
+                list.add(p);
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return list;
+    }
 
     public PitchType getPitchTypeById(int id) {
         String sql = "select * from Type_Pitch where Type_id_Pitch = ?";
@@ -147,10 +174,12 @@ public class pitchDAO extends DBContext {
         }
         return list;
     }
+    
+    
 
     public static void main(String[] args) {
         pitchDAO pDAO = new pitchDAO();
-        ArrayList<Pitch> listP = pDAO.getAllPitch();
+        ArrayList<Pitch> listP = pDAO.getPitchByName("sân");
         for (Pitch pitch : listP) {
             System.out.println(pitch);
         }
