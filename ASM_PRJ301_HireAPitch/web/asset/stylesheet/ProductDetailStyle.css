@@ -132,9 +132,7 @@ body{
     border-left: 3px solid #ffd88a;
     margin: 0 0 10px;
     padding: 0 0 0 15px;
-}
-
-.book-calendar__form{
+}.book-calendar__form{
     display: flex;
     gap: 60px;
     justify-content: space-between;
