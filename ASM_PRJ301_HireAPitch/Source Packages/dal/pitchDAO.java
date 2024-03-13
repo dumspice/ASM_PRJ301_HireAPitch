@@ -20,6 +20,7 @@ import model.Staff;
 public class pitchDAO extends DBContext{
     public ArrayList<Pitch> getAllPitch(){
         ArrayList<Pitch> list = new ArrayList<>();
+        UserDAO uDao = new UserDAO();
         try{
             String sql = "select * from Pitch";
             Statement st = connection.createStatement();
@@ -29,11 +30,11 @@ public class pitchDAO extends DBContext{
                 p.setPitchId(rs.getInt(1));
                 p.setPitchName(rs.getString(2));
                 p.setAddress(rs.getString(3));
-                p.setPrice(rs.getFloat(4));
+                p.setPrice(rs.getInt(4));
                 p.setImage(rs.getString(5));
                 p.setPitchType(getPitchTypeById(rs.getInt(6)));
                 p.setAddressId(rs.getInt(7));
-                p.setStaff(getStaffById(rs.getInt(8)));
+                p.setUser(uDao.getUserById(rs.getInt(8)));
                 list.add(p);
             }
             rs.close();
@@ -46,6 +47,7 @@ public class pitchDAO extends DBContext{
     
     public ArrayList<Pitch> choosePitch(int typeId, int addressId) {
         ArrayList<Pitch> list = new ArrayList<>();
+        UserDAO uDao = new UserDAO();
         try {
             String sql = "SELECT * FROM Pitch WHERE [Type_id_Pitch] = ? AND Address_id = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -57,11 +59,11 @@ public class pitchDAO extends DBContext{
                 p.setPitchId(rs.getInt(1));
                 p.setPitchName(rs.getString(2));
                 p.setAddress(rs.getString(3));
-                p.setPrice(rs.getFloat(4));
+                p.setPrice(rs.getInt(4));
                 p.setImage(rs.getString(5));
                 p.setPitchType(getPitchTypeById(rs.getInt(6)));
                 p.setAddressId(rs.getInt(7));
-                p.setStaff(getStaffById(rs.getInt(8)));
+                p.setUser(uDao.getUserById(rs.getInt(8)));
                 list.add(p);
             }
             rs.close();
@@ -74,6 +76,7 @@ public class pitchDAO extends DBContext{
     
     public Pitch getPitchById(int id) {
         ArrayList<Pitch> list = new ArrayList<>();
+        UserDAO uDao = new UserDAO();
         try {
             String sql = "SELECT * FROM Pitch WHERE Pitch_id = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -84,11 +87,11 @@ public class pitchDAO extends DBContext{
                 p.setPitchId(rs.getInt(1));
                 p.setPitchName(rs.getString(2));
                 p.setAddress(rs.getString(3));
-                p.setPrice(rs.getFloat(4));
+                p.setPrice(rs.getInt(4));
                 p.setImage(rs.getString(5));
                 p.setPitchType(getPitchTypeById(rs.getInt(6)));
                 p.setAddressId(rs.getInt(7));
-                p.setStaff(getStaffById(rs.getInt(8)));
+                p.setUser(uDao.getUserById(rs.getInt(8)));
                 return p;
             }
             rs.close();
@@ -116,26 +119,7 @@ public class pitchDAO extends DBContext{
        return null;
     }
     
-    public Staff getStaffById(int id) {
-        String sql = "select * from Staff where Staff_id = ?";
-        try {
-            PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1, id);
-            ResultSet rs = st.executeQuery();
-            if(rs.next()) {
-                 Staff s = new Staff(rs.getInt(1),
-                              rs.getString(2), 
-                              rs.getString(3),
-                            rs.getString(4),
-                            rs.getString(5),
-                               rs.getString(6));
-                 return s;
-            }
-        } catch(SQLException e) {
-            System.out.println(e);
-        }
-        return null;
-    }
+
     public static void main(String[] args) {
         pitchDAO pDAO = new pitchDAO();
         ArrayList<Pitch> listP = pDAO.getAllPitch();

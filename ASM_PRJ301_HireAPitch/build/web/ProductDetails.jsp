@@ -8,6 +8,7 @@
 <%@page import="model.Pitch"%>
 <%@page import="model.Staff"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -56,12 +57,12 @@
                                     <span class="right">Chưa có thông tin</span>
                                 </div>
                                 <div class="product-details__info-items">     
-                                    <span class="left">Giá sân:</span>
-                                    <span class="right"><%=p.getPrice()%></span>
+                                    <span class="left">Giá thuê:</span>
+                                    <span class="right"><fmt:formatNumber value="<%=p.getPrice()%>" pattern="###,###" /></span>
                                 </div>                                
                                 <div class="product-details__info-items">   
                                     <span class="left">Số điện thoại:</span>
-                                    <span class="right"><%=p.getStaff().getPhoneNumber()%></span>
+                                    <span class="right"><%=p.getUser().getPhone_number()%></span>
                                 </div>
 
                             </div>

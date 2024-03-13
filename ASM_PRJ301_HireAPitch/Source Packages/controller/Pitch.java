@@ -14,14 +14,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
-import model.Pitch;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name="selectPitch", urlPatterns={"/selectPitch"})
-public class selectPitch extends HttpServlet {
+@WebServlet(name="Pitch", urlPatterns={"/pitchcontroller"})
+public class Pitch extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -38,10 +37,10 @@ public class selectPitch extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet selectPitch</title>");  
+            out.println("<title>Servlet Pitch</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet selectPitch at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet Pitch at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -58,20 +57,10 @@ public class selectPitch extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
     throws ServletException, IOException {
-        String t = req.getParameter("pitch-type");
-        String a = req.getParameter("pitch-location");
-        try {
-            int type = Integer.parseInt(t);
-            int address = Integer.parseInt(a);
-            pitchDAO pDAO = new pitchDAO();
-            ArrayList<Pitch> listPitch = pDAO.choosePitch(type, address);
-            req.setAttribute("ListPitch", listPitch);
-            req.setAttribute("type", type);
-            req.setAttribute("address", address);
-            req.getRequestDispatcher("mainPage.jsp").forward(req, resp);
-        } catch (NumberFormatException e) {
-            System.out.println(e);
-        }
+        pitchDAO pDAO = new pitchDAO();
+        ArrayList<model.Pitch> listPitch = pDAO.getAllPitch();
+        req.setAttribute("ListPitch", listPitch);
+        req.getRequestDispatcher("mainPage.jsp").forward(req, resp);
     } 
 
     /** 

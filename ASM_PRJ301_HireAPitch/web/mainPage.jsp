@@ -5,7 +5,8 @@
 --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%@page import="java.text.DecimalFormat" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -35,17 +36,16 @@
                                 <form action="selectPitch" method="get">
                                     <label for="location">Địa điểm</label>
                                     <select name="pitch-location" class="banner__filter--location" id="location">
-                                        <option value="1">Hà Nội</option>
-                                        <option value="2">Tp Hồ Chí Minh</option>
-                                        <option value="3">Đà Nẵng</option>
+                                        <option value="1" ${requestScope.address == '1' ? 'selected' : ''}>Hà Nội</option>
+                                        <option value="2" ${requestScope.address == '2' ? 'selected' : ''}>Tp Hồ Chí Minh</option>
+                                        <option value="3" ${requestScope.address == '3' ? 'selected' : ''}>Đà Nẵng</option>
                                     </select>
                                     <label for="type">Kích thước sân</label>
                                     <select name="pitch-type" class="banner__filter--type" id="type">
-                                        <option value="1">Sân 5</option>
-                                        <option value="2">Sân 7</option>
-                                        <option value="3">Sân 11</option>
+                                        <option value="1" ${requestScope.type == '1' ? 'selected' : ''}>Sân 5</option>
+                                        <option value="2" ${requestScope.type == '2' ? 'selected' : ''}>Sân 7</option>
+                                        <option value="3" ${requestScope.type == '3' ? 'selected' : ''}>Sân 11</option>
                                     </select>
-
                                     <input type="submit" value="Tìm sân">
                                 </form>
                             </div>
@@ -84,11 +84,11 @@
                                         <div class="card-body p4 product-card__details">
                                             <div class="text-right">
                                                 <!--Product name-->
-                                                <h5 class="mb-3">Tên sân: <span>${p.pitchName}</span></h5>
+                                                <h5 class="mb-3"><span>${p.pitchName}</span></h5>
                                                 <!--Product Size-->
-                                                <h5 class="mb-3">Kích thước sân: <span>${p.pitchType.type}</span></h5>
+                                                <h5 class="mb-3">Loại sân: <span>${p.pitchType.type}</span></h5>
                                                 <!--Product Price-->
-                                                <h5 class="mb-3">Tiền thuê: <span>${p.price}</span> </h5>
+                                                <h5 class="mb-3">Giá thuê: <span><fmt:formatNumber value="${p.price}" pattern="###,###" /></span> </h5>
                                             </div>
                                         </div>
                                     </a>
