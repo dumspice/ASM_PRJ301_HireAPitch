@@ -100,6 +100,6 @@ public class Pitch {
     public String toString() {
         return "Pitch{" + "pitchId=" + pitchId + ", pitchName=" + pitchName + ", address=" + address + ", price=" + price + ", image=" + image + ", pitchType=" + pitchType + ", addressId=" + addressId + ", user=" + user + '}';
     }
-    
+
     
 }

@@ -17,7 +17,7 @@
         <div class="container">
             <form action="userRegister" method="get" class="form__register--user">
                 <div class="home">
-                    <a href="<%=request.getContextPath()%>/mainPage.jsp"><img src="asset/icon/home.svg" class="homepage__icon" alt="..."></a>
+                    <a href="<%=request.getContextPath()%>/pitchcontroller"><img src="asset/icon/home.svg" class="homepage__icon" alt="..."></a>
                 </div>
                 <div class="register__heading">
                     <h1>Đăng ký tài khoản</h1>
