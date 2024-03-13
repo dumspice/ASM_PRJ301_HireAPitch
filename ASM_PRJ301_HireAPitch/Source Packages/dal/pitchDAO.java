@@ -110,7 +110,7 @@ public class pitchDAO extends DBContext {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1,"%" + name + "%");
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
                 Pitch p = new Pitch();
                 p.setPitchId(rs.getInt(1));
                 p.setPitchName(rs.getString(2));

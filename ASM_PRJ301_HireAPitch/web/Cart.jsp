@@ -196,7 +196,7 @@
                             </div>
 
                             <div class="d-flex justify-content-end">
-                                <button type="button" class="btn btn-light btn-lg me-2"><a href="<%=request.getContextPath()%>/selectPitch">Quay về trang chủ</a></button>
+                                <button type="button" class="btn btn-light btn-lg me-2"><a href="<%=request.getContextPath()%>/pitchcontroller">Quay về trang chủ</a></button>
                                 <button type="button" class="btn btn-primary btn-lg">Đặt sân</button>
                             </div>
 
