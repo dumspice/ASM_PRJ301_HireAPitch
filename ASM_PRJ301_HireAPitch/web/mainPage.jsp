@@ -5,7 +5,8 @@
 --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%@page import="java.text.DecimalFormat" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -32,24 +33,19 @@
                         <div class="banner__filter--left">
                             <h3 class="banner__left--heading">Tìm sân</h3>
                             <div class="banner__filter--form">
-                                <form action="selectPitch" method="get" id="form-choose-pitch">
+                                <form action="selectPitch" method="get">
                                     <label for="location">Địa điểm</label>
-                                    <c:set var="listAdd" value="${requestScope.listAdd}"/>
                                     <select name="pitch-location" class="banner__filter--location" id="location">
-                                        <option value="0">Chọn địa điểm</option>
-                                        <c:forEach items="${listAdd.keySet()}" var="aid">
-                                            <option value="${aid}"  ${aid == requestScope.pitch-location?"selected":" "}>${listAdd[aid].addressName}</option>
-                                        </c:forEach>
+                                        <option value="1" ${requestScope.address == '1' ? 'selected' : ''}>Hà Nội</option>
+                                        <option value="2" ${requestScope.address == '2' ? 'selected' : ''}>Tp Hồ Chí Minh</option>
+                                        <option value="3" ${requestScope.address == '3' ? 'selected' : ''}>Đà Nẵng</option>
                                     </select>
                                     <label for="type">Kích thước sân</label>
-                                    <c:set var="listPT" value="${requestScope.listPT}"/>
                                     <select name="pitch-type" class="banner__filter--type" id="type">
-                                        <option value="0">Chọn kích thước sân</option>
-                                        <c:forEach items="${listPT.keySet()}" var="ptid">
-                                            <option value="${ptid}" ${ptid == requestScope.pitch-type?"selected":" "}>${listPT[ptid].type}</option>
-                                        </c:forEach>                                   
+                                        <option value="1" ${requestScope.type == '1' ? 'selected' : ''}>Sân 5</option>
+                                        <option value="2" ${requestScope.type == '2' ? 'selected' : ''}>Sân 7</option>
+                                        <option value="3" ${requestScope.type == '3' ? 'selected' : ''}>Sân 11</option>
                                     </select>
-
                                     <input type="submit" value="Tìm sân">
                                 </form>
                             </div>
@@ -67,7 +63,7 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="triangle"></div>
             </section>
             <!--Product List-->
             <div class="product__list ">
@@ -88,20 +84,13 @@
                                         <div class="card-body p4 product-card__details">
                                             <div class="text-right">
                                                 <!--Product name-->
-                                                <div class="product-card__info d-flex justify-content-between">                                                
-                                                    <h6 class="mb-3 fw-bold">Tên sân:</h6>
-                                                    <span class="fs-6 fw-normal">${p.pitchName}</span>
-                                                </div>     
+                                                <h5 class="mb-3"><span>${p.pitchName}</span></h5>
                                                 <!--Product Size-->
-                                                <div class="product-card__info d-flex justify-content-between">
-                                                    <h6 class="mb-3 fw-bold">Kích thước sân:</h6>
-                                                    <span class="fs-6 fw-normal">${p.pitchType.type}</span>
-                                                </div>
+                                                <h5 class="mb-3">Loại sân: <span>${p.pitchType.type}</span></h5>
                                                 <!--Product Price-->
-                                                <div class="product-card__info d-flex justify-content-between">
-                                                    <h6 class="mb-3 fw-bold">Tiền thuê:</h6>
-                                                    <span class="fs-6 fw-normal">${p.price}</span> 
-                                                </div>
+
+                                                <h5 class="mb-3">Giá thuê: <span><fmt:formatNumber value="${p.price}" pattern="###,###" /></span> </h5>
+
                                             </div>
                                         </div>
                                     </a>
