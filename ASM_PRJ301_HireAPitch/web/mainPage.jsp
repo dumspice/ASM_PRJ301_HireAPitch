@@ -102,9 +102,6 @@
                                                     <h6 class="mb-3 fw-bold">Tiền thuê:</h6>
                                                     <span class="fs-6 fw-normal">${p.price}</span> 
                                                 </div>
-
-
-
                                             </div>
                                         </div>
                                     </a>
