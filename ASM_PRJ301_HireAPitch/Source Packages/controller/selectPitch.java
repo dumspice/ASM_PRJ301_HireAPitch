@@ -4,9 +4,7 @@
  */
 package controller;
 
-import dal.AddressDAO;
 import dal.pitchDAO;
-import dal.pitchTypeDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -15,10 +13,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
-import java.util.Map;
-import model.Address;
 import model.Pitch;
-import model.PitchType;
 
 /**
  *
@@ -28,10 +23,6 @@ import model.PitchType;
 public class selectPitch extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
@@ -56,7 +47,6 @@ public class selectPitch extends HttpServlet {
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
-     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -65,30 +55,24 @@ public class selectPitch extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        int typeId = 0;
-        int addressId = 0;
+        String t = req.getParameter("pitch-type");
+        String a = req.getParameter("pitch-location");
         try {
-            typeId = Integer.parseInt(req.getParameter("pitch-type"));
-            addressId = Integer.parseInt(req.getParameter("pitch-location"));
-        } catch (Exception e) {
-            typeId = 0;
-            addressId = 0;
+            int type = Integer.parseInt(t);
+            int address = Integer.parseInt(a);
+            pitchDAO pDAO = new pitchDAO();
+            ArrayList<Pitch> listPitch = pDAO.choosePitch(type, address);
+            req.setAttribute("ListPitch", listPitch);
+            req.setAttribute("type", type);
+            req.setAttribute("address", address);
+            req.getRequestDispatcher("mainPage.jsp").forward(req, resp);
+        } catch (NumberFormatException e) {
+            System.out.println(e);
         }
-        pitchDAO pDAO = new pitchDAO();
-        ArrayList<Pitch> listPitch = pDAO.choosePitch(typeId, addressId);
-        AddressDAO aDAO = new AddressDAO();
-        pitchTypeDAO ptDAO = new pitchTypeDAO();
-        Map<Integer, Address> listAdd = aDAO.getMapAllAddress();
-        Map<Integer, PitchType> listPT = ptDAO.getMapAllPitchType();
-        req.setAttribute("ListPitch", listPitch);
-        req.setAttribute("listAdd", listAdd);
-        req.setAttribute("listPT", listPT);
-        req.getRequestDispatcher("mainPage.jsp").forward(req, resp);
     }
 
     /**
      * Handles the HTTP <code>POST</code> method.
-     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -102,7 +86,6 @@ public class selectPitch extends HttpServlet {
 
     /**
      * Returns a short description of the servlet.
-     *
      * @return a String containing servlet description
      */
     @Override

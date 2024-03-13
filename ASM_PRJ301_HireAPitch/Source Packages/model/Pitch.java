@@ -12,16 +12,16 @@ public class Pitch {
     private int pitchId;
     private String pitchName;
     private String address;
-    private float price;
+    private int price;
     private String image;
     private PitchType pitchType;
     private int addressId;
-    private Staff staff;
+    private User user;
 
     public Pitch() {
     }
 
-    public Pitch(int pitchId, String pitchName, String address, float price, String image, PitchType pitchType, int addressId, Staff staff) {
+    public Pitch(int pitchId, String pitchName, String address, int price, String image, PitchType pitchType, int addressId, User user) {
         this.pitchId = pitchId;
         this.pitchName = pitchName;
         this.address = address;
@@ -29,7 +29,7 @@ public class Pitch {
         this.image = image;
         this.pitchType = pitchType;
         this.addressId = addressId;
-        this.staff = staff;
+        this.user = user;
     }
 
     public int getPitchId() {
@@ -60,7 +60,7 @@ public class Pitch {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -88,17 +88,17 @@ public class Pitch {
         this.addressId = addressId;
     }
 
-    public Staff getStaff() {
-        return staff;
+    public User getUser() {
+        return user;
     }
 
-    public void setStaff(Staff staff) {
-        this.staff = staff;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
     public String toString() {
-        return "Pitch{" + "pitchId=" + pitchId + ", pitchName=" + pitchName + ", address=" + address + ", price=" + price + ", image=" + image + ", pitchType=" + pitchType + ", addressId=" + addressId + ", staff=" + staff + '}';
+        return "Pitch{" + "pitchId=" + pitchId + ", pitchName=" + pitchName + ", address=" + address + ", price=" + price + ", image=" + image + ", pitchType=" + pitchType + ", addressId=" + addressId + ", user=" + user + '}';
     }
 
     

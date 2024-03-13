@@ -31,6 +31,7 @@ public class UserDAO extends DBContext{
                 u.setPhone_number(rs.getString(5));
                 u.setEmail(rs.getString(6));
                 u.setAvatar(rs.getString(7));
+                u.setRoleId(rs.getInt(8));
                 list.add(u);
             }
             rs.close();
@@ -57,9 +58,33 @@ public class UserDAO extends DBContext{
                 u.setPhone_number(rs.getString(5));
                 u.setEmail(rs.getString(6));
                 u.setAvatar(rs.getString(7));
+                u.setRoleId(rs.getInt(8));
                 return u;
             }
         } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    
+    public User getUserById(int id) {
+        String sql = "select * from [User] where [User_id] = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                User u = new User(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getInt(8));
+                return u;
+            }
+        } catch (SQLException e) {
             System.out.println(e);
         }
         return null;
@@ -97,10 +122,10 @@ public class UserDAO extends DBContext{
         return false; 
     }
     
-    public void insert(String username, String password, String displayName, String phoneNumber, String email, String avatar) {
+    public void insert(String username, String password, String displayName, String phoneNumber, String email, String avatar, int roleId) {
         try {
             // Prepare SQL statement with parameters
-            String sql = "INSERT INTO [User](Username, [Password], Display_name, Phone_number, Email, Avatar) VALUES (?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO [User](Username, [Password], Display_name, Phone_number, Email, Avatar, Role_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement st = connection.prepareStatement(sql);
             // Set values for parameters
             st.setString(1, username);
@@ -109,6 +134,7 @@ public class UserDAO extends DBContext{
             st.setString(4, phoneNumber);
             st.setString(5, email);
             st.setString(6, avatar);
+            st.setInt(7, roleId);
             
             // Execute the statement
             st.executeUpdate();
