@@ -105,12 +105,13 @@ public class pitchDAO extends DBContext {
     
     public ArrayList<Pitch> getPitchByName(String name) {
         ArrayList<Pitch> list = new ArrayList<>();
+        UserDAO uDao = new UserDAO();
         try {
             String sql = "select * from Pitch where Pitch_name like ?";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1,"%" + name + "%");
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
                 Pitch p = new Pitch();
                 p.setPitchId(rs.getInt(1));
                 p.setPitchName(rs.getString(2));
@@ -119,7 +120,7 @@ public class pitchDAO extends DBContext {
                 p.setImage(rs.getString(5));
                 p.setPitchType(getPitchTypeById(rs.getInt(6)));
                 p.setAddressId(rs.getInt(7));
-                
+                p.setUser(uDao.getUserById(rs.getInt(8)));
                 list.add(p);
             }
             rs.close();
