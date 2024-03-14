@@ -18,7 +18,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="asset/stylesheet/reset.css"/>
-        <link rel="stylesheet" type="text/css" href="asset/stylesheet/ProductDetailStyle.css"/>
+        <link rel="stylesheet" type="text/css" href="asset/stylesheet/ProductDetails.css"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <title></title>
@@ -149,11 +149,11 @@
                         <div class="book-calendar h-100 bg-white pt-5 rounded-8 position-relative">
                             <div class="header-book d-flex align-items-center justify-content-between mb-4">
                                 <h3 class="calendar-title fb-bold">Lịch đặt sân</h3>
-                                <input type="date" name="datePicker" id="datePicker" min="<%= yyyy + '-' + mm + '-' + dd %>" value="<%= yyyy + '-' + mm + '-' + dd %>" required>
                             </div>
 
                             <div class="book-calendar">
                                 <form id="bookingForm" class="book-calendar__form" action="YourServletUrl" method="post">
+                                    <input style="width: 17%; align-self: end;" type="date" name="datePicker" id="datePicker" min="<%= yyyy + '-' + mm + '-' + dd %>" value="<%= yyyy + '-' + mm + '-' + dd %>" required>
                                     <div class="table-price">
                                         <div class="table">
                                             <div class="row">
