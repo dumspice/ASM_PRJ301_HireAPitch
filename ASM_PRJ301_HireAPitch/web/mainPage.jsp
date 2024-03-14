@@ -63,7 +63,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="triangle"></div>
+                
             </section>
             <!--Product List-->
             <div class="product__list ">

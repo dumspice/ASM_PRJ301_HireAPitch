@@ -159,58 +159,58 @@
                                             <div class="row">
                                                 <div class="set-yard am">
                                                     <div class="frame-price">
-                                                        <button class="slot-btn btn btn-primary" type="button" value="05:00 - 06:30">05:00 - 06:30</button>
+                                                        <button class="slot-btn" type="button" value="05:00 - 06:30">05:00 - 06:30</button>
                                                     </div>
                                                 </div>
                                                 <div class="set-yard am">
                                                     <div class="frame-price">
-                                                        <button class="slot-btn btn btn-primary" type="button" value="06:30 - 08:00">06:30 - 08:00</button>
+                                                        <button class="slot-btn" type="button" value="06:30 - 08:00">06:30 - 08:00</button>
                                                     </div>
                                                 </div>
                                                 <div class="set-yard am">
                                                     <div class="frame-price">
-                                                        <button class="slot-btn btn btn-primary" type="button" value="08:00 - 09:30">08:00 - 09:30</button>
+                                                        <button class="slot-btn" type="button" value="08:00 - 09:30">08:00 - 09:30</button>
                                                     </div>
                                                 </div>
                                                 <div class="set-yard am">
                                                     <div class="frame-price">
-                                                        <button class="slot-btn btn btn-primary" type="button" value="09:30 - 11:00">09:30 - 11:00</button>
+                                                        <button class="slot-btn" type="button" value="09:30 - 11:00">09:30 - 11:00</button>
                                                     </div>
                                                 </div>
                                                 <div class="set-yard am">
                                                     <div class="frame-price">
-                                                        <button class="slot-btn btn btn-primary" type="button" value="11:00 - 12:30">11:00 - 12:30</button>
+                                                        <button class="slot-btn" type="button" value="11:00 - 12:30">11:00 - 12:30</button>
                                                     </div>
                                                 </div>
                                                 <div class="set-yard pm">
                                                     <div class="frame-price">
-                                                        <button class="slot-btn btn btn-primary" type="button" value="14:00 - 15:30">14:00 - 15:30</button>
+                                                        <button class="slot-btn" type="button" value="14:00 - 15:30">14:00 - 15:30</button>
                                                     </div>
                                                 </div>
                                                 <div class="set-yard pm">
                                                     <div class="frame-price">
-                                                        <button class="slot-btn btn btn-primary" type="button" value="15:30 - 17:00">15:30 - 17:00</button>
+                                                        <button class="slot-btn" type="button" value="15:30 - 17:00">15:30 - 17:00</button>
                                                     </div>
                                                 </div>
                                                 <div class="set-yard pm">
                                                     <div class="frame-price">
-                                                        <button class="slot-btn btn btn-primary" type="button" value="17:00 - 18:30">17:00 - 18:30</button>
+                                                        <button class="slot-btn" type="button" value="17:00 - 18:30">17:00 - 18:30</button>
                                                     </div>
                                                 </div>
                                                 <div class="set-yard pm">
                                                     <div class="frame-price">
-                                                        <button class="slot-btn btn btn-primary" type="button" value="18:30 - 20:00">18:30 - 20:00</button>
+                                                        <button class="slot-btn" type="button" value="18:30 - 20:00">18:30 - 20:00</button>
                                                     </div>
                                                 </div>
                                                 <div class="set-yard pm">
                                                     <div class="frame-price">
-                                                        <button class="slot-btn btn btn-primary" type="button" value="20:00 - 21:30">20:00 - 21:30</button>
+                                                        <button class="slot-btn" type="button" value="20:00 - 21:30">20:00 - 21:30</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-success">Đặt sân</button>
+                                    <button type="submit" class="btn btn-success hire-btn" style="font-size: 20px; border-radius: 10px;">Đặt sân</button>
                                 </form>
                             </div>
                         </div>
