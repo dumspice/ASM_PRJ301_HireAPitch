@@ -26,11 +26,11 @@
             .product-card{
                 transition: 0.25s;
             }
-            
+
             .product-card:hover{
                 transform: scale(1.1);
             }
-            
+
             .product-items__image{
                 width: 100%;
                 height: 240px;
@@ -139,116 +139,120 @@
                     <div class="accessory col-lg-3">
                         <div class="accessory-inner pt-5 bg-white rounded-8">
                             <h4 class="accessory-heading">Thuê phụ kiện</h4>
-                            <form>
-
-                            </form>
+                            <img src="https://thumbs.dreamstime.com/b/ladder-drills-goal-soccer-ball-marker-cones-sports-shoes-bottle-water-green-artificial-turf-training-equipment-140576793.jpg"
+                                 alt="..."
+                                 class="accessory-image mt-4"
+                                 />
+                            <div>
+                                <button class="accessory-btn" onclick="openModal()">Thuê phụ kiện ở đây <i class="fas fa-arrow-right"></i></button>
+                            </div>
                         </div>
                     </div>
-                    
-                <c:if test="${sessionScope.user != null}">
-                    <div class="time-table col-lg-9">
-                        <div class="book-calendar h-100 bg-white pt-5 rounded-8 position-relative">
-                            <div class="header-book d-flex align-items-center justify-content-between mb-4">
-                                <h3 class="calendar-title fb-bold">Lịch đặt sân</h3>
-                            </div>
-                            <div class="book-calendar">
-                                <script>
-                                    // Function to handle slot button selection
-                                    function selectSlot(button) {
-                                        // Remove the 'active' class from all slot buttons
-                                        var slotButtons = document.querySelectorAll('.slot-btn');
-                                        slotButtons.forEach(function(btn) {
-                                            btn.classList.remove('active');
-                                        });
 
-                                        // Add the 'active' class to the clicked button
-                                        button.classList.add('active');
-                                    }
-                                    // Function to handle form submission
-                                    function submitBooking() {
-                                        // Get the selected date
-                                        var selectedDate = document.getElementById("datePicker").value;
+                    <c:if test="${sessionScope.user != null}">
+                        <div class="time-table col-lg-9">
+                            <div class="book-calendar h-100 bg-white pt-5 rounded-8 position-relative">
+                                <div class="header-book d-flex align-items-center justify-content-between mb-4">
+                                    <h3 class="calendar-title fb-bold">Lịch đặt sân</h3>
+                                </div>
+                                <div class="book-calendar">
+                                    <script>
+                                        // Function to handle slot button selection
+                                        function selectSlot(button) {
+                                            // Remove the 'active' class from all slot buttons
+                                            var slotButtons = document.querySelectorAll('.slot-btn');
+                                            slotButtons.forEach(function (btn) {
+                                                btn.classList.remove('active');
+                                            });
 
-                                        // Get the selected slot
-                                        var selectedSlot = document.querySelector('.slot-btn.active').value;
+                                            // Add the 'active' class to the clicked button
+                                            button.classList.add('active');
+                                        }
+                                        // Function to handle form submission
+                                        function submitBooking() {
+                                            // Get the selected date
+                                            var selectedDate = document.getElementById("datePicker").value;
 
-                                        // Merge date and slot into selectedTimeSlot
-                                        var selectedTimeSlot = selectedDate + " " + selectedSlot;
+                                            // Get the selected slot
+                                            var selectedSlot = document.querySelector('.slot-btn.active').value;
 
-                                        // Update the value of the hidden input field
-                                        document.getElementById("selectedTimeSlot").value = selectedTimeSlot;
+                                            // Merge date and slot into selectedTimeSlot
+                                            var selectedTimeSlot = selectedDate + " " + selectedSlot;
 
-                                        // Submit the form
-                                        document.getElementById("bookingForm").submit();
-                                    }
-                                </script>
-                                <form id="bookingForm" class="book-calendar__form" action="BookingServlet" method="get">
-                                    <input type="hidden" id="pitchId" name="pitchId" value="<%= pitchId %>">
-                                    <input type="hidden" id="userId" name="userId" value="${sessionScope.user.getId()}">
-                                    <input type="hidden" id="selectedTimeSlot" name="selectedTimeSlot">
-                                    <input style="width: 17%; align-self: end;" type="date" id="datePicker" min="<%= yyyy + '-' + mm + '-' + dd %>" value="<%= yyyy + '-' + mm + '-' + dd %>" required>
-                                    <div class="table-price">
-                                        <div class="table">
-                                            <div class="row">
-                                                <div class="set-yard am">
-                                                    <div class="frame-price">
-                                                        <button class="slot-btn" type="button" onclick="selectSlot(this)" value="05:00-06:30">05:00 - 06:30</button>
+                                            // Update the value of the hidden input field
+                                            document.getElementById("selectedTimeSlot").value = selectedTimeSlot;
+
+                                            // Submit the form
+                                            document.getElementById("bookingForm").submit();
+                                        }
+                                    </script>
+                                    <form id="bookingForm" class="book-calendar__form" action="BookingServlet" method="get">
+                                        <input type="hidden" id="pitchId" name="pitchId" value="<%= pitchId %>">
+                                        <input type="hidden" id="userId" name="userId" value="${sessionScope.user.getId()}">
+                                        <input type="hidden" id="selectedTimeSlot" name="selectedTimeSlot">
+                                        <input style="width: 17%; align-self: end;" type="date" id="datePicker" min="<%= yyyy + '-' + mm + '-' + dd %>" value="<%= yyyy + '-' + mm + '-' + dd %>" required>
+                                        <div class="table-price">
+                                            <div class="table">
+                                                <div class="row">
+                                                    <div class="set-yard am">
+                                                        <div class="frame-price">
+                                                            <button class="slot-btn" type="button" onclick="selectSlot(this)" value="05:00-06:30">05:00 - 06:30</button>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="set-yard am">
-                                                    <div class="frame-price">
-                                                        <button class="slot-btn" type="button" onclick="selectSlot(this)" value="06:30-08:00">06:30 - 08:00</button>
+                                                    <div class="set-yard am">
+                                                        <div class="frame-price">
+                                                            <button class="slot-btn" type="button" onclick="selectSlot(this)" value="06:30-08:00">06:30 - 08:00</button>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="set-yard am">
-                                                    <div class="frame-price">
-                                                        <button class="slot-btn" type="button" onclick="selectSlot(this)" value="08:00-09:30">08:00 - 09:30</button>
+                                                    <div class="set-yard am">
+                                                        <div class="frame-price">
+                                                            <button class="slot-btn" type="button" onclick="selectSlot(this)" value="08:00-09:30">08:00 - 09:30</button>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="set-yard am">
-                                                    <div class="frame-price">
-                                                        <button class="slot-btn" type="button" onclick="selectSlot(this)" value="09:30-11:00">09:30 - 11:00</button>
+                                                    <div class="set-yard am">
+                                                        <div class="frame-price">
+                                                            <button class="slot-btn" type="button" onclick="selectSlot(this)" value="09:30-11:00">09:30 - 11:00</button>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="set-yard am">
-                                                    <div class="frame-price">
-                                                        <button class="slot-btn" type="button" onclick="selectSlot(this)" value="11:00-12:30">11:00 - 12:30</button>
+                                                    <div class="set-yard am">
+                                                        <div class="frame-price">
+                                                            <button class="slot-btn" type="button" onclick="selectSlot(this)" value="11:00-12:30">11:00 - 12:30</button>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="set-yard pm">
-                                                    <div class="frame-price">
-                                                        <button class="slot-btn" type="button" onclick="selectSlot(this)" value="14:00-15:30">14:00 - 15:30</button>
+                                                    <div class="set-yard pm">
+                                                        <div class="frame-price">
+                                                            <button class="slot-btn" type="button" onclick="selectSlot(this)" value="14:00-15:30">14:00 - 15:30</button>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="set-yard pm">
-                                                    <div class="frame-price">
-                                                        <button class="slot-btn" type="button" onclick="selectSlot(this)" value="15:30-17:00">15:30 - 17:00</button>
+                                                    <div class="set-yard pm">
+                                                        <div class="frame-price">
+                                                            <button class="slot-btn" type="button" onclick="selectSlot(this)" value="15:30-17:00">15:30 - 17:00</button>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="set-yard pm">
-                                                    <div class="frame-price">
-                                                        <button class="slot-btn" type="button" onclick="selectSlot(this)" value="17:00-18:30">17:00 - 18:30</button>
+                                                    <div class="set-yard pm">
+                                                        <div class="frame-price">
+                                                            <button class="slot-btn" type="button" onclick="selectSlot(this)" value="17:00-18:30">17:00 - 18:30</button>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="set-yard pm">
-                                                    <div class="frame-price"> 
-                                                        <button class="slot-btn" type="button" onclick="selectSlot(this)" onclick="selectSlot(this)" value="18:30-20:00">18:30 - 20:00</button>
+                                                    <div class="set-yard pm">
+                                                        <div class="frame-price"> 
+                                                            <button class="slot-btn" type="button" onclick="selectSlot(this)" onclick="selectSlot(this)" value="18:30-20:00">18:30 - 20:00</button>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="set-yard pm">
-                                                    <div class="frame-price">
-                                                        <button class="slot-btn" type="button" onclick="selectSlot(this)" value="20:00-21:30">20:00 - 21:30</button>
+                                                    <div class="set-yard pm">
+                                                        <div class="frame-price">
+                                                            <button class="slot-btn" type="button" onclick="selectSlot(this)" value="20:00-21:30">20:00 - 21:30</button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <button type="button" onclick="submitBooking()" class="btn btn-success hire-btn" style="font-size: 20px; border-radius: 10px;">Đặt sân</button>
-                                </form>
+                                        <button type="button" onclick="submitBooking()" class="btn btn-success hire-btn" style="font-size: 20px; border-radius: 10px;">Đặt sân</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </c:if>
+                    </c:if>
                 </div>
             </div>
             <c:if test="${sessionScope.user == null}">
@@ -293,40 +297,41 @@
                                 <%
                                     for (Pitch lp : listlastpitch) {
                                 %>
-                                
-                                    <!--Product Start-->
-                                    <div class="col-lg-3 col-md-6 mb-5">
-                                        <div class="card h-100 product-card">
-                                            <a href="<%=request.getContextPath()%>/ProductDetails.jsp?pitchId=<%=lp.getPitchId()%>">
-                                                <!--Product Image-->
-                                                <img class="product-items__image card-img-top" 
-                                                     src="<%=lp.getImage()%>" 
-                                                     alt="..."
-                                                     />
 
-                                                <!--Product Details-->
-                                                <div class="card-body p4 product-card__details">
-                                                    <div class="text-right">
-                                                        <!--Product name-->
-                                                        <div class="product-card__info d-flex justify-content-between">                                                
-                                                            <h6 class="mb-3 fw-bold">Tên sân:</h6>
-                                                            <span class="fs-6 fw-normal"><%=lp.getPitchName()%></span>
-                                                        </div>     
-                                                        <!--Product Size-->
-                                                        <div class="product-card__info d-flex justify-content-between">
-                                                            <h6 class="mb-3 fw-bold">Kích thước sân:</h6>
-                                                            <span class="fs-6 fw-normal"><%=lp.getPitchType().getType()%></span>
-                                                        </div>
-                                                        <!--Product Price-->
-                                                        <div class="product-card__info d-flex justify-content-between">
-                                                            <h6 class="mb-3 fw-bold">Tiền thuê:</h6>
-                                                            <span class="fs-6 fw-normal"><%=lp.getPrice()%></span> 
-                                                        </div>
+                                <!--Product Start-->
+                                <div class="col-lg-3 col-md-6 mb-5">
+                                    <div class="card h-100 product-card">
+                                        <a href="<%=request.getContextPath()%>/ProductDetails.jsp?pitchId=<%=lp.getPitchId()%>">
+                                            <!--Product Image-->
+                                            <img class="product-items__image card-img-top" 
+                                                 src="<%=lp.getImage()%>" 
+                                                 alt="..."
+                                                 />
+
+                                            <!--Product Details-->
+                                            <div class="card-body p4 product-card__details">
+                                                <div class="text-right">
+                                                    <!--Product name-->
+                                                    <div class="product-card__info d-flex justify-content-between">                                                
+                                                        <h6 class="mb-3 fw-bold">Tên sân:</h6>
+                                                        <span class="fs-6 fw-normal"><%=lp.getPitchName()%></span>
+                                                    </div>     
+                                                    <!--Product Size-->
+                                                    <div class="product-card__info d-flex justify-content-between">
+                                                        <h6 class="mb-3 fw-bold">Kích thước sân:</h6>
+                                                        <span class="fs-6 fw-normal"><%=lp.getPitchType().getType()%></span>
+                                                    </div>
+                                                    <!--Product Price-->
+                                                    <div class="product-card__info d-flex justify-content-between">
+                                                        <h6 class="mb-3 fw-bold">Tiền thuê:</h6>
+                                                        <span class="fs-6 fw-normal"><%=lp.getPrice()%></span> 
                                                     </div>
                                                 </div>
-                                            </a>
-                                        </div>
+                                            </div>
+                                        </a>
                                     </div>
+                                </div>
+
                                 <%
                                     }
                                 %>
@@ -335,7 +340,41 @@
                     </div>
                 </div>
             </div>
-        </div>                         
+        </div>
+        <div class="accessory-modal">
+            <div class="modal-container">
+                <div class="modal-close" onclick="closeModal()"><i class="fa fa-close"></i></div>
+
+                <div class="modal-header">
+                    Thuê sản phẩm
+                </div>
+
+                <div class="modal-body">
+                    <div class="modal-image-list">
+                        <img class="modal-image-items img1" src="https://file3.qdnd.vn/data/images/0/2022/11/14/vietcuong/1-%201.jpg?dpi=150&quality=100&w=870" alt="..."/>                    
+                        <img class="modal-image-items img2" src="https://i0.wp.com/azzurro-sport.com/wp-content/uploads/2021/11/Mizuno-Morelia-Neo-3-Pro-AS-TF-P1GD218423-1.jpg?fit=1065%2C1065&ssl=1" alt="..."/>
+                        <img class="modal-image-items img3" src="https://zocker.vn/pic/Product/gang-tay-thu-mon-zocker-Edwin-cam_7278_HasThumb.webp" alt="..."/>
+                        <!--<img class="modal-image-items img4" src="https://salt.tikicdn.com/cache/w1200/ts/product/ae/d9/81/543cf91229687ba79690b6dfaa4bbed2.jpg" alt="..."/>-->
+                    </div>
+                    <div class="modal-action">
+                        <button class="modal-action-close" onclick="closeModal()"><a href="#!">Hủy</a></button>
+                        <button class="modal-action-done"><a href="<%=request.getContextPath()%>/RentAccessory.jsp">Đến trang thuê đồ</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const modal = document.querySelector('.accessory-modal');
+
+            function openModal() {
+                modal.classList.add('modal-active');
+            }
+
+            function closeModal() {
+                modal.classList.remove('modal-active');
+            }
+        </script>
         <%@include file="footer.jsp" %>
     </body>
 </html>
