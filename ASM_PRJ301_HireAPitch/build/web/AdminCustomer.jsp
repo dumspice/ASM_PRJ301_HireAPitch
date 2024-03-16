@@ -16,13 +16,14 @@
         
         <script type="text/javascript">
             function doDelete(id) {
-                if (confirm("Are you sure to delete category with id = " + id + "?")) {
-                    window.location = "deleteCategory?id=" + id;
+                if (confirm("Are you sure to delete customer with id = " + id + "?")) {
+                    window.location = "deleteUser?id=" + id;
                 }
             }
         </script>
     </head>
-
+    <c:if test="${sessionScope.user.roleId != 1}"> Access Denied </c:if>
+    <c:if test="${sessionScope.user.roleId == 1}">
     <body>
         <%
         //get List of Customer
@@ -52,15 +53,15 @@
             
                 %>
                 <tbody>
-                    <c:forEach begin="1" end="4">
+                    <c:forEach items="${requestScope.cList}" var="cus">
                         <tr>
-                            <td>John Doe</td> <%-- getName o day co the xem them tinh nang an vao de hien ra chi tiet nguoi dung --%>
-                            <td>123456789</td> <%-- getPhoneNumber --%>
-                            <td>johndoe@example.com</td> <%-- getMail --%>
-                            <td><img src="customer_image.jpg" alt="Customer Image" width="100"></td> 
+                            <td>${cus.display_name}</td> <%-- getName o day co the xem them tinh nang an vao de hien ra chi tiet nguoi dung --%>
+                            <td>${cus.phone_number}</td> <%-- getPhoneNumber --%>
+                            <td>${cus.email}</td> <%-- getMail --%>
+                            <td><img src="${cus.avatar}" alt="Customer Image" width="100"></td> 
                             <td class="action-links">
-                                <a href="editstaff.jsp?id=1"><i class="fas fa-pen"></i></a> | <%-- dieu den trang chinh sua --%>
-                                <a href="#" onclick="doDelete('<%=1%>')"><i class="fas fa-trash"></i></a> <%-- xoa luon roi hien tren trang (onclick thi phai get id cua nguoi bi xoa) --%>
+                                <a href="editCustomer?id=${cus.id}"><i class="fas fa-pen"></i></a> | <%-- dieu den trang chinh sua --%>
+                                <a href="#" onclick="doDelete('${cus.id}')"><i class="fas fa-trash"></i></a> <%-- xoa luon roi hien tren trang (onclick thi phai get id cua nguoi bi xoa) --%>
                             </td>
                         </tr>    
                     </c:forEach>
@@ -70,4 +71,5 @@
             </table>
         </div>
     </body>
+    </c:if>
 </html>

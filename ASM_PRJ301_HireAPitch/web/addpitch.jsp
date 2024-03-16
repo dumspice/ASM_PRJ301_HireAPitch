@@ -15,11 +15,7 @@
     <body>
         <div class="container">
         <h1>Add Pitch</h1>
-        <form action="savepitch.jsp" method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="id">ID:</label>
-                <input type="text" id="id" name="id" required>
-            </div>
+        <form action="addPitch" method="get" >
             <div class="form-group">
                 <label for="name">Pitch Name:</label>
                 <input type="text" id="name" name="name" required>
@@ -31,29 +27,29 @@
             <div class="form-group">
                 <label for="province">Province:</label>
                 <select id="province" name="province" required>
-                    <option value="Hanoi">Hanoi</option>
-                    <option value="Ho Chi Minh">Ho Chi Minh</option>
-                    <option value="Danang">Danang</option>
+                    <option value="1">Hà Nội</option>
+                    <option value="2">Hồ Chí Minh</option>
+                    <option value="3">Đà Nẵng</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="type">Type:</label>
                 <select id="type" name="type" required>
-                    <option value="Sân 5">Sân 5</option>
-                    <option value="Sân 7">Sân 7</option>
-                    <option value="Sân 11">Sân 11</option>
+                    <option value="1">Sân 5</option>
+                    <option value="2">Sân 7</option>
+                    <option value="3">Sân 11</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="price">Price:</label>
-                <input type="number" id="price" name="price" step="0.01" required>
+                <input type="number" id="price" name="price" step="0" required>
             </div>
             <div class="form-group">
                 <label for="image">Image:</label>
-                <input type="file" id="image" name="image" accept="image/*" required>
+                <input type="text" id="image" name="image"/>
             </div>
             <div class="button-group">
-                <input type="submit" value="Save">
+                <input type="submit" value="Add">
                 <input type="reset" value="Reset">
             </div>
         </form>

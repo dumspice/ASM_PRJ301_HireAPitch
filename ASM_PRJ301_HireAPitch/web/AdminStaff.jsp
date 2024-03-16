@@ -15,8 +15,8 @@
 
         <script type="text/javascript">
             function doDelete(id) {
-                if (confirm("Are you sure to delete category with id = " + id + "?")) {
-                    window.location = "deleteStaff?id=" + id;
+                if (confirm("Are you sure to delete staff with id = " + id + "?")) {
+                    window.location = "deleteUser?id=" + id;
                 }
             }
         </script>
@@ -51,15 +51,15 @@
             
                 %>
                 <tbody>
-                    <c:forEach begin="1" end="4">
+                    <c:forEach items="${requestScope.sList}" var="s">
                         <tr>
-                            <td>John Doe</td> <%-- getName o day co the xem them tinh nang an vao de hien ra chi tiet nguoi dung --%>
-                            <td>123456789</td> <%-- getPhoneNumber --%>
-                            <td>johndoe@example.com</td> <%-- getMail --%>
-                            <td><img src="customer_image.jpg" alt="Customer Image" width="100"></td> 
+                            <td>${s.display_name}</td> <%-- getName o day co the xem them tinh nang an vao de hien ra chi tiet nguoi dung --%>
+                            <td>${s.phone_number}</td> <%-- getPhoneNumber --%>
+                            <td>${s.email}</td> <%-- getMail --%>
+                            <td><img src="${s.avatar}" alt="Customer Image" width="100"></td> 
                             <td class="action-links">
-                                <a href="editstaff.jsp?id=1"><i class="fas fa-pen"></i></a> | <%-- dieu den trang chinh sua --%>
-                                <a href="#" onclick="doDelete('<%=1%>')"><i class="fas fa-trash"></i></a> <%-- xoa luon roi hien tren trang (onclick thi phai get id cua nguoi bi xoa) --%>
+                                <a href="editStaff?id=${s.id}"><i class="fas fa-pen"></i></a> | <%-- dieu den trang chinh sua --%>
+                                <a href="#" onclick="doDelete('${s.id}')"><i class="fas fa-trash"></i></a> <%-- xoa luon roi hien tren trang (onclick thi phai get id cua nguoi bi xoa) --%>
                             </td>
                         </tr>    
                     </c:forEach>

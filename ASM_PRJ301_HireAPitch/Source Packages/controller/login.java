@@ -66,7 +66,16 @@ public class login extends HttpServlet {
         if (u != null) {
             HttpSession session = req.getSession();
             session.setAttribute("user", u);
-            resp.sendRedirect("pitchcontroller");
+            if (u.getRoleId() == 1) {
+                resp.sendRedirect("AdminHome.jsp");
+            }
+            else if (u.getRoleId() == 2) {
+                resp.sendRedirect("confirm");
+            }
+            else {
+                resp.sendRedirect("pitchcontroller");
+            }
+            
         } else {
             req.setAttribute("error", "Incorrect username or password!");
             req.getRequestDispatcher("/UserLogin.jsp").forward(req, resp); 
