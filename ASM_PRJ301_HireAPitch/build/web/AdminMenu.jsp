@@ -13,6 +13,8 @@
         <title>Menu Example</title>
         <link href="asset/stylesheet/AdminMenu.css" rel="stylesheet" type="text/css">
     </head>
+    <c:if test="${sessionScope.user.roleId != 1}"> Access Denied </c:if>
+    <c:if test="${sessionScope.user.roleId == 1}">
     <body>
         <ul class="menu">
             <li><a href="AdminHome.jsp">Home</a></li>
@@ -24,4 +26,5 @@
             <li class="logout-button"><a href="logout">Logout</a></li> <!-- Added logout button with separate class -->
         </ul>
     </body>
+    </c:if>
 </html>
