@@ -42,7 +42,7 @@
             .button-search {
                 border: none;
                 outline: none;
-                background-color: #f6f6f6;
+                background-color: transparent;
                 position: absolute;
                 left: 5px;
                 top: 10px;

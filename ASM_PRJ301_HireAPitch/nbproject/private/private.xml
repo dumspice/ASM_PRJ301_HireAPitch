@@ -2,36 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-
-            <file>file:/C:/Users/dumspicy/Desktop/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/asset/stylesheet/AdminStaff.css</file>
-            <file>file:/C:/Users/dumspicy/Desktop/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/AdminHome.jsp</file>
-            <file>file:/C:/Users/dumspicy/Desktop/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/asset/stylesheet/ProductDetailStyle.css</file>
-            <file>file:/C:/Users/dumspicy/Desktop/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/asset/stylesheet/AdminCustomer.css</file>
-            <file>file:/C:/Users/dumspicy/Desktop/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/asset/stylesheet/headerstyle.css</file>
-            <file>file:/C:/Users/dumspicy/Desktop/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/asset/stylesheet/AdminFD.css</file>
-            <file>file:/C:/Users/dumspicy/Desktop/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/AdminStuff.jsp</file>
-            <file>file:/C:/Users/dumspicy/Desktop/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/AdminCustomer.jsp</file>
-            <file>file:/C:/Users/dumspicy/Desktop/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/AdminStaff.jsp</file>
-            <file>file:/C:/Users/dumspicy/Desktop/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/asset/stylesheet/AdminStuff.css</file>
-            <file>file:/C:/Users/dumspicy/Desktop/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/AdminFD.jsp</file>
-            <file>file:/C:/Users/dumspicy/Desktop/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/AdminPitch.jsp</file>
-            <file>file:/C:/Users/dumspicy/Desktop/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/asset/stylesheet/AdminPitch.css</file>
-            <file>file:/C:/Users/dumspicy/Desktop/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/AdminMenu.jsp</file>
-
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/ProductDetails.jsp</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/Source%20Packages/dal/AddressDAO.java</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/asset/stylesheet/ProductDetailStyle.css</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/Source%20Packages/dal/pitchTypeDAO.java</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/header.jsp</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/Source%20Packages/dal/pitchDAO.java</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/Source%20Packages/controller/SearchControl.java</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/mainPage.jsp</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/Cart.jsp</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/Source%20Packages/dal/DBContext.java</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/Source%20Packages/dal/UserDAO.java</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/Source%20Packages/controller/selectPitch.java</file>
-
-        </group>
+        <group/>
     </open-files>
 </project-private>

@@ -26,11 +26,11 @@
             .product-card{
                 transition: 0.25s;
             }
-            
+
             .product-card:hover{
                 transform: scale(1.1);
             }
-            
+
             .product-items__image{
                 width: 100%;
                 height: 240px;
@@ -139,9 +139,13 @@
                     <div class="accessory col-lg-3">
                         <div class="accessory-inner pt-5 bg-white rounded-8">
                             <h4 class="accessory-heading">Thuê phụ kiện</h4>
-                            <form>
-
-                            </form>
+                            <img src="https://thumbs.dreamstime.com/b/ladder-drills-goal-soccer-ball-marker-cones-sports-shoes-bottle-water-green-artificial-turf-training-equipment-140576793.jpg"
+                                 alt="..."
+                                 class="accessory-image mt-4"
+                                 />
+                            <div>
+                                <button class="accessory-btn" onclick="openModal()">Thuê phụ kiện ở đây <i class="fas fa-arrow-right"></i></button>
+                            </div>
                         </div>
                     </div>
 
@@ -254,41 +258,41 @@
                                 <%
                                     for (Pitch lp : listlastpitch) {
                                 %>
-                                
-                                    <!--Product Start-->
-                                    <div class="col-lg-3 col-md-6 mb-5">
-                                        <div class="card h-100 product-card">
-                                            <a href="<%=request.getContextPath()%>/ProductDetails.jsp?pitchId=<%=lp.getPitchId()%>">
-                                                <!--Product Image-->
-                                                <img class="product-items__image card-img-top" 
-                                                     src="<%=lp.getImage()%>" 
-                                                     alt="..."
-                                                     />
 
-                                                <!--Product Details-->
-                                                <div class="card-body p4 product-card__details">
-                                                    <div class="text-right">
-                                                        <!--Product name-->
-                                                        <div class="product-card__info d-flex justify-content-between">                                                
-                                                            <h6 class="mb-3 fw-bold">Tên sân:</h6>
-                                                            <span class="fs-6 fw-normal"><%=lp.getPitchName()%></span>
-                                                        </div>     
-                                                        <!--Product Size-->
-                                                        <div class="product-card__info d-flex justify-content-between">
-                                                            <h6 class="mb-3 fw-bold">Kích thước sân:</h6>
-                                                            <span class="fs-6 fw-normal"><%=lp.getPitchType().getType()%></span>
-                                                        </div>
-                                                        <!--Product Price-->
-                                                        <div class="product-card__info d-flex justify-content-between">
-                                                            <h6 class="mb-3 fw-bold">Tiền thuê:</h6>
-                                                            <span class="fs-6 fw-normal"><%=lp.getPrice()%></span> 
-                                                        </div>
+                                <!--Product Start-->
+                                <div class="col-lg-3 col-md-6 mb-5">
+                                    <div class="card h-100 product-card">
+                                        <a href="<%=request.getContextPath()%>/ProductDetails.jsp?pitchId=<%=lp.getPitchId()%>">
+                                            <!--Product Image-->
+                                            <img class="product-items__image card-img-top" 
+                                                 src="<%=lp.getImage()%>" 
+                                                 alt="..."
+                                                 />
+
+                                            <!--Product Details-->
+                                            <div class="card-body p4 product-card__details">
+                                                <div class="text-right">
+                                                    <!--Product name-->
+                                                    <div class="product-card__info d-flex justify-content-between">                                                
+                                                        <h6 class="mb-3 fw-bold">Tên sân:</h6>
+                                                        <span class="fs-6 fw-normal"><%=lp.getPitchName()%></span>
+                                                    </div>     
+                                                    <!--Product Size-->
+                                                    <div class="product-card__info d-flex justify-content-between">
+                                                        <h6 class="mb-3 fw-bold">Kích thước sân:</h6>
+                                                        <span class="fs-6 fw-normal"><%=lp.getPitchType().getType()%></span>
+                                                    </div>
+                                                    <!--Product Price-->
+                                                    <div class="product-card__info d-flex justify-content-between">
+                                                        <h6 class="mb-3 fw-bold">Tiền thuê:</h6>
+                                                        <span class="fs-6 fw-normal"><%=lp.getPrice()%></span> 
                                                     </div>
                                                 </div>
-                                            </a>
-                                        </div>
+                                            </div>
+                                        </a>
                                     </div>
-                                
+                                </div>
+
                                 <%
                                     }
                                 %>
@@ -298,7 +302,41 @@
                     </div>
                 </div>
             </div>
-        </div>                         
+        </div>
+        <div class="accessory-modal">
+            <div class="modal-container">
+                <div class="modal-close" onclick="closeModal()"><i class="fa fa-close"></i></div>
+
+                <div class="modal-header">
+                    Thuê sản phẩm
+                </div>
+
+                <div class="modal-body">
+                    <div class="modal-image-list">
+                        <img class="modal-image-items img1" src="https://file3.qdnd.vn/data/images/0/2022/11/14/vietcuong/1-%201.jpg?dpi=150&quality=100&w=870" alt="..."/>                    
+                        <img class="modal-image-items img2" src="https://i0.wp.com/azzurro-sport.com/wp-content/uploads/2021/11/Mizuno-Morelia-Neo-3-Pro-AS-TF-P1GD218423-1.jpg?fit=1065%2C1065&ssl=1" alt="..."/>
+                        <img class="modal-image-items img3" src="https://zocker.vn/pic/Product/gang-tay-thu-mon-zocker-Edwin-cam_7278_HasThumb.webp" alt="..."/>
+                        <!--<img class="modal-image-items img4" src="https://salt.tikicdn.com/cache/w1200/ts/product/ae/d9/81/543cf91229687ba79690b6dfaa4bbed2.jpg" alt="..."/>-->
+                    </div>
+                    <div class="modal-action">
+                        <button class="modal-action-close" onclick="closeModal()"><a href="#!">Hủy</a></button>
+                        <button class="modal-action-done"><a href="<%=request.getContextPath()%>/RentAccessory.jsp">Đến trang thuê đồ</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const modal = document.querySelector('.accessory-modal');
+            
+            function openModal(){
+                modal.classList.add('modal-active');
+            }
+            
+            function closeModal(){
+                modal.classList.remove('modal-active');
+            }
+        </script>
         <%@include file="footer.jsp" %>
     </body>
 </html>
