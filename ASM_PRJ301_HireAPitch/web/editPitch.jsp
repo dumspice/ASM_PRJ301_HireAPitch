@@ -15,42 +15,38 @@
     <body>
         <div class="container">
             <h1>Edit Pitch</h1>
-            <form action="saveeditedpitch.jsp" method="POST" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label for="id">ID:</label>
-                    <input type="text" id="id" name="id" value="10" readonly>
-                </div>
+            <form action="editPitch?id=${p.pitchId}" method="POST">
                 <div class="form-group">
                     <label for="name">Pitch Name:</label>
-                    <input type="text" id="name" name="name" value="Pitch Name" required>
+                    <input type="text" id="name" name="name" value="${p.pitchName}" required>
                 </div>
                 <div class="form-group">
                     <label for="address">Address:</label>
-                    <input type="text" id="address" name="address" value="Address" required>
+                    <input type="text" id="address" name="address" value="${p.address}" required>
                 </div>
                 <div class="form-group">
                     <label for="province">Province:</label>
                     <select id="province" name="province" required>
-                        <option value="Hanoi">Hanoi</option>
-                        <option value="Ho Chi Minh">Ho Chi Minh</option>
-                        <option value="Danang">Danang</option>
+                        <option value="1" ${p.addressId == 1 ? "selected" : ""}>Hà Nội</option>
+                        <option value="2" ${p.addressId == 2 ? "selected" : ""}>Hồ Chí Minh</option>
+                        <option value="3" ${p.addressId == 3 ? "selected" : ""}>Đà Nẵng</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="type">Type:</label>
                     <select id="type" name="type" required>
-                        <option value="Sân 5">Sân 5</option>
-                        <option value="Sân 7">Sân 7</option>
-                        <option value="Sân 11">Sân 11</option>
+                        <option value="1" ${p.pitchType.id == 1 ? "selected" : ""}>Sân 5</option>
+                        <option value="2" ${p.pitchType.id == 2 ? "selected" : ""}>Sân 7</option>
+                        <option value="3" ${p.pitchType.id == 3 ? "selected" : ""}>Sân 11</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="price">Price:</label>
-                    <input type="number" id="price" name="price" step="0.01" value="100" required>
+                    <input type="number" id="price" name="price" step="0" value="${p.price}" required>
                 </div>
                 <div class="form-group">
                     <label for="image">Image:</label>
-                    <input type="file" id="image" name="image" accept="image/*">
+                    <input type="text" id="image" name="image" value="${p.image}">
                 </div>
                 <div class="button-group">
                     <input type="submit" value="Save">

@@ -15,35 +15,33 @@
     <body>
         <div class="container">
             <h1>Edit Staff</h1>
-            <form action="" method="POST">
-                <div class="form-group">
-                    <label for="staffID">Staff ID:</label>
-                    <input type="text" id="staffID" name="staffID" value="123" readonly>
-                </div>
+            <form action="editStaff?id=${user.id}" method="POST">
                 <div class="form-group">
                     <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" value="JohnDoe" required>
+                    <input type="text" id="username" name="username" value="${user.username}" required>
+                    <span class="error-message">${empty requestScope.usernameExisted ? "" : requestScope.usernameExisted}</span>
                 </div>
                 <div class="form-group">
                     <label for="password">Password:</label>
-                    <input type="text" id="password" name="password" value="10112004" required>
+                    <input type="text" id="password" name="password" value="${user.password}" required>
                 </div>
                 <div class="form-group">
                     <label for="displayName">Display Name:</label>
-                    <input type="text" id="displayName" name="displayName" value="John Doe" required>
+                    <input type="text" id="displayName" name="displayName" value="${user.display_name}" required>
                 </div>
                 <div class="form-group">
                     <label for="phoneNumber">Phone Number:</label>
-                    <input type="tel" id="phoneNumber" name="phoneNumber" value="123-456-7890" required>
+                    <input type="text" id="phoneNumber" name="phoneNumber" value="${user.phone_number}" required>
+                    <span class="error-message">${empty requestScope.phoneExisted ? "" : requestScope.phoneExisted}</span>
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" value="johndoe@example.com" required>
+                    <input type="email" id="email" name="email" value="${user.email}" required>
+                    <span class="error-message">${empty requestScope.emailExisted ? "" : requestScope.emailExisted}</span>
                 </div>
                 <div class="form-group">
                     <label for="avatar">Avatar:</label>
-                    <input type="file" id="avatar" name="avatar" value="staff_image.jpg" accept="image/jpeg, image/png, image/gif">
-                    <input type="hidden" id="currentAvatar" name="currentAvatar" value="staff_image.jpg">
+                    <input type="text" id="avatar" name="avatar" value="${user.avatar}">
                 </div>
                 <div class="button-group">
                     <input type="submit" value="Update">

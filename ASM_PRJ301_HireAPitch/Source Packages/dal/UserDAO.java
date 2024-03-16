@@ -42,6 +42,96 @@ public class UserDAO extends DBContext{
         return list;
     }
     
+    public ArrayList<User> getAllUserByRoleId(int id){
+        ArrayList<User> list = new ArrayList<>();
+        try {
+            String sql="select * from [User] where Role_id = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                User u = new User();
+                u.setId(rs.getInt(1));
+                u.setUsername(rs.getString(2));
+                u.setPassword(rs.getString(3));
+                u.setDisplay_name(rs.getString(4));
+                u.setPhone_number(rs.getString(5));
+                u.setEmail(rs.getString(6));
+                u.setAvatar(rs.getString(7));
+                u.setRoleId(rs.getInt(8));
+                list.add(u);
+            }
+            rs.close();
+            ps.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return list;
+    }
+    
+    public void deleteUser(int userId) {
+        try {
+            String sql = "DELETE FROM [User] WHERE [User_id] = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, userId);
+            ps.executeUpdate();
+            
+            // Close the PreparedStatement
+            ps.close();
+        } catch (Exception e) {
+            // Handle any exceptions
+            System.out.println("Error deleting user: " + e.getMessage());
+        }
+    }
+    
+    public void updateUser(User user) {
+        try {
+            String sql = "UPDATE [User] SET username = ?, password = ?, display_name = ?, phone_number = ?, email = ?, avatar = ? WHERE [User_id] = ?";
+            
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+            
+            pstmt.setString(1, user.getUsername());
+            pstmt.setString(2, user.getPassword());
+            pstmt.setString(3, user.getDisplay_name());
+            pstmt.setString(4, user.getPhone_number());
+            pstmt.setString(5, user.getEmail());
+            pstmt.setString(6, user.getAvatar());
+            pstmt.setInt(7, user.getId());
+            
+            pstmt.executeUpdate();
+            
+            pstmt.close();
+        } catch (Exception e) {
+            System.out.println("Error updating user: " + e.getMessage());
+        }
+    }
+    
+    public ArrayList<User> getAllStaffs(){
+        ArrayList<User> list = new ArrayList<>();
+        try {
+            String sql="select * from [User] where Role_id = 2";
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                User u = new User();
+                u.setId(rs.getInt(1));
+                u.setUsername(rs.getString(2));
+                u.setPassword(rs.getString(3));
+                u.setDisplay_name(rs.getString(4));
+                u.setPhone_number(rs.getString(5));
+                u.setEmail(rs.getString(6));
+                u.setAvatar(rs.getString(7));
+                u.setRoleId(rs.getInt(8));
+                list.add(u);
+            }
+            rs.close();
+            st.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return list;
+    }
+    
     public User login(String username, String password) {
         String sql = "select * from [User] where Username = ? and [Password] = ?";
         try {
