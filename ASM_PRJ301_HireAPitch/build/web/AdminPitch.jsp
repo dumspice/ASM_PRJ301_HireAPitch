@@ -5,6 +5,7 @@
 --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,7 +14,13 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <link href="asset/stylesheet/AdminPitch.css" rel="stylesheet" type="text/css">
 
-        <script>
+        <script type="text/javascript">
+            function doDelete(id) {
+                if (confirm("Are you sure to delete pitch with id = " + id + "?")) {
+                    window.location = "deletePitch?id=" + id;
+                }
+            }
+            
             function filterPitches() {
                 var selectedTypes = Array.from(document.querySelectorAll('input[name="typeFilter"]:checked')).map(checkbox => checkbox.value);
                 var selectedProvinces = Array.from(document.querySelectorAll('input[name="provinceFilter"]:checked')).map(checkbox => checkbox.value);
@@ -36,6 +43,8 @@
             }
         </script>
     </head>
+    <c:if test="${sessionScope.user.roleId != 1}"> Access Denied </c:if>
+    <c:if test="${sessionScope.user.roleId == 1}">
     <body>
         <%@ include file="AdminMenu.jsp" %>
         <div class="container">
@@ -60,7 +69,7 @@
                 </div>
                 <div>
                     <input type="checkbox" id="san11Checkbox" name="typeFilter" value="Sân 11" onclick="filterPitches()" checked>
-                    <label for="san11Checkbox">Sân11</label>
+                    <label for="san11Checkbox">Sân 11</label>
                 </div>
             </div>
 
@@ -71,16 +80,16 @@
                     <label for="allProvinceCheckbox">All</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="hanoiCheckbox" name="provinceFilter" value="Hanoi" onclick="filterPitches()" checked>
-                    <label for="hanoiCheckbox">Hanoi</label>
+                    <input type="checkbox" id="hanoiCheckbox" name="provinceFilter" value="Hà Nội" onclick="filterPitches()" checked>
+                    <label for="hanoiCheckbox">Hà Nội</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="hoChiMinhCheckbox" name="provinceFilter" value="Ho Chi Minh" onclick="filterPitches()" checked>
-                    <label for="hoChiMinhCheckbox">Ho Chi Minh</label>
+                    <input type="checkbox" id="hoChiMinhCheckbox" name="provinceFilter" value="Hồ Chí Minh" onclick="filterPitches()" checked>
+                    <label for="hoChiMinhCheckbox">Hồ Chí Minh</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="danangCheckbox" name="provinceFilter" value="Danang" onclick="filterPitches()" checked>
-                    <label for="danangCheckbox">Danang</label>
+                    <input type="checkbox" id="danangCheckbox" name="provinceFilter" value="Đà Nẵng" onclick="filterPitches()" checked>
+                    <label for="danangCheckbox">Đà Nẵng</label>
                 </div>
             </div>
 
@@ -94,21 +103,22 @@
                     <th>Province</th>
                     <th>Action</th>
                 </tr>
-                <c:forEach begin="1" end="4">
+                <c:forEach items="${requestScope.PList}" var="p">
                     <tr>
-                        <td>Pitch 1</td>
-                        <td>123 Main Street</td>
-                        <td>$10</td>
-                        <td><img src="pitch1.jpg" alt="Pitch 1 Image"></td>
-                        <td>Sân 5</td>
-                        <td>Hanoi</td>
+                        <td>${p.pitchName}</td>
+                        <td>${p.address}</td>
+                        <td><fmt:formatNumber value="${p.price}" pattern="###,###" /></td>
+                        <td><img src="${p.image}" alt="Pitch Image"></td>
+                        <td>${p.pitchType.type}</td>
+                        <td>${p.getRegion(p.addressId)}</td>
                         <td>
-                            <a href="editPitch.jsp?id=1"><i class="fas fa-pen"></i></a> |
-                            <a href="deletePitch.jsp?id=1"><i class="fas fa-trash"></i></a>
+                            <a href="editPitch?id=${p.pitchId}"><i class="fas fa-pen"></i></a> |
+                            <a href="#" onclick="doDelete('${p.pitchId}')"/><i class="fas fa-trash"></i></a>
                         </td>
                     </tr>
                 </c:forEach>
             </table>
         </div>
     </body>
+    </c:if>
 </html>

@@ -34,7 +34,6 @@ public class pitchDAO extends DBContext {
                 p.setImage(rs.getString(5));
                 p.setPitchType(getPitchTypeById(rs.getInt(6)));
                 p.setAddressId(rs.getInt(7));
-                p.setUser(uDao.getUserById(rs.getInt(8)));
                 list.add(p);
             }
             rs.close();
@@ -43,6 +42,56 @@ public class pitchDAO extends DBContext {
             System.out.println(e.getMessage());
         }
         return list;
+    }
+    
+    public void delete(int pitchId) {
+        try {
+            String sql = "DELETE FROM Pitch WHERE Pitch_id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, pitchId);
+            statement.executeUpdate();
+            
+            statement.close();
+        } catch (Exception e) {
+        }
+    }
+    
+    public void update(Pitch pitch) {
+        try {
+            String sql = "UPDATE Pitch SET Pitch_name = ?, [Address] = ?, Price = ?, [Image] = ?, [Type_id_Pitch] = ?, Address_id = ? WHERE Pitch_id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, pitch.getPitchName());
+            statement.setString(2, pitch.getAddress());
+            statement.setInt(3, pitch.getPrice());
+            statement.setString(4, pitch.getImage());
+            statement.setInt(5, pitch.getPitchType().getId());
+            statement.setInt(6, pitch.getAddressId());
+            statement.setInt(7, pitch.getPitchId());
+
+            statement.executeUpdate();
+            statement.close();
+        } catch (Exception e) {
+            System.out.println("Error updating pitch: " + e.getMessage());
+        }
+    }
+    
+    public void insert(Pitch pitch) {
+        try {
+            String sql = "INSERT Pitch(Pitch_name, [Address], Price, [Image], [Type_id_Pitch], Address_id) VALUES (?, ?, ?, ?, ?, ?)";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, pitch.getPitchName());
+            statement.setString(2, pitch.getAddress());
+            statement.setInt(3, pitch.getPrice());
+            statement.setString(4, pitch.getImage());
+            statement.setInt(5, pitch.getPitchType().getId());
+            statement.setInt(6, pitch.getAddressId());
+            
+            statement.executeUpdate();
+            
+            statement.close();
+        } catch (Exception e) {
+            System.out.println("Error inserting pitch: " + e.getMessage());
+        }
     }
     
     public ArrayList<Pitch> choosePitch(int typeId, int addressId) {
@@ -63,7 +112,6 @@ public class pitchDAO extends DBContext {
                 p.setImage(rs.getString(5));
                 p.setPitchType(getPitchTypeById(rs.getInt(6)));
                 p.setAddressId(rs.getInt(7));
-                p.setUser(uDao.getUserById(rs.getInt(8)));
                 list.add(p);
             }
             rs.close();
@@ -74,7 +122,24 @@ public class pitchDAO extends DBContext {
         return list;
     }
 
-
+    public String getRegionById(int id) {
+        try {
+            String sql = "SELECT Address_name FROM [Address] WHERE Address_id = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getString(1);
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+        
+    }
+    
     public Pitch getPitchById(int id) {
         ArrayList<Pitch> list = new ArrayList<>();
         UserDAO uDao = new UserDAO();
@@ -92,7 +157,6 @@ public class pitchDAO extends DBContext {
                 p.setImage(rs.getString(5));
                 p.setPitchType(getPitchTypeById(rs.getInt(6)));
                 p.setAddressId(rs.getInt(7));
-                p.setUser(uDao.getUserById(rs.getInt(8)));
                 return p;
             }
             rs.close();
@@ -105,13 +169,12 @@ public class pitchDAO extends DBContext {
     
     public ArrayList<Pitch> getPitchByName(String name) {
         ArrayList<Pitch> list = new ArrayList<>();
-        UserDAO uDao = new UserDAO();
         try {
             String sql = "select * from Pitch where Pitch_name like ?";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1,"%" + name + "%");
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
+            if (rs.next()) {
                 Pitch p = new Pitch();
                 p.setPitchId(rs.getInt(1));
                 p.setPitchName(rs.getString(2));
@@ -120,7 +183,6 @@ public class pitchDAO extends DBContext {
                 p.setImage(rs.getString(5));
                 p.setPitchType(getPitchTypeById(rs.getInt(6)));
                 p.setAddressId(rs.getInt(7));
-                p.setUser(uDao.getUserById(rs.getInt(8)));
                 list.add(p);
             }
             rs.close();
@@ -150,7 +212,6 @@ public class pitchDAO extends DBContext {
     
     public ArrayList<Pitch> getLastestPitch() {
         ArrayList<Pitch> list = new ArrayList<>();
-        UserDAO uDao = new UserDAO();
         try {
             String sql = "select top 4 * from Pitch\n"
                     + "order by Pitch_id desc";
@@ -165,7 +226,6 @@ public class pitchDAO extends DBContext {
                 p.setImage(rs.getString(5));
                 p.setPitchType(getPitchTypeById(rs.getInt(6)));
                 p.setAddressId(rs.getInt(7));
-                p.setUser(uDao.getUserById(rs.getInt(8)));
                 list.add(p);
             }
             rs.close();

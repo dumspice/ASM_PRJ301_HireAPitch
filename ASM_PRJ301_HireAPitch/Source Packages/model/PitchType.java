@@ -41,5 +41,12 @@ public class PitchType {
         return "PitchType{" + "id=" + id + ", type=" + type + '}';
     }
     
+    public PitchType getPitchType(int id) {
+        if(id == 1) return new PitchType(1, "Hà Nội");
+        if(id == 2) return new PitchType(2, "Hồ Chí Minh");
+        if(id == 3) return new PitchType(3, "Đà Nẵng");
+        return null;
+    }
+    
     
 }
