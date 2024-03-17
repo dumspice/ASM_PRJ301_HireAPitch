@@ -116,7 +116,7 @@
                     </c:if>
                     <c:if test="${sessionScope.user != null}">
                         <div class="logout">
-                            <a href="logout">Đăng xuất</a>
+                            <a href="<%=request.getContextPath()%>/logout">Đăng xuất</a>
                         </div>
                     </c:if>
                     <div class="clear"></div>

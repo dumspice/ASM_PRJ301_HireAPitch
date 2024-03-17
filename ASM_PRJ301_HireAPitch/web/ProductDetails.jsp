@@ -144,7 +144,7 @@
                                  class="accessory-image mt-4"
                                  />
                             <div>
-                                <button class="accessory-btn" onclick="openModal()">Thuê phụ kiện ở đây <i class="fas fa-arrow-right"></i></button>
+                                <button class="accessory-btn"><a href="<%=request.getContextPath()%>/stuffcontroller">Thuê phụ kiện ở đây <i class="fas fa-arrow-right"></i></a></button>
                             </div>
                         </div>
                     </div>
@@ -341,40 +341,7 @@
                 </div>
             </div>
         </div>
-        <div class="accessory-modal">
-            <div class="modal-container">
-                <div class="modal-close" onclick="closeModal()"><i class="fa fa-close"></i></div>
-
-                <div class="modal-header">
-                    Thuê sản phẩm
-                </div>
-
-                <div class="modal-body">
-                    <div class="modal-image-list">
-                        <img class="modal-image-items img1" src="https://file3.qdnd.vn/data/images/0/2022/11/14/vietcuong/1-%201.jpg?dpi=150&quality=100&w=870" alt="..."/>                    
-                        <img class="modal-image-items img2" src="https://i0.wp.com/azzurro-sport.com/wp-content/uploads/2021/11/Mizuno-Morelia-Neo-3-Pro-AS-TF-P1GD218423-1.jpg?fit=1065%2C1065&ssl=1" alt="..."/>
-                        <img class="modal-image-items img3" src="https://zocker.vn/pic/Product/gang-tay-thu-mon-zocker-Edwin-cam_7278_HasThumb.webp" alt="..."/>
-                        <!--<img class="modal-image-items img4" src="https://salt.tikicdn.com/cache/w1200/ts/product/ae/d9/81/543cf91229687ba79690b6dfaa4bbed2.jpg" alt="..."/>-->
-                    </div>
-                    <div class="modal-action">
-                        <button class="modal-action-close" onclick="closeModal()"><a href="#!">Hủy</a></button>
-                        <button class="modal-action-done"><a href="<%=request.getContextPath()%>/RentAccessory.jsp">Đến trang thuê đồ</a></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <script>
-            const modal = document.querySelector('.accessory-modal');
-
-            function openModal() {
-                modal.classList.add('modal-active');
-            }
-
-            function closeModal() {
-                modal.classList.remove('modal-active');
-            }
-        </script>
+       
         <%@include file="footer.jsp" %>
     </body>
 </html>
