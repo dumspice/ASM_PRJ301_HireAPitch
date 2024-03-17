@@ -84,7 +84,7 @@
                                         <div class="card-body p4 product-card__details">
                                             <div class="text-right">
                                                 <!--Product name-->
-                                                <h5 class="mb-3"><span>${p.pitchName}</span></h5>
+                                                <h5 class="mb-3 fw-bold"><span>${p.pitchName}</span></h5>
                                                 <!--Product Size-->
                                                 <h5 class="mb-3">Loại sân: <span>${p.pitchType.type}</span></h5>
                                                 <!--Product Price-->

@@ -2,23 +2,17 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group/>
-=======
         <group>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/AdminHome.jsp</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/Source%20Packages/controller/addStaff.java</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/Source%20Packages/controller/StaffController.java</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/AdminMenu.jsp</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/AdminStaff.jsp</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/Source%20Packages/controller/deleteUser.java</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/Source%20Packages/controller/CustomerController.java</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/addcustomer.jsp</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/AdminCustomer.jsp</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/addstaff.jsp</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/Source%20Packages/controller/addCustomer.java</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/Source%20Packages/dal/UserDAO.java</file>
+            <file>file:/C:/Users/dumspicy/Desktop/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/Source%20Packages/controller/logout.java</file>
+            <file>file:/C:/Users/dumspicy/Desktop/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/UserLogin.jsp</file>
+            <file>file:/C:/Users/dumspicy/Desktop/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/Source%20Packages/dal/DBContext.java</file>
+            <file>file:/C:/Users/dumspicy/Desktop/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/AdminHome.jsp</file>
+            <file>file:/C:/Users/dumspicy/Desktop/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/AdminStuff.jsp</file>
+            <file>file:/C:/Users/dumspicy/Desktop/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/AdminCustomer.jsp</file>
+            <file>file:/C:/Users/dumspicy/Desktop/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/Source%20Packages/controller/login.java</file>
+            <file>file:/C:/Users/dumspicy/Desktop/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/AdminMenu.jsp</file>
+            <file>file:/C:/Users/dumspicy/Desktop/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/header.jsp</file>
+            <file>file:/C:/Users/dumspicy/Desktop/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/Cart.jsp</file>
         </group>
->>>>>>> de263e733202e1f2b0ec9a592115fc206d4b89cf
     </open-files>
 </project-private>
