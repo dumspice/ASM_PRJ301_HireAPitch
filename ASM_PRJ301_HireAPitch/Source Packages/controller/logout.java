@@ -58,7 +58,7 @@ public class logout extends HttpServlet {
     throws ServletException, IOException {
         HttpSession session = request.getSession();
         session.removeAttribute("user");
-        response.sendRedirect("login.jsp");
+        response.sendRedirect("UserLogin.jsp");
     } 
 
     /** 

@@ -156,98 +156,68 @@
                                     <h3 class="calendar-title fb-bold">Lịch đặt sân</h3>
                                 </div>
                                 <div class="book-calendar">
-                                    <script>
-                                        // Function to handle slot button selection
-                                        function selectSlot(button) {
-                                            // Remove the 'active' class from all slot buttons
-                                            var slotButtons = document.querySelectorAll('.slot-btn');
-                                            slotButtons.forEach(function (btn) {
-                                                btn.classList.remove('active');
-                                            });
-
-                                            // Add the 'active' class to the clicked button
-                                            button.classList.add('active');
-                                        }
-                                        // Function to handle form submission
-                                        function submitBooking() {
-                                            // Get the selected date
-                                            var selectedDate = document.getElementById("datePicker").value;
-
-                                            // Get the selected slot
-                                            var selectedSlot = document.querySelector('.slot-btn.active').value;
-
-                                            // Merge date and slot into selectedTimeSlot
-                                            var selectedTimeSlot = selectedDate + " " + selectedSlot;
-
-                                            // Update the value of the hidden input field
-                                            document.getElementById("selectedTimeSlot").value = selectedTimeSlot;
-
-                                            // Submit the form
-                                            document.getElementById("bookingForm").submit();
-                                        }
-                                    </script>
-                                    <form id="bookingForm" class="book-calendar__form" action="BookingServlet" method="get">
+                                
+                                    <form class="book-calendar__form" action="BookingServlet" method="postx">
                                         <input type="hidden" id="pitchId" name="pitchId" value="<%= pitchId %>">
                                         <input type="hidden" id="userId" name="userId" value="${sessionScope.user.getId()}">
-                                        <input type="hidden" id="selectedTimeSlot" name="selectedTimeSlot">
                                         <input style="width: 17%; align-self: end;" type="date" id="datePicker" min="<%= yyyy + '-' + mm + '-' + dd %>" value="<%= yyyy + '-' + mm + '-' + dd %>" required>
                                         <div class="table-price">
                                             <div class="table">
                                                 <div class="row">
                                                     <div class="set-yard am">
                                                         <div class="frame-price">
-                                                            <button class="slot-btn" type="button" onclick="selectSlot(this)" value="05:00-06:30">05:00 - 06:30</button>
+                                                            <button class="slot-btn" disabled type="button" value="05:00-06:30">05:00 - 06:30</button>
                                                         </div>
                                                     </div>
                                                     <div class="set-yard am">
                                                         <div class="frame-price">
-                                                            <button class="slot-btn" type="button" onclick="selectSlot(this)" value="06:30-08:00">06:30 - 08:00</button>
+                                                            <button class="slot-btn" type="button" value="06:30-08:00">06:30 - 08:00</button>
                                                         </div>
                                                     </div>
                                                     <div class="set-yard am">
                                                         <div class="frame-price">
-                                                            <button class="slot-btn" type="button" onclick="selectSlot(this)" value="08:00-09:30">08:00 - 09:30</button>
+                                                            <button class="slot-btn" type="button" value="08:00-09:30">08:00 - 09:30</button>
                                                         </div>
                                                     </div>
                                                     <div class="set-yard am">
                                                         <div class="frame-price">
-                                                            <button class="slot-btn" type="button" onclick="selectSlot(this)" value="09:30-11:00">09:30 - 11:00</button>
+                                                            <button class="slot-btn" type="button" value="09:30-11:00">09:30 - 11:00</button>
                                                         </div>
                                                     </div>
                                                     <div class="set-yard am">
                                                         <div class="frame-price">
-                                                            <button class="slot-btn" type="button" onclick="selectSlot(this)" value="11:00-12:30">11:00 - 12:30</button>
+                                                            <button class="slot-btn" type="button" value="11:00-12:30">11:00 - 12:30</button>
                                                         </div>
                                                     </div>
                                                     <div class="set-yard pm">
                                                         <div class="frame-price">
-                                                            <button class="slot-btn" type="button" onclick="selectSlot(this)" value="14:00-15:30">14:00 - 15:30</button>
+                                                            <button class="slot-btn" type="button" value="14:00-15:30">14:00 - 15:30</button>
                                                         </div>
                                                     </div>
                                                     <div class="set-yard pm">
                                                         <div class="frame-price">
-                                                            <button class="slot-btn" type="button" onclick="selectSlot(this)" value="15:30-17:00">15:30 - 17:00</button>
+                                                            <button class="slot-btn" type="button" value="15:30-17:00">15:30 - 17:00</button>
                                                         </div>
                                                     </div>
                                                     <div class="set-yard pm">
                                                         <div class="frame-price">
-                                                            <button class="slot-btn" type="button" onclick="selectSlot(this)" value="17:00-18:30">17:00 - 18:30</button>
+                                                            <button class="slot-btn" type="button" value="17:00-18:30">17:00 - 18:30</button>
                                                         </div>
                                                     </div>
                                                     <div class="set-yard pm">
                                                         <div class="frame-price"> 
-                                                            <button class="slot-btn" type="button" onclick="selectSlot(this)" onclick="selectSlot(this)" value="18:30-20:00">18:30 - 20:00</button>
+                                                            <button class="slot-btn" type="button" value="18:30-20:00">18:30 - 20:00</button>
                                                         </div>
                                                     </div>
                                                     <div class="set-yard pm">
                                                         <div class="frame-price">
-                                                            <button class="slot-btn" type="button" onclick="selectSlot(this)" value="20:00-21:30">20:00 - 21:30</button>
+                                                            <button class="slot-btn" type="button" value="20:00-21:30">20:00 - 21:30</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="button" onclick="submitBooking()" class="btn btn-success hire-btn" style="font-size: 20px; border-radius: 10px;">Đặt sân</button>
+                                        <button type="submit" class="btn btn-success hire-btn" style="font-size: 20px; border-radius: 10px;">Đặt sân</button>
                                     </form>
                                 </div>
                             </div>
@@ -257,7 +227,7 @@
             </div>
             <c:if test="${sessionScope.user == null}">
                 <div style="text-align: center;">
-                    <p >Đăng nhập để đặt sân.</p>
+                    <p >Đăng nhập để đặt sân.</p> </br>
                     <a href="UserLogin.jsp" class="btn btn-primary">Đăng nhập</a>
                 </div>
             </c:if>

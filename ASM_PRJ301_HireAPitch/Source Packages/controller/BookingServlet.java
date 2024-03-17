@@ -61,21 +61,7 @@ public class BookingServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        // Get user information, pitchId, and selected time from the request parameters
-        int userId = Integer.parseInt(request.getParameter("userId"));
-        int pitchId = Integer.parseInt(request.getParameter("pitchId"));
-        String selectedTimeSlot = request.getParameter("selectedTimeSlot");
-
-        // Create a new booking request object and add it to the queue
-        BookingRequest bookingRequest = new BookingRequest(userId, pitchId, selectedTimeSlot);
-        bookingQueue.add(bookingRequest);
-
-        // Forward the request to a JSP page for confirmation
-        request.getRequestDispatcher("BookingRequest.jsp").forward(request, response);
-    }
-    
-    public static Queue<BookingRequest> getBookingQueue() {
-        return bookingQueue;
+       
     } 
 
     /** 
@@ -88,7 +74,17 @@ public class BookingServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        // Retrieve the selected time slot from the request
+        String selectedSlot = request.getParameter("selectedSlot");
+
+        // Process the selected time slot (You can add your logic here)
+        // For demonstration purposes, let's just print it
+        System.out.println("Selected Time Slot: " + selectedSlot);
+
+        // Send the disabled slot as a response
+        response.setContentType("text/plain");
+        PrintWriter out = response.getWriter();
+        out.write(selectedSlot); // Send the selected slot as a disabled slot
     }
 
     /** 
