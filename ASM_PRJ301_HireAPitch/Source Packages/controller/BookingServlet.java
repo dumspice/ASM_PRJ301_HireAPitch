@@ -5,6 +5,7 @@
 
 package controller;
 
+import dal.BookingDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,9 +13,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.LinkedList;
-import java.util.Queue;
-import model.BookingRequest;
+import java.util.ArrayList;
+import java.util.List;
+import model.Booking;
 
 /**
  *
@@ -56,26 +57,13 @@ public class BookingServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     
-    private static Queue<BookingRequest> bookingQueue = new LinkedList<>();
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        // Get user information, pitchId, and selected time from the request parameters
-        int userId = Integer.parseInt(request.getParameter("userId"));
-        int pitchId = Integer.parseInt(request.getParameter("pitchId"));
-        String selectedTimeSlot = request.getParameter("selectedTimeSlot");
-
-        // Create a new booking request object and add it to the queue
-        BookingRequest bookingRequest = new BookingRequest(userId, pitchId, selectedTimeSlot);
-        bookingQueue.add(bookingRequest);
-
-        // Forward the request to a JSP page for confirmation
-        request.getRequestDispatcher("BookingRequest.jsp").forward(request, response);
-    }
-    
-    public static Queue<BookingRequest> getBookingQueue() {
-        return bookingQueue;
+        BookingDAO bDAO = new BookingDAO();
+        ArrayList<Booking> bList = bDAO.getAllBooking();
+        request.setAttribute("bList", bList);
+        request.getRequestDispatcher("Booking.jsp").forward(request, response);
     } 
 
     /** 
@@ -88,8 +76,28 @@ public class BookingServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        String pitchId = request.getParameter("pitchId");
+        String userId = request.getParameter("userId");
+        String datePicker = request.getParameter("datePicker");
+        String startTimeHour = request.getParameter("startTimeHour");
+        String startTimeMinute = request.getParameter("startTimeMinute");
+        String endTimeHour = request.getParameter("endTimeHour");
+        String endTimeMinute = request.getParameter("endTimeMinute");
+
+        String startTime = startTimeHour + ":" + startTimeMinute;
+        String endTime = endTimeHour + ":" + endTimeMinute;
+        
+        Booking booking = new Booking(0, datePicker, startTime, endTime, Integer.parseInt(userId), Integer.parseInt(pitchId));
+
+        BookingDAO bDAO = new BookingDAO();
+
+        // Insert the booking into the database
+        bDAO.insert(booking);  
+        request.setAttribute("noti", "Đặt sân thành công!");
+        request.getRequestDispatcher("ProductDetails.jsp").forward(request, response);
     }
+
+
 
     /** 
      * Returns a short description of the servlet.

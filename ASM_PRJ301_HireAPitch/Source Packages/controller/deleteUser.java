@@ -58,9 +58,9 @@ public class deleteUser extends HttpServlet {
     throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         UserDAO uDao = new UserDAO();
-        int roleId = uDao.getUserById(id).getRoleId();
+        String role = uDao.getUserById(id).getRole();
         uDao.deleteUser(id);
-        if (roleId == 3) {
+        if (role.equals("Customer")) {
             response.sendRedirect("CustomerController");
         } else {
             response.sendRedirect("StaffController");

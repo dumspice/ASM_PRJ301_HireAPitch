@@ -31,9 +31,16 @@
                 }
             }
         </script>
+        <script type="text/javascript">
+            function doDelete(id) {
+                if (confirm("Are you sure to delete sstuff with id = " + id + "?")) {
+                    window.location = "deleteStuff?id=" + id;
+                }
+            }
+        </script>
     </head>
-    <c:if test="${sessionScope.user.roleId != 1}"> Access Denied </c:if>
-    <c:if test="${sessionScope.user.roleId == 1}">
+    <c:if test="${sessionScope.user.role != 'Admin'}"> Access Denied </c:if>
+    <c:if test="${sessionScope.user.role == 'Admin'}">
     <body>
         <%@ include file="AdminMenu.jsp" %>
         <div class="container">
@@ -50,20 +57,20 @@
                     <label for="allCheckbox">All</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="ballCheckbox" name="typeFilter" value="ball" onclick="filterProducts()" checked>
-                    <label for="ballCheckbox">Ball</label>
+                    <input type="checkbox" id="ballCheckbox" name="typeFilter" value="Bóng" onclick="filterProducts()" checked>
+                    <label for="ballCheckbox">Bóng</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="shoesCheckbox" name="typeFilter" value="shoes" onclick="filterProducts()" checked>
-                    <label for="shoesCheckbox">Shoes</label>
+                    <input type="checkbox" id="shoesCheckbox" name="typeFilter" value="Giày" onclick="filterProducts()" checked>
+                    <label for="shoesCheckbox">Giày</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="shirtCheckbox" name="typeFilter" value="shirt" onclick="filterProducts()" checked>
-                    <label for="shirtCheckbox">Shirt</label>
+                    <input type="checkbox" id="shirtCheckbox" name="typeFilter" value="Áo Pitch" onclick="filterProducts()" checked>
+                    <label for="shirtCheckbox">Áo Pitch</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="gloveCheckbox" name="typeFilter" value="glove" onclick="filterProducts()" checked>
-                    <label for="gloveCheckbox">Glove</label>
+                    <input type="checkbox" id="gloveCheckbox" name="typeFilter" value="Găng" onclick="filterProducts()" checked>
+                    <label for="gloveCheckbox">Găng</label>
                 </div>
 
             </div>
@@ -71,7 +78,7 @@
             <table class="productTable" id="productTable">
                 <thead>
                     <tr>
-                        <th>Stuff</th>
+                        <th>Name</th>
                         <th>Size</th>
                         <th>Amount Exist</th>
                         <th>Price</th>
@@ -81,15 +88,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach begin="1" end="4">
+                    <c:forEach items="${listStuff}" var="s">
                         <tr>
-                            <td>Football</td>
-                            <td>5</td>
-                            <td>15</td>
-                            <td>19.99</td>
-                            <td><img src="football.jpg" alt="Football"></td>
-                            <td>Ball</td>
-                            <td><a href="editstuff.jsp?id=1"><i class="fas fa-pen"></i></a> | <a href="deleteproduct.jsp?id=1"><i class="fas fa-trash"></i></a></td>
+                            <td>${s.stuffName}</td>
+                            <td>${s.size}</td>
+                            <td>${s.amountExist}</td>
+                            <td>${s.price}</td>
+                            <td><img src="${s.image}" alt="Stuff Image"></td>
+                            <td>${s.type}</td>
+                            <td><a href="editstuff.jsp?id=1"><i class="fas fa-pen"></i></a> | <a href="#" onclick="doDelete('${s.stuffId}')"><i class="fas fa-trash"></i></a></td>
                         </tr>
                     </c:forEach>
                     <!-- Other product rows -->

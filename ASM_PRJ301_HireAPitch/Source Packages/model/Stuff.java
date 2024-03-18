@@ -15,20 +15,22 @@ public class Stuff {
     private int amountExist;
     private int price;
     private String image;
-    private int type_id_Stuff;
+    private String type;
 
     public Stuff() {
     }
 
-    public Stuff(int stuffId, String stuffName, String size, int amountExist, int price, String image, int type_id_Stuff) {
+    public Stuff(int stuffId, String stuffName, String size, int amountExist, int price, String image, String type) {
         this.stuffId = stuffId;
         this.stuffName = stuffName;
         this.size = size;
         this.amountExist = amountExist;
         this.price = price;
         this.image = image;
-        this.type_id_Stuff = type_id_Stuff;
+        this.type = type;
     }
+
+
 
     public int getStuffId() {
         return stuffId;
@@ -78,18 +80,17 @@ public class Stuff {
         this.image = image;
     }
 
-    public int getType_id_Stuff() {
-        return type_id_Stuff;
+    public String getType() {
+        return type;
     }
 
-    public void setType_id_Stuff(int type_id_Stuff) {
-        this.type_id_Stuff = type_id_Stuff;
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override
     public String toString() {
-        return "Stuff{" + "stuffId=" + stuffId + ", stuffName=" + stuffName + ", size=" + size + ", amountExist=" + amountExist + ", price=" + price + ", image=" + image + ", type_id_Stuff=" + type_id_Stuff + '}';
+        return "Stuff{" + "stuffId=" + stuffId + ", stuffName=" + stuffName + ", size=" + size + ", amountExist=" + amountExist + ", price=" + price + ", image=" + image + ", type_id_Stuff=" + type + '}';
     }
-    
     
 }

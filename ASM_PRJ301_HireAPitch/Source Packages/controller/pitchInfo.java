@@ -5,6 +5,7 @@
 
 package controller;
 
+import dal.pitchDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,15 +13,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.Queue;
-import model.BookingRequest;
+import model.Pitch;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name="ConfirmBookingServlet", urlPatterns={"/confirm"})
-public class ConfirmBookingServlet extends HttpServlet {
+@WebServlet(name="pitchInfo", urlPatterns={"/pitchInfo"})
+public class pitchInfo extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -37,10 +37,10 @@ public class ConfirmBookingServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ConfirmBookingServlet</title>");  
+            out.println("<title>Servlet pitchInfo</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ConfirmBookingServlet at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet pitchInfo at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -57,35 +57,11 @@ public class ConfirmBookingServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        // Get the action (confirm or reject) and booking details from the request
-        String action = request.getParameter("action");
-        int userId = Integer.parseInt(request.getParameter("userId"));
-        int pitchId = Integer.parseInt(request.getParameter("pitchId"));
-        String selectedTimeSlot = request.getParameter("selectedTimeSlot");
-
-        // Remove the booking request from the list
-        Queue<BookingRequest> bookingQueue = BookingServlet.getBookingQueue();
-        BookingRequest bookingToRemove = null;
-        for (BookingRequest bookingRequest : bookingQueue) {
-            if (bookingRequest.getUserId() == userId && bookingRequest.getPitchId() == pitchId && bookingRequest.getSelectedTimeSlot().equals(selectedTimeSlot)) {
-                bookingToRemove = bookingRequest;
-                break;
-            }
-        }
-        bookingQueue.remove(bookingToRemove);
-
-        // If the action is "confirm", update the slot button's appearance in ProductDetails.jsp
-        if ("confirm".equals(action)) {
-            // Construct the slot button ID based on pitchId and selectedTimeSlot
-            String slotButtonId = "slotButton_" + pitchId + "_" + selectedTimeSlot.replace(" ", "_");
-
-            // Call the JavaScript function to update the slot button's appearance
-            String script = "<script>updateSlotButton('" + slotButtonId + "');</script>";
-            response.getWriter().println(script);
-        }
-
-        // Redirect back to the staff dashboard
-        response.sendRedirect("BookingRequest.jsp");
+        int id = Integer.parseInt(request.getParameter("id"));
+        pitchDAO d = new pitchDAO();
+        Pitch p = d.getPitchById(id);
+        request.setAttribute("p", p);
+        request.getRequestDispatcher("pitchInfo.jsp").forward(request, response);
     } 
 
     /** 

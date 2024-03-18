@@ -22,50 +22,49 @@
                 shoeSizeField.style.display = "none";
                 shirtGloveSizeField.style.display = "none";
 
-                if (stuffType === "Ball") {
+                if (stuffType === "Bóng") {
                     sizeField.style.display = "block";
-                } else if (stuffType === "Shoes") {
+                } else if (stuffType === "Giày") {
                     shoeSizeField.style.display = "block";
-                } else if (stuffType === "Shirt" || stuffType === "Glove") {
+                } else if (stuffType === "Áo Pitch" || stuffType === "Găng") {
                     shirtGloveSizeField.style.display = "block";
                 }
+                
+                sizeField.disabled = !(stuffType === "Bóng");
+                shoeSizeField.disabled = !(stuffType === "Giày");
+                shirtGloveSizeField.disabled = !(stuffType === "Áo Pitch" || stuffType === "Găng");
             }
         </script>
     </head>
     <body>
         <div class="container">
             <h1>Add Stuff</h1>
-            <form action="" method="POST" >
-                <div class="form-group">
-                    <label for="stuffId">Stuff ID:</label>
-                    <input type="text" id="stuffId" name="stuffId" required>
-                </div>
+            <form action="addStuff" method="get" >
                 <div class="form-group">
                     <label for="stuffName">Stuff Name:</label>
                     <input type="text" id="stuffName" name="stuffName" required>
                 </div>
                 <div class="form-group">
                     <label for="stuffType">Stuff Type:</label>
-                    <select id="stuffType" name="stuffType" onchange="changeSizeField()" required>
+                    <select id="stuffType" name="type" onchange="changeSizeField()" required>
                         <option value="">Select Stuff Type</option>
-                        <option value="Ball">Ball</option>
-                        <option value="Shoes">Shoes</option>
-                        <option value="Shirt">Shirt</option>
-                        <option value="Glove">Glove</option>
+                        <option value="Bóng">Bóng</option>
+                        <option value="Giày">Giày</option>
+                        <option value="Áo Pitch">Áo Pitch</option>
+                        <option value="Găng">Găng</option>
                     </select>
                 </div>
                 <div class="form-group" id="sizeField" style="display: none;">
-                    <label for="size">Size:</label>
+                    <label for="size">Size:</label> 
                     <select id="size" name="size">
                         <option value="">Select Size</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
                     </select>
                 </div>
                 <div class="form-group" id="shoeSizeField" style="display: none;">
                     <label for="shoeSize">Size:</label>
-                    <input type="number" id="shoeSize" name="shoeSize" min="35" max="44" required>
+                    <input type="number" id="shoeSize" name="shoeSize" min="38" max="44" required>
                 </div>
                 <div class="form-group" id="shirtGloveSizeField" style="display: none;">
                     <label for="shirtGloveSize">Size:</label>
@@ -73,8 +72,8 @@
                         <option value="">Select Size</option>
                         <option value="S">S</option>
                         <option value="M">M</option>
+                        <option value="L">L</option>
                         <option value="XL">XL</option>
-                        <option value="XXL">XXL</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -87,7 +86,7 @@
                 </div>
                 <div class="form-group">
                     <label for="image">Image:</label>
-                    <input type="file" id="image" name="image" accept="image/*" required>
+                    <input type="text" id="image" name="image">
                 </div>
                 <div class="button-group">
                     <input type="submit" value="Save">

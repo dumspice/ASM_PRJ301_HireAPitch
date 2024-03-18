@@ -21,6 +21,8 @@
             }
         </script>
     </head>
+    <c:if test="${sessionScope.user.role != 'Admin'}"> Access Denied </c:if>
+    <c:if test="${sessionScope.user.role == 'Admin'}">
     <body>
         <%@ include file="AdminMenu.jsp" %>
         <%
@@ -69,4 +71,5 @@
             </table>
         </div>
     </body>
+    </c:if>
 </html>

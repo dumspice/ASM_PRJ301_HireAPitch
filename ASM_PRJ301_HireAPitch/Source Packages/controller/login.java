@@ -66,11 +66,11 @@ public class login extends HttpServlet {
         if (u != null) {
             HttpSession session = req.getSession();
             session.setAttribute("user", u);
-            if (u.getRoleId() == 1) {
+            if (u.getRole().equals("Admin")) {
                 resp.sendRedirect("AdminHome.jsp");
             }
-            else if (u.getRoleId() == 2) {
-                resp.sendRedirect("confirm");
+            else if (u.getRole().equals("Staff")) {
+                resp.sendRedirect("BookingServlet");
             }
             else {
                 resp.sendRedirect("pitchcontroller");
