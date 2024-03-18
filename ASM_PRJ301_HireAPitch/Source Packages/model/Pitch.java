@@ -16,30 +16,31 @@ public class Pitch {
     private String address;
     private int price;
     private String image;
-    private PitchType pitchType;
-    private int addressId;
+    private String type;
+    private String region;
 
     public Pitch() {
     }
 
-    public Pitch(int pitchId, String pitchName, String address, int price, String image, PitchType pitchType, int addressId) {
+    public Pitch(int pitchId, String pitchName, String address, int price, String image, String type, String region) {
         this.pitchId = pitchId;
         this.pitchName = pitchName;
         this.address = address;
         this.price = price;
         this.image = image;
-        this.pitchType = pitchType;
-        this.addressId = addressId;
+        this.type = type;
+        this.region = region;
     }
 
-    public Pitch(String pitchName, String address, int price, String image, PitchType pitchType, int addressId) {
+    public Pitch(String pitchName, String address, int price, String image, String type, String region) {
         this.pitchName = pitchName;
         this.address = address;
         this.price = price;
         this.image = image;
-        this.pitchType = pitchType;
-        this.addressId = addressId;
+        this.type = type;
+        this.region = region;
     }
+    
 
     public int getPitchId() {
         return pitchId;
@@ -81,29 +82,21 @@ public class Pitch {
         this.image = image;
     }
 
-    public PitchType getPitchType() {
-        return pitchType;
+    public String getType() {
+        return type;
     }
 
-    public void setPitchType(PitchType pitchType) {
-        this.pitchType = pitchType;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public int getAddressId() {
-        return addressId;
+    public String getRegion() {
+        return region;
     }
 
-    public void setAddressId(int addressId) {
-        this.addressId = addressId;
+    public void setRegion(String region) {
+        this.region = region;
     }
 
-    @Override
-    public String toString() {
-        return "Pitch{" + "pitchId=" + pitchId + ", pitchName=" + pitchName + ", address=" + address + ", price=" + price + ", image=" + image + ", pitchType=" + pitchType + ", addressId=" + addressId + '}';
-    }
-
-    public String getRegion(int id) {
-        pitchDAO pDao = new pitchDAO();
-        return pDao.getRegionById(id);
-    }
+    
 }

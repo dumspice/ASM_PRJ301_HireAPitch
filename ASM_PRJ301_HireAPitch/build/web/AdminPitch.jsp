@@ -43,8 +43,8 @@
             }
         </script>
     </head>
-    <c:if test="${sessionScope.user.roleId != 1}"> Access Denied </c:if>
-    <c:if test="${sessionScope.user.roleId == 1}">
+    <c:if test="${sessionScope.user.role != 'Admin'}"> Access Denied </c:if>
+    <c:if test="${sessionScope.user.role == 'Admin'}">
     <body>
         <%@ include file="AdminMenu.jsp" %>
         <div class="container">
@@ -109,8 +109,8 @@
                         <td>${p.address}</td>
                         <td><fmt:formatNumber value="${p.price}" pattern="###,###" /></td>
                         <td><img src="${p.image}" alt="Pitch Image"></td>
-                        <td>${p.pitchType.type}</td>
-                        <td>${p.getRegion(p.addressId)}</td>
+                        <td>${p.type}</td>
+                        <td>${p.region}</td>
                         <td>
                             <a href="editPitch?id=${p.pitchId}"><i class="fas fa-pen"></i></a> |
                             <a href="#" onclick="doDelete('${p.pitchId}')"/><i class="fas fa-trash"></i></a>

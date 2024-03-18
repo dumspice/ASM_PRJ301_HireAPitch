@@ -32,8 +32,8 @@ public class pitchDAO extends DBContext {
                 p.setAddress(rs.getString(3));
                 p.setPrice(rs.getInt(4));
                 p.setImage(rs.getString(5));
-                p.setPitchType(getPitchTypeById(rs.getInt(6)));
-                p.setAddressId(rs.getInt(7));
+                p.setType(rs.getString(6));
+                p.setRegion(rs.getString(7));
                 list.add(p);
             }
             rs.close();
@@ -58,14 +58,14 @@ public class pitchDAO extends DBContext {
     
     public void update(Pitch pitch) {
         try {
-            String sql = "UPDATE Pitch SET Pitch_name = ?, [Address] = ?, Price = ?, [Image] = ?, [Type_id_Pitch] = ?, Address_id = ? WHERE Pitch_id = ?";
+            String sql = "UPDATE Pitch SET Pitch_name = ?, [Address] = ?, Price = ?, [Image] = ?, [Type] = ?, Region = ? WHERE Pitch_id = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, pitch.getPitchName());
             statement.setString(2, pitch.getAddress());
             statement.setInt(3, pitch.getPrice());
             statement.setString(4, pitch.getImage());
-            statement.setInt(5, pitch.getPitchType().getId());
-            statement.setInt(6, pitch.getAddressId());
+            statement.setString(5, pitch.getType());
+            statement.setString(6, pitch.getRegion());
             statement.setInt(7, pitch.getPitchId());
 
             statement.executeUpdate();
@@ -77,14 +77,14 @@ public class pitchDAO extends DBContext {
     
     public void insert(Pitch pitch) {
         try {
-            String sql = "INSERT Pitch(Pitch_name, [Address], Price, [Image], [Type_id_Pitch], Address_id) VALUES (?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT Pitch(Pitch_name, [Address], Price, [Image], [Type], Region) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, pitch.getPitchName());
             statement.setString(2, pitch.getAddress());
             statement.setInt(3, pitch.getPrice());
             statement.setString(4, pitch.getImage());
-            statement.setInt(5, pitch.getPitchType().getId());
-            statement.setInt(6, pitch.getAddressId());
+            statement.setString(5, pitch.getType());
+            statement.setString(6, pitch.getRegion());
             
             statement.executeUpdate();
             
@@ -94,14 +94,14 @@ public class pitchDAO extends DBContext {
         }
     }
     
-    public ArrayList<Pitch> choosePitch(int typeId, int addressId) {
+    public ArrayList<Pitch> choosePitch(String type, String region) {
         ArrayList<Pitch> list = new ArrayList<>();
         UserDAO uDao = new UserDAO();
         try {
-            String sql = "SELECT * FROM Pitch WHERE [Type_id_Pitch] = ? AND Address_id = ?";
+            String sql = "SELECT * FROM Pitch WHERE [Type] = ? AND Region = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, typeId);
-            ps.setInt(2, addressId);
+            ps.setString(1, type);
+            ps.setString(2, region);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Pitch p = new Pitch();
@@ -110,8 +110,8 @@ public class pitchDAO extends DBContext {
                 p.setAddress(rs.getString(3));
                 p.setPrice(rs.getInt(4));
                 p.setImage(rs.getString(5));
-                p.setPitchType(getPitchTypeById(rs.getInt(6)));
-                p.setAddressId(rs.getInt(7));
+                p.setType(rs.getString(6));
+                p.setRegion(rs.getString(7));
                 list.add(p);
             }
             rs.close();
@@ -122,23 +122,6 @@ public class pitchDAO extends DBContext {
         return list;
     }
 
-    public String getRegionById(int id) {
-        try {
-            String sql = "SELECT Address_name FROM [Address] WHERE Address_id = ?";
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                return rs.getString(1);
-            }
-            rs.close();
-            ps.close();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        return null;
-        
-    }
     
     public Pitch getPitchById(int id) {
         ArrayList<Pitch> list = new ArrayList<>();
@@ -155,8 +138,8 @@ public class pitchDAO extends DBContext {
                 p.setAddress(rs.getString(3));
                 p.setPrice(rs.getInt(4));
                 p.setImage(rs.getString(5));
-                p.setPitchType(getPitchTypeById(rs.getInt(6)));
-                p.setAddressId(rs.getInt(7));
+                p.setType(rs.getString(6));
+                p.setRegion(rs.getString(7));
                 return p;
             }
             rs.close();
@@ -181,8 +164,8 @@ public class pitchDAO extends DBContext {
                 p.setAddress(rs.getString(3));
                 p.setPrice(rs.getInt(4));
                 p.setImage(rs.getString(5));
-                p.setPitchType(getPitchTypeById(rs.getInt(6)));
-                p.setAddressId(rs.getInt(7));
+                p.setType(rs.getString(6));
+                p.setRegion(rs.getString(7));
                 list.add(p);
             }
             rs.close();
@@ -193,22 +176,6 @@ public class pitchDAO extends DBContext {
         return list;
     }
 
-    public PitchType getPitchTypeById(int id) {
-        String sql = "select * from Type_Pitch where Type_id_Pitch = ?";
-        try {
-            PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1, id);
-            ResultSet rs = st.executeQuery();
-            if (rs.next()) {
-                PitchType t = new PitchType(rs.getInt(1),
-                        rs.getString(2));
-                return t;
-            }
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-        return null;
-    }
     
     public ArrayList<Pitch> getLastestPitch() {
         ArrayList<Pitch> list = new ArrayList<>();
@@ -224,8 +191,8 @@ public class pitchDAO extends DBContext {
                 p.setAddress(rs.getString(3));
                 p.setPrice(rs.getInt(4));
                 p.setImage(rs.getString(5));
-                p.setPitchType(getPitchTypeById(rs.getInt(6)));
-                p.setAddressId(rs.getInt(7));
+                p.setType(rs.getString(6));
+                p.setRegion(rs.getString(7));
                 list.add(p);
             }
             rs.close();

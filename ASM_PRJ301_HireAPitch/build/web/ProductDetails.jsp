@@ -18,7 +18,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="asset/stylesheet/reset.css"/>
-        <link rel="stylesheet" type="text/css" href="asset/stylesheet/ProductDetails.css"/>
+        <link rel="stylesheet" type="text/css" href="asset/stylesheet/ProductDetailsStyle.css"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <title></title>
@@ -156,69 +156,44 @@
                                     <h3 class="calendar-title fb-bold">Lịch đặt sân</h3>
                                 </div>
                                 <div class="book-calendar">
-                                
-                                    <form class="book-calendar__form" action="BookingServlet" method="postx">
+                                    <form class="book-calendar__form" action="BookingServlet" method="post">
                                         <input type="hidden" id="pitchId" name="pitchId" value="<%= pitchId %>">
                                         <input type="hidden" id="userId" name="userId" value="${sessionScope.user.getId()}">
-                                        <input style="width: 17%; align-self: end;" type="date" id="datePicker" min="<%= yyyy + '-' + mm + '-' + dd %>" value="<%= yyyy + '-' + mm + '-' + dd %>" required>
-                                        <div class="table-price">
-                                            <div class="table">
-                                                <div class="row">
-                                                    <div class="set-yard am">
-                                                        <div class="frame-price">
-                                                            <button class="slot-btn" disabled type="button" value="05:00-06:30">05:00 - 06:30</button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="set-yard am">
-                                                        <div class="frame-price">
-                                                            <button class="slot-btn" type="button" value="06:30-08:00">06:30 - 08:00</button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="set-yard am">
-                                                        <div class="frame-price">
-                                                            <button class="slot-btn" type="button" value="08:00-09:30">08:00 - 09:30</button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="set-yard am">
-                                                        <div class="frame-price">
-                                                            <button class="slot-btn" type="button" value="09:30-11:00">09:30 - 11:00</button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="set-yard am">
-                                                        <div class="frame-price">
-                                                            <button class="slot-btn" type="button" value="11:00-12:30">11:00 - 12:30</button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="set-yard pm">
-                                                        <div class="frame-price">
-                                                            <button class="slot-btn" type="button" value="14:00-15:30">14:00 - 15:30</button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="set-yard pm">
-                                                        <div class="frame-price">
-                                                            <button class="slot-btn" type="button" value="15:30-17:00">15:30 - 17:00</button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="set-yard pm">
-                                                        <div class="frame-price">
-                                                            <button class="slot-btn" type="button" value="17:00-18:30">17:00 - 18:30</button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="set-yard pm">
-                                                        <div class="frame-price"> 
-                                                            <button class="slot-btn" type="button" value="18:30-20:00">18:30 - 20:00</button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="set-yard pm">
-                                                        <div class="frame-price">
-                                                            <button class="slot-btn" type="button" value="20:00-21:30">20:00 - 21:30</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <input style="width: 17%; align-self: end;" type="date" name="datePicker" id="datePicker" min="<%= yyyy + '-' + mm + '-' + dd %>" value="<%= yyyy + '-' + mm + '-' + dd %>" required>
+
+                                        <label for="startTime">Start Time:</label>
+                                        <select id="startTimeHour" name="startTimeHour" required>
+                                            <option value="">Hour</option>
+                                            <% for (int hour = 0; hour < 24; hour++) { %>
+                                            <option value="<%= String.format("%02d", hour) %>"><%= String.format("%02d", hour) %></option>
+                                            <% } %>
+                                        </select>
+                                        <select id="startTimeMinute" name="startTimeMinute" required>
+                                            <option value="">Minute</option>
+                                            <!-- Add options for minutes, adjust as needed -->
+                                            <% for (int minute = 0; minute < 60; minute += 15) { %>
+                                            <option value="<%= String.format("%02d", minute) %>"><%= String.format("%02d", minute) %></option>
+                                            <% } %>
+                                        </select>
+                                        <br>
+
+                                        <label for="endTime">End Time:</label>
+                                        <select id="endTimeHour" name="endTimeHour" required>
+                                            <option value="">Hour</option>
+                                            <% for (int hour = 0; hour < 24; hour++) { %>
+                                            <option value="<%= String.format("%02d", hour) %>"><%= String.format("%02d", hour) %></option>
+                                            <% } %>
+                                        </select>
+                                        <select id="endTimeMinute" name="endTimeMinute" required>
+                                            <option value="">Minute</option>
+                                            <% for (int minute = 0; minute < 60; minute += 15) { %>
+                                            <option value="<%= String.format("%02d", minute) %>"><%= String.format("%02d", minute) %></option>
+                                            <% } %>
+                                        </select>
+                                        <br>
                                         <button type="submit" class="btn btn-success hire-btn" style="font-size: 20px; border-radius: 10px;">Đặt sân</button>
                                     </form>
+                                            <span style="color: #2a952e">${noti}<span>
                                 </div>
                             </div>
                         </div>
@@ -289,12 +264,12 @@
                                                     <!--Product Size-->
                                                     <div class="product-card__info d-flex justify-content-between">
                                                         <h6 class="mb-3 fw-bold">Kích thước sân:</h6>
-                                                        <span class="fs-6 fw-normal"><%=lp.getPitchType().getType()%></span>
+                                                        <span class="fs-6 fw-normal"><%=lp.getType()%></span>
                                                     </div>
                                                     <!--Product Price-->
                                                     <div class="product-card__info d-flex justify-content-between">
                                                         <h6 class="mb-3 fw-bold">Tiền thuê:</h6>
-                                                        <span class="fs-6 fw-normal"><%=lp.getPrice()%></span> 
+                                                        <span class="fs-6 fw-normal"><fmt:formatNumber value="<%=lp.getPrice()%>" pattern="###,###"/></span> 
                                                     </div>
                                                 </div>
                                             </div>
@@ -311,7 +286,8 @@
                 </div>
             </div>
         </div>
-       
         <%@include file="footer.jsp" %>
+        
+        </script>
     </body>
 </html>

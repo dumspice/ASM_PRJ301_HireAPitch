@@ -62,13 +62,13 @@ public class addPitch extends HttpServlet {
             // Extract form data
             String name = request.getParameter("name");
             String address = request.getParameter("address");
-            int province = Integer.parseInt(request.getParameter("province"));
-            int type = Integer.parseInt(request.getParameter("type"));
+            String region = request.getParameter("province"); 
+            String type = request.getParameter("type");
             int price = Integer.parseInt(request.getParameter("price"));
             String img = request.getParameter("image");
             
             PitchType pt = new PitchType();
-            Pitch pitch = new Pitch(name, address, price, img, pt.getPitchType(type), province);
+            Pitch pitch = new Pitch(name, address, price, img, type, region);
             
             pitchDAO pitchDAO = new pitchDAO();
             pitchDAO.insert(pitch);

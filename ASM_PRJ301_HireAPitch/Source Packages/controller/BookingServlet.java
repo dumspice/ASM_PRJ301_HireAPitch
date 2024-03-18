@@ -5,6 +5,7 @@
 
 package controller;
 
+import dal.BookingDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,9 +13,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.LinkedList;
-import java.util.Queue;
-import model.BookingRequest;
+import java.util.ArrayList;
+import java.util.List;
+import model.Booking;
 
 /**
  *
@@ -56,12 +57,13 @@ public class BookingServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     
-    private static Queue<BookingRequest> bookingQueue = new LinkedList<>();
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-       
+        BookingDAO bDAO = new BookingDAO();
+        ArrayList<Booking> bList = bDAO.getAllBooking();
+        request.setAttribute("bList", bList);
+        request.getRequestDispatcher("Booking.jsp").forward(request, response);
     } 
 
     /** 
@@ -74,18 +76,28 @@ public class BookingServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        // Retrieve the selected time slot from the request
-        String selectedSlot = request.getParameter("selectedSlot");
+        String pitchId = request.getParameter("pitchId");
+        String userId = request.getParameter("userId");
+        String datePicker = request.getParameter("datePicker");
+        String startTimeHour = request.getParameter("startTimeHour");
+        String startTimeMinute = request.getParameter("startTimeMinute");
+        String endTimeHour = request.getParameter("endTimeHour");
+        String endTimeMinute = request.getParameter("endTimeMinute");
 
-        // Process the selected time slot (You can add your logic here)
-        // For demonstration purposes, let's just print it
-        System.out.println("Selected Time Slot: " + selectedSlot);
+        String startTime = startTimeHour + ":" + startTimeMinute;
+        String endTime = endTimeHour + ":" + endTimeMinute;
+        
+        Booking booking = new Booking(0, datePicker, startTime, endTime, Integer.parseInt(userId), Integer.parseInt(pitchId));
 
-        // Send the disabled slot as a response
-        response.setContentType("text/plain");
-        PrintWriter out = response.getWriter();
-        out.write(selectedSlot); // Send the selected slot as a disabled slot
+        BookingDAO bDAO = new BookingDAO();
+
+        // Insert the booking into the database
+        bDAO.insert(booking);  
+        request.setAttribute("noti", "Đặt sân thành công!");
+        request.getRequestDispatcher("ProductDetails.jsp").forward(request, response);
     }
+
+
 
     /** 
      * Returns a short description of the servlet.

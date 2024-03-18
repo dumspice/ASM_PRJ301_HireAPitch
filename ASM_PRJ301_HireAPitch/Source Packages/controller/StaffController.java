@@ -59,7 +59,7 @@ public class StaffController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         UserDAO uDao = new UserDAO();
-        ArrayList<User> list = uDao.getAllUserByRoleId(2);
+        ArrayList<User> list = uDao.getAllUserByRole("Staff");
         request.setAttribute("sList", list);
         request.getRequestDispatcher("AdminStaff.jsp").forward(request, response);
     } 

@@ -55,20 +55,15 @@ public class selectPitch extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        String t = req.getParameter("pitch-type");
-        String a = req.getParameter("pitch-location");
-        try {
-            int type = Integer.parseInt(t);
-            int address = Integer.parseInt(a);
-            pitchDAO pDAO = new pitchDAO();
-            ArrayList<Pitch> listPitch = pDAO.choosePitch(type, address);
-            req.setAttribute("ListPitch", listPitch);
-            req.setAttribute("type", type);
-            req.setAttribute("address", address);
-            req.getRequestDispatcher("mainPage.jsp").forward(req, resp);
-        } catch (NumberFormatException e) {
-            System.out.println(e);
-        }
+        String type = req.getParameter("pitch-type");
+        String region = req.getParameter("pitch-location");
+        pitchDAO pDAO = new pitchDAO();
+        ArrayList<Pitch> listPitch = pDAO.choosePitch(type, region);
+        req.setAttribute("ListPitch", listPitch);
+        req.setAttribute("type", type);
+        req.setAttribute("address", region);
+        req.getRequestDispatcher("mainPage.jsp").forward(req, resp);
+        
     }
 
     /**

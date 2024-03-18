@@ -31,7 +31,7 @@ public class UserDAO extends DBContext{
                 u.setPhone_number(rs.getString(5));
                 u.setEmail(rs.getString(6));
                 u.setAvatar(rs.getString(7));
-                u.setRoleId(rs.getInt(8));
+                u.setRole(rs.getString(8));
                 list.add(u);
             }
             rs.close();
@@ -42,12 +42,12 @@ public class UserDAO extends DBContext{
         return list;
     }
     
-    public ArrayList<User> getAllUserByRoleId(int id){
+    public ArrayList<User> getAllUserByRole(String role){
         ArrayList<User> list = new ArrayList<>();
         try {
-            String sql="select * from [User] where Role_id = ?";
+            String sql="select * from [User] where [Role] = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, id);
+            ps.setString(1, role);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 User u = new User();
@@ -58,7 +58,7 @@ public class UserDAO extends DBContext{
                 u.setPhone_number(rs.getString(5));
                 u.setEmail(rs.getString(6));
                 u.setAvatar(rs.getString(7));
-                u.setRoleId(rs.getInt(8));
+                u.setRole(rs.getString(8));
                 list.add(u);
             }
             rs.close();
@@ -109,7 +109,7 @@ public class UserDAO extends DBContext{
     public ArrayList<User> getAllStaffs(){
         ArrayList<User> list = new ArrayList<>();
         try {
-            String sql="select * from [User] where Role_id = 2";
+            String sql="select * from [User] where [Role] = ?";
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()){
@@ -121,7 +121,7 @@ public class UserDAO extends DBContext{
                 u.setPhone_number(rs.getString(5));
                 u.setEmail(rs.getString(6));
                 u.setAvatar(rs.getString(7));
-                u.setRoleId(rs.getInt(8));
+                u.setRole(rs.getString(8));
                 list.add(u);
             }
             rs.close();
@@ -148,7 +148,7 @@ public class UserDAO extends DBContext{
                 u.setPhone_number(rs.getString(5));
                 u.setEmail(rs.getString(6));
                 u.setAvatar(rs.getString(7));
-                u.setRoleId(rs.getInt(8));
+                u.setRole(rs.getString(8));
                 return u;
             }
         } catch (Exception e) {
@@ -171,7 +171,7 @@ public class UserDAO extends DBContext{
                         rs.getString(5),
                         rs.getString(6),
                         rs.getString(7),
-                        rs.getInt(8));
+                        rs.getString(8));
                 return u;
             }
         } catch (SQLException e) {
@@ -212,10 +212,10 @@ public class UserDAO extends DBContext{
         return false; 
     }
     
-    public void insert(String username, String password, String displayName, String phoneNumber, String email, String avatar, int roleId) {
+    public void insert(String username, String password, String displayName, String phoneNumber, String email, String avatar, String role) {
         try {
             // Prepare SQL statement with parameters
-            String sql = "INSERT INTO [User](Username, [Password], Display_name, Phone_number, Email, Avatar, Role_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO [User](Username, [Password], Display_name, Phone_number, Email, Avatar, [Role]) VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement st = connection.prepareStatement(sql);
             // Set values for parameters
             st.setString(1, username);
@@ -224,7 +224,7 @@ public class UserDAO extends DBContext{
             st.setString(4, phoneNumber);
             st.setString(5, email);
             st.setString(6, avatar);
-            st.setInt(7, roleId);
+            st.setString(7, role);
             
             // Execute the statement
             st.executeUpdate();

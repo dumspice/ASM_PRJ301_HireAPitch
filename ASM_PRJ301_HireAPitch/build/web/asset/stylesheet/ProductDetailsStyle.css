@@ -228,6 +228,7 @@ body{
 }
 
 
+
 /*============== Lastest pitch ================*/
 .lastest-pitch__heading .title{
     font-size: 1.5rem;
@@ -235,6 +236,16 @@ body{
     border-left: 3px solid #ffd88a;
     margin: 0 0 10px;
     padding: 0 0 0 15px;
+}
+
+input[type="radio"].slot-btn + label {
+    display: inline-block;
+    padding: 15px 30px; /* Increase padding for larger size */
+    background-color: #f0f0f0;
+    border: 2px solid #ccc; /* Increase border width for better visibility */
+    border-radius: 10px; /* Increase border radius for rounded corners */
+    cursor: pointer;
+    font-size: 16px; /* Increase font size for larger text */
 }
 
 
