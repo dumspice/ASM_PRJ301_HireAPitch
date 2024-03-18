@@ -116,7 +116,7 @@ public class addCustomer extends HttpServlet {
                 && request.getAttribute("usernameEmpty") == null
                 && request.getAttribute("phoneEmpty") == null
                 && request.getAttribute("nameEmpty") == null) {
-            uDao.insert(username, password, displayName, phoneNumber, email, avatar, 3);
+            uDao.insert(username, password, displayName, phoneNumber, email, avatar, "Customer");
             response.sendRedirect("CustomerController");
         } else {
             request.getRequestDispatcher("addcustomer.jsp").forward(request, response);

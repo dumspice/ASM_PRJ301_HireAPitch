@@ -114,7 +114,7 @@ public class addStaff extends HttpServlet {
                 && request.getAttribute("usernameEmpty") == null
                 && request.getAttribute("phoneEmpty") == null
                 && request.getAttribute("nameEmpty") == null) {
-            uDao.insert(username, password, displayName, phoneNumber, email, avatar, 2);
+            uDao.insert(username, password, displayName, phoneNumber, email, avatar, "Staff");
             response.sendRedirect("StaffController");
         } else {
             request.getRequestDispatcher("addstaff.jsp").forward(request, response);

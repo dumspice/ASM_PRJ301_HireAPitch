@@ -16,12 +16,12 @@ public class User {
     private String phone_number;
     private String email;
     private String avatar;
-    private int roleId;
+    private String role;
 
     public User() {
     }
 
-    public User(int id, String username, String password, String display_name, String phone_number, String email, String avatar, int roleId) {
+    public User(int id, String username, String password, String display_name, String phone_number, String email, String avatar, String role) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -29,7 +29,7 @@ public class User {
         this.phone_number = phone_number;
         this.email = email;
         this.avatar = avatar;
-        this.roleId = roleId;
+        this.role = role;
     }
 
     public int getId() {
@@ -88,17 +88,17 @@ public class User {
         this.avatar = avatar;
     }
 
-    public int getRoleId() {
-        return roleId;
+    public String getRole() {
+        return role;
     }
 
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", username=" + username + ", password=" + password + ", display_name=" + display_name + ", phone_number=" + phone_number + ", email=" + email + ", avatar=" + avatar + ", roleId=" + roleId + '}';
+        return "User{" + "id=" + id + ", username=" + username + ", password=" + password + ", display_name=" + display_name + ", phone_number=" + phone_number + ", email=" + email + ", avatar=" + avatar + ", roleId=" + role + '}';
     }
     
     

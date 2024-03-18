@@ -85,14 +85,13 @@ public class editPitch extends HttpServlet {
             int pitchId = Integer.parseInt(request.getParameter("id"));
             String name = request.getParameter("name");
             String address = request.getParameter("address");
-            int addressId = Integer.parseInt(request.getParameter("province")); 
-            int type = Integer.parseInt(request.getParameter("type"));
+            String region = request.getParameter("province"); 
+            String type = request.getParameter("type");
             int price = Integer.parseInt(request.getParameter("price"));
-            
             String image = request.getParameter("image"); 
 
             PitchType pt = new PitchType();
-            Pitch pitch = new Pitch(pitchId,name, address, price, image, pt.getPitchType(type), addressId);
+            Pitch pitch = new Pitch(pitchId,name, address, price, image, type, region);
 
             pitchDAO pDao = new pitchDAO();
             pDao.update(pitch);

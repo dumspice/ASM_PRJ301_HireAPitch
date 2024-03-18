@@ -59,7 +59,7 @@ public class CustomerController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         UserDAO uDao = new UserDAO();
-        ArrayList<User> list = uDao.getAllUserByRoleId(3);
+        ArrayList<User> list = uDao.getAllUserByRole("Customer");
         request.setAttribute("cList", list);
         request.getRequestDispatcher("AdminCustomer.jsp").forward(request, response);
     } 

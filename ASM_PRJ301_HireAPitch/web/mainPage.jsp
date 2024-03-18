@@ -36,15 +36,15 @@
                                 <form action="selectPitch" method="get">
                                     <label for="location">Địa điểm</label>
                                     <select name="pitch-location" class="banner__filter--location" id="location">
-                                        <option value="1" ${requestScope.address == '1' ? 'selected' : ''}>Hà Nội</option>
-                                        <option value="2" ${requestScope.address == '2' ? 'selected' : ''}>Tp Hồ Chí Minh</option>
-                                        <option value="3" ${requestScope.address == '3' ? 'selected' : ''}>Đà Nẵng</option>
+                                        <option value="Hà Nội" ${requestScope.address == 'Hà Nội' ? 'selected' : ''}>Hà Nội</option>
+                                        <option value="Hồ Chí Minh" ${requestScope.address == 'Hồ Chí Minh' ? 'selected' : ''}>Tp Hồ Chí Minh</option>
+                                        <option value="Đà Nẵng" ${requestScope.address == 'Đà Nẵng' ? 'selected' : ''}>Đà Nẵng</option>
                                     </select>
                                     <label for="type">Kích thước sân</label>
                                     <select name="pitch-type" class="banner__filter--type" id="type">
-                                        <option value="1" ${requestScope.type == '1' ? 'selected' : ''}>Sân 5</option>
-                                        <option value="2" ${requestScope.type == '2' ? 'selected' : ''}>Sân 7</option>
-                                        <option value="3" ${requestScope.type == '3' ? 'selected' : ''}>Sân 11</option>
+                                        <option value="Sân 5" ${requestScope.type == 'Sân 5' ? 'selected' : ''}>Sân 5</option>
+                                        <option value="Sân 7" ${requestScope.type == 'Sân 7' ? 'selected' : ''}>Sân 7</option>
+                                        <option value="Sân 11" ${requestScope.type == 'Sân 11' ? 'selected' : ''}>Sân 11</option>
                                     </select>
                                     <input type="submit" value="Tìm sân">
                                 </form>
@@ -86,7 +86,7 @@
                                                 <!--Product name-->
                                                 <h5 class="mb-3 fw-bold"><span>${p.pitchName}</span></h5>
                                                 <!--Product Size-->
-                                                <h5 class="mb-3">Loại sân: <span>${p.pitchType.type}</span></h5>
+                                                <h5 class="mb-3">Loại sân: <span>${p.type}</span></h5>
                                                 <!--Product Price-->
 
                                                 <h5 class="mb-3">Giá thuê: <span><fmt:formatNumber value="${p.price}" pattern="###,###" /></span> </h5>

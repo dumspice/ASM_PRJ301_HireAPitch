@@ -27,17 +27,17 @@
             <div class="form-group">
                 <label for="province">Province:</label>
                 <select id="province" name="province" required>
-                    <option value="1">Hà Nội</option>
-                    <option value="2">Hồ Chí Minh</option>
-                    <option value="3">Đà Nẵng</option>
+                    <option value="Hà Nội">Hà Nội</option>
+                    <option value="Hồ Chí Minh">Hồ Chí Minh</option>
+                    <option value="Đà Nẵng">Đà Nẵng</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="type">Type:</label>
                 <select id="type" name="type" required>
-                    <option value="1">Sân 5</option>
-                    <option value="2">Sân 7</option>
-                    <option value="3">Sân 11</option>
+                    <option value="Sân 5">Sân 5</option>
+                    <option value="Sân 7">Sân 7</option>
+                    <option value="Sân 11">Sân 11</option>
                 </select>
             </div>
             <div class="form-group">

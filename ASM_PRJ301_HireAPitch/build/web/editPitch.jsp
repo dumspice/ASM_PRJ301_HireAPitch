@@ -27,17 +27,17 @@
                 <div class="form-group">
                     <label for="province">Province:</label>
                     <select id="province" name="province" required>
-                        <option value="1" ${p.addressId == 1 ? "selected" : ""}>Hà Nội</option>
-                        <option value="2" ${p.addressId == 2 ? "selected" : ""}>Hồ Chí Minh</option>
-                        <option value="3" ${p.addressId == 3 ? "selected" : ""}>Đà Nẵng</option>
+                        <option value="Hà Nội" ${p.region == 'Hà Nội' ? "selected" : ""}>Hà Nội</option>
+                        <option value="Hồ Chí Minh" ${p.region == 'Hồ Chí Minh' ? "selected" : ""}>Hồ Chí Minh</option>
+                        <option value="Đà Nẵng" ${p.region == 'Đà Nẵng' ? "selected" : ""}>Đà Nẵng</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="type">Type:</label>
                     <select id="type" name="type" required>
-                        <option value="1" ${p.pitchType.id == 1 ? "selected" : ""}>Sân 5</option>
-                        <option value="2" ${p.pitchType.id == 2 ? "selected" : ""}>Sân 7</option>
-                        <option value="3" ${p.pitchType.id == 3 ? "selected" : ""}>Sân 11</option>
+                        <option value="Sân 5" ${p.type == 'Sân 5' ? "selected" : ""}>Sân 5</option>
+                        <option value="Sân 7" ${p.type == 'Sân 7' ? "selected" : ""}>Sân 7</option>
+                        <option value="Sân 11" ${p.type == 'Sân 11' ? "selected" : ""}>Sân 11</option>
                     </select>
                 </div>
                 <div class="form-group">
