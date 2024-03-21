@@ -14,18 +14,18 @@
     </head>
     <body>
         <div class="container">
-            <h1>Edit Pitch</h1>
+            <h1>Thay đổi thông tin sân</h1>
             <form action="editPitch?id=${p.pitchId}" method="POST">
                 <div class="form-group">
-                    <label for="name">Pitch Name:</label>
+                    <label for="name">Tên sân:</label>
                     <input type="text" id="name" name="name" value="${p.pitchName}" required>
                 </div>
                 <div class="form-group">
-                    <label for="address">Address:</label>
+                    <label for="address">Địa chỉ:</label>
                     <input type="text" id="address" name="address" value="${p.address}" required>
                 </div>
                 <div class="form-group">
-                    <label for="province">Province:</label>
+                    <label for="province">Khu vực:</label>
                     <select id="province" name="province" required>
                         <option value="Hà Nội" ${p.region == 'Hà Nội' ? "selected" : ""}>Hà Nội</option>
                         <option value="Hồ Chí Minh" ${p.region == 'Hồ Chí Minh' ? "selected" : ""}>Hồ Chí Minh</option>
@@ -33,7 +33,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="type">Type:</label>
+                    <label for="type">Loại sân:</label>
                     <select id="type" name="type" required>
                         <option value="Sân 5" ${p.type == 'Sân 5' ? "selected" : ""}>Sân 5</option>
                         <option value="Sân 7" ${p.type == 'Sân 7' ? "selected" : ""}>Sân 7</option>
@@ -41,11 +41,11 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="price">Price:</label>
+                    <label for="price">Giá:</label>
                     <input type="number" id="price" name="price" step="0" value="${p.price}" required>
                 </div>
                 <div class="form-group">
-                    <label for="image">Image:</label>
+                    <label for="image">Ảnh:</label>
                     <input type="text" id="image" name="image" value="${p.image}">
                 </div>
                 <div class="button-group">

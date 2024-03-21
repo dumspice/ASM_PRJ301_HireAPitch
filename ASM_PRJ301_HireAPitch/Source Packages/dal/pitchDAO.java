@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import model.Pitch;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import model.PitchType;
+
 
 /**
  *

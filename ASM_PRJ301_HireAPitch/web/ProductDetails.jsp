@@ -55,12 +55,6 @@
             String mm = dateParts[1];
             String dd = dateParts[2];
         %>
-        <%
-            String pitchId = request.getParameter("pitchId");
-            int id = Integer.parseInt(pitchId);
-            pitchDAO pDao = new pitchDAO();
-            Pitch p = pDao.getPitchById(id);
-        %>
         <div class="product-details">
             <!--Product info-->
             <div class="container">
@@ -68,12 +62,12 @@
                 <div class="product-top row">
 
                     <div class="product-top--info col-lg-8">
-                        <h1 class="product-top--heading"><%=p.getPitchName()%></h1>
+                        <h1 class="product-top--heading">${sessionScope.p.pitchName}</h1>
                         <div class="product-top--address">
                             <img src="asset/icon/location-dot-solid.svg" class="product-top--address__logo"/>
-                            <p class="product-top--address__info"><%=p.getAddress()%></p>
+                            <p class="product-top--address__info">${sessionScope.p.address}</p>
                         </div>
-                        <img src="<%=p.getImage()%>" class="product-info--img"/>
+                        <img src="${p.image}" class="product-info--img"/>
                     </div>
 
                     <div class="product-top--details col-lg-4">
@@ -90,7 +84,7 @@
                                 </div>
                                 <div class="product-details__info-items">     
                                     <span class="left">Giá thuê:</span>
-                                    <span class="right"><fmt:formatNumber value="<%=p.getPrice()%>" pattern="###,###" /></span>
+                                    <span class="right"><fmt:formatNumber value="${sessionScope.p.price}" pattern="###,###" /></span>
                                 </div>                                
                                 <div class="product-details__info-items">   
                                     <span class="left">Số điện thoại:</span>
@@ -132,24 +126,39 @@
                 </div>
             </div>
             <!--Product action-->
+            <c:if test="${sessionScope.user != null}">
             <div class="container">
 
                 <div class="product__action row">
 
                     <div class="accessory col-lg-3">
                         <div class="accessory-inner pt-5 bg-white rounded-8">
-                            <h4 class="accessory-heading">Thuê phụ kiện</h4>
-                            <img src="https://thumbs.dreamstime.com/b/ladder-drills-goal-soccer-ball-marker-cones-sports-shoes-bottle-water-green-artificial-turf-training-equipment-140576793.jpg"
-                                 alt="..."
-                                 class="accessory-image mt-4"
-                                 />
-                            <div>
-                                <button class="accessory-btn"><a href="<%=request.getContextPath()%>/stuffcontroller">Thuê phụ kiện ở đây <i class="fas fa-arrow-right"></i></a></button>
-                            </div>
+                            <h4 class="accessory-heading">Trạng thái đơn đặt sân</h4>
+                            <table border="1" >
+                                <thead>
+                                    <tr>
+                                        <th>Giờ bắt đầu</th>
+                                        <th>Giờ kết thúc</th>
+                                        <th>Trạng thái</th>
+                                    </tr>
+                                </thead>
+                                <c:forEach items="${BList}" var="b">
+                                <tbody>
+                                    <tr>
+                                        <td>${b.timeStart}</td>
+                                        <td>${b.timeEnd}</td>
+                                        <c:if test="${b.status}">
+                                            <td><a href="stuffcontroller?id=${b.bookingId}" style="color: #0a770f">Đặt thêm đồ</a> | <a href="CartController?id=${b.bookingId}" style="color: #2563EB">Xem giỏ hàng</a></td>
+                                        </c:if>
+                                        <c:if test="${!b.status}">
+                                        <td>Chưa được xác nhận</td>
+                                        </c:if>
+                                    </tr>
+                                </tbody>
+                                </c:forEach>
+                            </table>
                         </div>
                     </div>
-
-                    <c:if test="${sessionScope.user != null}">
                         <div class="time-table col-lg-9">
                             <div class="book-calendar h-100 bg-white pt-5 rounded-8 position-relative">
                                 <div class="header-book d-flex align-items-center justify-content-between mb-4">
@@ -157,14 +166,14 @@
                                 </div>
                                 <div class="book-calendar">
                                     <form class="book-calendar__form" action="BookingServlet" method="post">
-                                        <input type="hidden" id="pitchId" name="pitchId" value="<%= pitchId %>">
+                                        <input type="hidden" id="pitchId" name="pitchId" value="${sessionScope.p.pitchId}">
                                         <input type="hidden" id="userId" name="userId" value="${sessionScope.user.getId()}">
                                         <input style="width: 17%; align-self: end;" type="date" name="datePicker" id="datePicker" min="<%= yyyy + '-' + mm + '-' + dd %>" value="<%= yyyy + '-' + mm + '-' + dd %>" required>
 
                                         <label for="startTime">Start Time:</label>
                                         <select id="startTimeHour" name="startTimeHour" class="book-calendar__option" required>
                                             <option value="">Hour</option>
-                                            <% for (int hour = 0; hour < 24; hour++) { %>
+                                            <% for (int hour = 6; hour < 21; hour++) { %>
                                             <option value="<%= String.format("%02d", hour) %>"><%= String.format("%02d", hour) %></option>
                                             <% } %>
                                         </select>
@@ -180,7 +189,7 @@
                                         <label for="endTime">End Time:</label>
                                         <select id="endTimeHour" name="endTimeHour" class="book-calendar__option" required>
                                             <option value="">Hour</option>
-                                            <% for (int hour = 0; hour < 24; hour++) { %>
+                                            <% for (int hour = 7; hour < 23; hour++) { %>
                                             <option value="<%= String.format("%02d", hour) %>"><%= String.format("%02d", hour) %></option>
                                             <% } %>
                                         </select>
@@ -191,15 +200,15 @@
                                             <% } %>
                                         </select>
                                         <br>
-                                        <button type="submit" class="btn btn-success hire-btn" style="font-size: 20px; border-radius: 10px;">Đặt sân</button>
+                                        <button type="submit" class="btn btn-success hire-btn" style="font-size: 20px; border-radius: 10px;">Tạo yêu cầu</button>
                                     </form>
                                             <span style="color: #2a952e">${noti}</span>
                                 </div>
                             </div>
                         </div>
-                    </c:if>
                 </div>
             </div>
+            </c:if>
             <c:if test="${sessionScope.user == null}">
                 <div style="text-align: center;">
                     <p >Đăng nhập để đặt sân.</p> </br>
@@ -212,75 +221,6 @@
                     <div class="col-lg-12 col-12">
                         <div class="slider__banner-news">
                             <img src="asset/img/banner-product.png" alt=".." class="slider__image" style="display: block; margin: 20px auto; width: 100%;"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!--Last Pitch-->
-            <div class="container">     
-                <div class="row">
-                    <div class="lastest-pitch__heading col-lg-3">
-                        <div class="lastest-pitch__heading-inner pt-5">
-                            <h3 class="title">Sân mới nhất</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <%
-                    pitchDAO pDAO = new pitchDAO();
-                    ArrayList<Pitch> listlastpitch = pDAO.getLastestPitch();
-                    int id1 = Integer.parseInt(request.getParameter("pitchId"));
-                    Pitch p1 = pDAO.getPitchById(id1);
-                %>
-
-                <div class="row">
-                    <!--Product List-->
-                    <div class="product__list pt-5">
-                        <div class="container">
-                            <div class="product-items row justify-content-center">
-                                <%
-                                    for (Pitch lp : listlastpitch) {
-                                %>
-
-                                <!--Product Start-->
-                                <div class="col-lg-3 col-md-6 mb-5">
-                                    <div class="card h-100 product-card">
-                                        <a href="<%=request.getContextPath()%>/ProductDetails.jsp?pitchId=<%=lp.getPitchId()%>">
-                                            <!--Product Image-->
-                                            <img class="product-items__image card-img-top" 
-                                                 src="<%=lp.getImage()%>" 
-                                                 alt="..."
-                                                 />
-
-                                            <!--Product Details-->
-                                            <div class="card-body p4 product-card__details">
-                                                <div class="text-right">
-                                                    <!--Product name-->
-                                                    <div class="product-card__info d-flex justify-content-between">                                                
-                                                        <h6 class="mb-3 fw-bold">Tên sân:</h6>
-                                                        <span class="fs-6 fw-normal"><%=lp.getPitchName()%></span>
-                                                    </div>     
-                                                    <!--Product Size-->
-                                                    <div class="product-card__info d-flex justify-content-between">
-                                                        <h6 class="mb-3 fw-bold">Kích thước sân:</h6>
-                                                        <span class="fs-6 fw-normal"><%=lp.getType()%></span>
-                                                    </div>
-                                                    <!--Product Price-->
-                                                    <div class="product-card__info d-flex justify-content-between">
-                                                        <h6 class="mb-3 fw-bold">Tiền thuê:</h6>
-                                                        <span class="fs-6 fw-normal"><fmt:formatNumber value="<%=lp.getPrice()%>" pattern="###,###"/></span> 
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <%
-                                    }
-                                %>
-                            </div>
                         </div>
                     </div>
                 </div>

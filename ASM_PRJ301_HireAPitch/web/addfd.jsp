@@ -15,37 +15,30 @@
     </head>
     <body>
         <div class="container">
-            <h1>Add Food Item</h1>
-            <form action="savefd.jsp" method="POST" enctype="multipart/form-data">
+            <h1>Thêm đồ ăn hoặc đồ uống</h1>
+            <form action="addFDS" method="get" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label for="id">ID:</label>
-                    <input type="text" id="id" name="id" required>
-                </div>
-                <div class="form-group">
-                    <label for="name">Name:</label>
+                    <label for="name">Tên: </label>
                     <input type="text" id="name" name="name" required>
                 </div>
                 <div class="form-group">
-                    <label for="amount">Amount:</label>
+                    <label for="amount">Số lượng</label>
                     <input type="number" id="amount" name="amount" required>
                 </div>
                 <div class="form-group">
-                    <label for="price">Price:</label>
+                    <label for="price">Giá: </label>
                     <input type="number" id="price" name="price" step="0.01" required>
                 </div>
                 <div class="form-group">
-                    <label for="type">Type:</label>
+                    <label for="type">Thể loại: </label>
                     <select id="type" name="type" required>
-                        <option value="Food">Food</option>
-                        <option value="Drink">Drink</option>
-                        <option value="Dessert">Dessert</option>
-                        <option value="Fruit">Fruit</option>
-
+                        <option value="Đồ ăn">Đồ ăn</option>
+                        <option value="Đồ uống">Đồ uống</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="image">Image:</label>
-                    <input type="file" id="image" name="image" accept="image/*" required>
+                    <label for="image">Ảnh: </label>
+                    <input type="text" id="image" name="image">
                 </div>
                 <div class="button-group">
                     <input type="submit" value="Save">

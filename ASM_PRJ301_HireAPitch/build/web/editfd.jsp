@@ -14,39 +14,30 @@
     </head>
     <body>
         <div class="container">
-            <h1>Edit Food&Drinks</h1>
-            <form action="" method="POST" >
+            <h1>Thay đổi thông tin Đồ ăn & Đồ uống</h1>
+            <form action="editFDS?id=${fd.FDS_id}" method="POST" >
                 <div class="form-group">
-                    <label for="id">ID:</label>
-                    <input type="text" id="id" name="id" value="10" readonly>
+                    <label for="name">Tên:</label>
+                    <input type="text" id="name" name="name" value="${fd.FDS_name}" required>
                 </div>
                 <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" value="Apple" required>
+                    <label for="amount">Số lượng:</label>
+                    <input type="number" id="amount" name="amount" value="${fd.amount}" required>
                 </div>
                 <div class="form-group">
-                    <label for="amount">Amount:</label>
-                    <input type="number" id="amount" name="amount" value="10" required>
+                    <label for="price">Giá:</label>
+                    <input type="number" id="price" name="price" step="0.01" value="${fd.price}" required>
                 </div>
                 <div class="form-group">
-                    <label for="price">Price:</label>
-                    <input type="number" id="price" name="price" step="0.01" value="10" required>
-                </div>
-                <div class="form-group">
-                    <label for="type">Type:</label>
+                    <label for="type">Thể loại:</label>
                     <select id="type" name="type" required>
-                        <option value="Food" >Food</option>
-                        <option value="Drink" >Drink</option>
-                        <option value="Dessert" >Dessert</option>
-                        <option value="Fruit" >Fruit</option>
-                        <option value="Decor" >Decor</option>
+                        <option value="Đồ ăn" ${fd.type == 'Đồ ăn' ? 'selected' : ''} >Đồ ăn</option>
+                        <option value="Đồ uống" ${fd.type == 'Đồ uống' ? 'selected' : ''}>Đồ uống</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="avatar">Avatar:</label>
-                    <input type="file" id="avatar" name="avatar" value="customer_image.jpg"
-                           accept="image/jpeg, image/png, image/gif" >
-                    <input type="hidden" id="currentAvatar" name="currentAvatar" value="customer_image.jpg">
+                    <label for="image">Ảnh</label>
+                    <input type="text" id="image" name="image" value="${fd.image}">
                 </div>
                 <div class="button-group">
                     <input type="submit" value="Save">

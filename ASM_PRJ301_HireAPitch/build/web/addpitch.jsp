@@ -14,18 +14,18 @@
     </head>
     <body>
         <div class="container">
-        <h1>Add Pitch</h1>
+        <h1>Thêm sân</h1>
         <form action="addPitch" method="get" >
             <div class="form-group">
-                <label for="name">Pitch Name:</label>
+                <label for="name">Tên sân: </label>
                 <input type="text" id="name" name="name" required>
             </div>
             <div class="form-group">
-                <label for="address">Address:</label>
+                <label for="address">Địa chỉ: </label>
                 <input type="text" id="address" name="address" required>
             </div>
             <div class="form-group">
-                <label for="province">Province:</label>
+                <label for="province">Khu vực: </label>
                 <select id="province" name="province" required>
                     <option value="Hà Nội">Hà Nội</option>
                     <option value="Hồ Chí Minh">Hồ Chí Minh</option>
@@ -41,11 +41,11 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="price">Price:</label>
+                <label for="price">Giá sân: </label>
                 <input type="number" id="price" name="price" step="0" required>
             </div>
             <div class="form-group">
-                <label for="image">Image:</label>
+                <label for="image">Ảnh:</label>
                 <input type="text" id="image" name="image"/>
             </div>
             <div class="button-group">

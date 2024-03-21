@@ -5,21 +5,15 @@
 
 package controller;
 
-import dal.AddressDAO;
 import dal.pitchDAO;
-import dal.pitchTypeDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
-import java.util.Map;
-import model.Address;
 import model.Pitch;
-import model.PitchType;
 
 /**
  *
@@ -49,12 +43,6 @@ public class SearchControl extends HttpServlet {
             addressId = 0;
         }
         pitchDAO pDAO = new pitchDAO();
-        AddressDAO aDAO = new AddressDAO();
-        pitchTypeDAO ptDAO = new pitchTypeDAO();
-        Map<Integer, Address> listAdd = aDAO.getMapAllAddress();
-        Map<Integer, PitchType> listPT = ptDAO.getMapAllPitchType();
-        request.setAttribute("listAdd", listAdd);
-        request.setAttribute("listPT", listPT);
         String textSearch = request.getParameter("keyword");
         ArrayList<Pitch> listSearch = pDAO.getPitchByName(textSearch);
         request.setAttribute("ListPitch", listSearch);

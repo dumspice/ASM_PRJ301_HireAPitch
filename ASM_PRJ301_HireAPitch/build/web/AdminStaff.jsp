@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Staff List</title>
+        <title>Danh sách nhân viên</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <link href="asset/stylesheet/AdminStaff.css" rel="stylesheet" type="text/css">
 
@@ -32,19 +32,19 @@
         %>
         <div class="container">
             <div class="header">
-                <h1>Staff List</h1>
-                <a href="<%=request.getContextPath()%>/addstaff.jsp" class="add-staff">Add Staff</a>
+                <h1>Danh sách nhân viên</h1>
+                <a href="<%=request.getContextPath()%>/addstaff.jsp" class="add-staff">Thêm nhân viên</a>
             </div>
 
             <table>
                 <thead>
                     <tr>
 
-                        <th>Display Name</th>
-                        <th>Phone Number</th>
+                        <th>Tên hiển thị</th>
+                        <th>Số điện thoại</th>
                         <th>Email</th>
-                        <th>Image</th>
-                        <th>Action</th>
+                        <th>Ảnh</th>
+                        <th>Chức năng</th>
 
                     </tr>
                 </thead>
@@ -65,8 +65,6 @@
                             </td>
                         </tr>    
                     </c:forEach>
-
-                    <!-- Add more customer rows here -->
                 </tbody>
             </table>
         </div>

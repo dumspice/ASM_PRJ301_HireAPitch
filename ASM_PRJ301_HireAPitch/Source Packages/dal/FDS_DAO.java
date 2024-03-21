@@ -9,6 +9,7 @@ import model.FDS;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 /**
  *
  * @author dumspicy
@@ -27,7 +28,7 @@ public class FDS_DAO extends DBContext{
                 f.setAmount(rs.getInt(3));
                 f.setPrice(rs.getInt(4));
                 f.setImage(rs.getString(5));
-                f.setType_FDS(rs.getString(6));
+                f.setType(rs.getString(6));
                 listFDS.add(f);
             }
             rs.close();
@@ -36,6 +37,53 @@ public class FDS_DAO extends DBContext{
             System.out.println(e.getMessage());
         }
         return listFDS;
+    }
+    
+    public void add(FDS fd) {
+        try {
+            String sql = "INSERT INTO FDS(FDS_name, Amount_exist, Price, [Image], [Type]) VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+
+            stmt.setString(1, fd.getFDS_name());
+            stmt.setInt(2, fd.getAmount());
+            stmt.setInt(3, fd.getPrice());
+            stmt.setString(4, fd.getImage());
+            stmt.setString(5, fd.getType());
+
+            stmt.executeUpdate();
+            stmt.close();
+        } catch (SQLException e) {
+            System.out.println("Error adding food and drink item: " + e.getMessage());
+        }
+    }
+    
+    public void update(FDS fd) {
+        try {
+            String sql = "UPDATE FDS SET FDS_name = ?, Amount_exist = ?, Price = ?, [Image] = ?, [Type] = ? WHERE FDS_id = ?";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+
+            stmt.setString(1, fd.getFDS_name());
+            stmt.setInt(2, fd.getAmount());
+            stmt.setInt(3, fd.getPrice());
+            stmt.setString(4, fd.getImage());
+            stmt.setString(5, fd.getType());
+            stmt.setInt(6, fd.getFDS_id());
+            stmt.executeUpdate();
+            stmt.close();
+        } catch (SQLException e) {
+            System.out.println("Error updating food and drink item: " + e.getMessage());
+        }
+    }
+    
+    public void delete(int id) {
+        try {
+            String sql = "DELETE FROM [FDS] WHERE FDS_id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, id);
+            statement.executeUpdate();
+            statement.close();
+        } catch (Exception e) {
+        }
     }
     
     public FDS getFoodAndDrinkById(int id){
@@ -51,7 +99,7 @@ public class FDS_DAO extends DBContext{
                 f.setAmount(rs.getInt(3));
                 f.setPrice(rs.getInt(4));
                 f.setImage(rs.getString(5));
-                f.setType_FDS(rs.getString(6));
+                f.setType(rs.getString(6));
                 return f;
             }
             rs.close();

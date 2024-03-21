@@ -18,23 +18,23 @@
             <h1>Add Customer</h1>
             <form action="addCustomer" method="POST" >
                 <div class="form-group">
-                    <label for="username">Username:</label>
+                    <label for="username">Tên đăng nhập:</label>
                     <input type="text" id="username" name="username" value="${param.username}" required>
                     <span class="error-message">${empty requestScope.usernameEmpty ? "" : requestScope.usernameEmpty}</span>
                     <span class="error-message">${empty requestScope.usernameExisted ? "" : requestScope.usernameExisted}</span>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password:</label>
+                    <label for="password">Mật khẩu:</label>
                     <input type="password" id="password" name="password" value="${param.password}" required>
                     <span class="error-message">${empty requestScope.passEmpty ? "" : requestScope.passEmpty}</span>
                 </div>
                 <div class="form-group">
-                    <label for="displayName">Display Name:</label>
+                    <label for="displayName">Tên hiển thị</label>
                     <input type="text" id="displayName" name="displayName" value="${param.displayName}"required>
                     <span class="error-message">${empty requestScope.nameEmpty ? "" : requestScope.nameEmpty}</span>
                 </div>
                 <div class="form-group">
-                    <label for="phoneNumber">Phone Number:</label>
+                    <label for="phoneNumber">Số điện thoại</label>
                     <input type="tel" id="phoneNumber" name="phoneNumber" value="${param.phoneNumber}" required>
                     <span class="error-message">${empty requestScope.phoneEmpty ? "" : requestScope.phoneEmpty}</span>
                     <span class="error-message">${empty requestScope.phoneExisted ? "" : requestScope.phoneExisted}</span>

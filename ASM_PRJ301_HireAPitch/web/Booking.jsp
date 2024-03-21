@@ -9,6 +9,7 @@
 <!DOCTYPE html>
 <c:if test="${sessionScope.user.role != 'Staff'}"> Access Denied </c:if>
 <c:if test="${sessionScope.user.role == 'Staff'}">
+
     <html>
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -27,6 +28,13 @@
                     --line-clamp: 2;
                 }
             </style>
+            <script type="text/javascript">
+                function doDelete(id) {
+                    if (confirm("Are you sure to reject booking request with id = " + id + "?")) {
+                        window.location = "deleteBooking?id=" + id;
+                    }
+                }
+            </script>
             <title>Danh Sách Đặt Sân</title>
         </head>
         <body>
@@ -70,36 +78,61 @@
                                                         </a>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-1 d-flex justify-content-center">
-                                                    <div>
-                                                        <p class="lead text-muted mb-4 pb-2">Đồ ăn</p>
-                                                        <p class="small fw-normal mb-0">
-                                                            <a href="<%=request.getContextPath()%>/fdscontroller">
-                                                                <img src="asset/icon/burger-solid.svg"style="object-fit: cover; display: block; margin: 0 auto;"/>
-                                                            </a>
-                                                        </p>
+                                                <c:if test="${booking.status != true}">
+                                                    <div class="col-md-1 d-flex justify-content-center">
+                                                        <div>
+                                                            <p class="lead text-muted mb-4 pb-2">Confirm</p>
+                                                            <p class="small fw-normal mb-0">
+                                                                <a href="ConfirmBooking?id=${booking.bookingId}">
+                                                                    <img src="asset/icon/check-solid.svg" style="object-fit: cover; display: block; margin: 0 auto;"/>
+                                                                </a>
+                                                            </p>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-1 d-flex justify-content-center">
-                                                    <div>
-                                                        <p class="lead text-muted mb-4 pb-2">Bill</p>
-                                                        <p class="small fw-normal mb-0">
-                                                            <a href="#!">
-                                                                <img src="asset/icon/money-bill-1-regular.svg"style="object-fit: cover; display: block; margin: 0 auto;"/>
-                                                            </a>
-                                                        </p>
+                                                    <div class="col-md-1 d-flex justify-content-center">
+                                                        <div>
+                                                            <p class="lead text-muted mb-4 pb-2">Xóa</p>
+                                                            <p class="small fw-normal mb-0">
+                                                                <a href="#!" onclick="doDelete('${booking.bookingId}')">
+                                                                    <img src="asset/icon/trash-solid.svg"style="object-fit: cover; display: block; margin: 0 auto;"/>
+                                                                </a>
+                                                            </p>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-1 d-flex justify-content-center">
-                                                    <div>
-                                                        <p class="lead text-muted mb-4 pb-2">Xóa</p>
-                                                        <p class="small fw-normal mb-0">
-                                                            <a href="#!">
-                                                                <img src="asset/icon/trash-solid.svg"style="object-fit: cover; display: block; margin: 0 auto;"/>
-                                                            </a>
-                                                        </p>
+                                                </c:if>    
+                                                <c:if test="${booking.status == true}">
+                                                    <div class="col-md-1 d-flex justify-content-center">
+                                                        <div>
+                                                            <p class="lead text-muted mb-4 pb-2">Đồ ăn</p>
+                                                            <p class="small fw-normal mb-0">
+                                                                <a href="<%=request.getContextPath()%>/fdscontroller">
+                                                                    <img src="asset/icon/burger-solid.svg"style="object-fit: cover; display: block; margin: 0 auto;"/>
+                                                                </a>
+                                                            </p>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                    <div class="col-md-1 d-flex justify-content-center">
+                                                        <div>
+                                                            <p class="lead text-muted mb-4 pb-2">Bill</p>
+                                                            <p class="small fw-normal mb-0">
+                                                                <a href="#!">
+                                                                    <img src="asset/icon/money-bill-1-regular.svg"style="object-fit: cover; display: block; margin: 0 auto;"/>
+                                                                </a>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-1 d-flex justify-content-center">
+                                                        <div>
+                                                            <p class="lead text-muted mb-4 pb-2">Xóa</p>
+                                                            <p class="small fw-normal mb-0">
+                                                                <a href="#!" onclick="doDelete('${booking.bookingId}')">
+                                                                    <img src="asset/icon/trash-solid.svg"style="object-fit: cover; display: block; margin: 0 auto;"/>
+                                                                </a>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </c:if>
+
                                             </div>
                                         </div>
                                     </div>
@@ -111,4 +144,6 @@
                 </section>
             </main>
             <%@include file="footer.jsp" %>
-        </c:if>
+        </body>
+    </html> 
+</c:if>

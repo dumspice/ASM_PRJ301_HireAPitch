@@ -5,6 +5,7 @@
 
 package controller;
 
+import dal.BookingDAO;
 import dal.StuffDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,7 +14,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
+import model.Booking;
 import model.Stuff;
 
 /**
@@ -60,6 +63,11 @@ public class StuffController extends HttpServlet {
     throws ServletException, IOException {
         StuffDAO sDAO = new StuffDAO();
         ArrayList<Stuff> listStuff = sDAO.gettAllStuff();
+        int bookingId = Integer.parseInt(request.getParameter("id"));
+        HttpSession session = request.getSession();
+        BookingDAO bDao = new BookingDAO();
+        Booking booking = bDao.getBookingById(bookingId);
+        session.setAttribute("booking", booking);
         request.setAttribute("listStuff", listStuff);
         request.getRequestDispatcher("StuffList.jsp").forward(request, response);
     } 
