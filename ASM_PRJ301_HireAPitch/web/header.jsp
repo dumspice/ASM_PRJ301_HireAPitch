@@ -120,14 +120,20 @@
                         </div>
                     </c:if>
                     <div class="clear"></div>
-                    <div class="shopping-cart">
+<!--                    <div class="shopping-cart">
                         <a href="<%=request.getContextPath()%>/Cart.jsp">
                             <img src="./asset/icon/cart-arrow-down-solid 1.svg" alt="" />
                             <p class="desc">Giỏ hàng</p>
                         </a>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>
+        <c:if test="${sessionScope.user.role == 'Staff'}">
+            <div class="staff-btn">
+                <a href="<%=request.getContextPath()%>/BookingServlet">Danh sách đặt sân</a>
+            </div>
+        </c:if>
+
     </body>
 </html>
