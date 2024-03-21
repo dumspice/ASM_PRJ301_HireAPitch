@@ -138,7 +138,7 @@
 
                                         <div class="row align-items-center">
                                             <div class="col-md-2">
-                                                <a href="<%=request.getContextPath()%>/ProductDetails.jsp?pitchId=21">
+                                                <a href="<%=request.getContextPath()%>/ProductDetails?pitchId=21">
                                                     <img src="https://images.toplist.vn/images/800px/san-bong-da-co-nhan-tao-hoang-kim-619011.jpg"
                                                          class="img-fluid rounded" alt="Generic placeholder image">
                                                 </a>

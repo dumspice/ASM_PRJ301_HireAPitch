@@ -16,11 +16,7 @@
     <body>
         <div class="container">
             <h1>Add Food Item</h1>
-            <form action="savefd.jsp" method="POST" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label for="id">ID:</label>
-                    <input type="text" id="id" name="id" required>
-                </div>
+            <form action="addFDS" method="get" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" required>
@@ -36,16 +32,13 @@
                 <div class="form-group">
                     <label for="type">Type:</label>
                     <select id="type" name="type" required>
-                        <option value="Food">Food</option>
-                        <option value="Drink">Drink</option>
-                        <option value="Dessert">Dessert</option>
-                        <option value="Fruit">Fruit</option>
-
+                        <option value="Đồ ăn">Đồ ăn</option>
+                        <option value="Đồ uống">Đồ uống</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="image">Image:</label>
-                    <input type="file" id="image" name="image" accept="image/*" required>
+                    <input type="text" id="image" name="image">
                 </div>
                 <div class="button-group">
                     <input type="submit" value="Save">

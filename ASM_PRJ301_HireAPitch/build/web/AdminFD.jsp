@@ -5,6 +5,7 @@
 --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -31,6 +32,13 @@
                 }
             }
         </script>
+        <script type="text/javascript">
+            function doDelete(id) {
+                if (confirm("Are you sure to delete Food&Drinks with id = " + id + "?")) {
+                    window.location = "deleteFDS?id=" + id;
+                }
+            }
+        </script>
     </head>
     <c:if test="${sessionScope.user.role != 'Admin'}"> Access Denied </c:if>
     <c:if test="${sessionScope.user.role == 'Admin'}">
@@ -54,19 +62,9 @@
                     <label for="foodCheckbox">Đồ ăn</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="drinkCheckbox" name="typeFilter" value="drink" onclick="filterProducts()" checked>
-                    <label for="drinkCheckbox">Drink</label>
+                    <input type="checkbox" id="drinkCheckbox" name="typeFilter" value="đồ uống" onclick="filterProducts()" checked>
+                    <label for="drinkCheckbox">Đồ uống</label>
                 </div>
-                <div>
-                    <input type="checkbox" id="dessertCheckbox" name="typeFilter" value="dessert" onclick="filterProducts()" checked>
-                    <label for="dessertCheckbox">Dessert</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="fruitCheckbox" name="typeFilter" value="fruit" onclick="filterProducts()" checked>
-                    <label for="fruitCheckbox">Fruit</label>
-                </div>
-
-
             </div>
 
             </br>
@@ -83,45 +81,19 @@
                         <th>Action</th>
                     </tr>
                 </thead>
+                <c:forEach items="${ListFDS}" var="fd">
                 <tbody>
                     <tr>
 
-                        <td>Burger</td>
-                        <td>5.99</td>
-                        <td>10</td>
-                        <td><img src="burger.jpg" alt="Burger" width="50"></td>
-                        <td>Đồ ăn</td>
-                        <td><a href="editfd.jsp?id=1"><i class="fas fa-pen"></i></a> | <a href="deleteproduct.jsp?id=1"><i class="fas fa-trash"></i></a></td>
+                        <td>${fd.FDS_name}</td>
+                        <td><fmt:formatNumber value="${fd.price}" pattern="###,###" /></td>
+                        <td>${fd.amount}</td>
+                        <td><img src="${fd.image}" alt="FD image" width="50"></td>
+                        <td>${fd.type}</td>
+                        <td><a href="editFDS?id=${fd.FDS_id}"><i class="fas fa-pen"></i></a> | <a href="#" onclick="doDelete('${fd.FDS_id}')"><i class="fas fa-trash"></i></a></td>
                     </tr>
-                    <tr>
-
-                        <td>Soda</td>
-                        <td>1.99</td>
-                        <td>20</td>
-                        <td><img src="soda.jpg" alt="Soda" width="50"></td>
-                        <td>Drink</td>
-                        <td><a href="editfd.jsp?id=2"><i class="fas fa-pen"></i></a> | <a href="deleteproduct.jsp?id=2"><i class="fas fa-trash"></i></a></td>
-                    </tr>
-                    <!-- Add more product rows here -->
-                    <tr>
-                        <td>Cake</td>
-                        <td>3.99</td>
-                        <td>8</td>
-                        <td><img src="cake.jpg" alt="Cake" width="50"></td>
-                        <td>Dessert</td>
-                        <td><a href="editfd.jsp?id=3"><i class="fas fa-pen"></i></a> | <a href="deleteproduct.jsp?id=3"><i class="fas fa-trash"></i></a></td>
-                    </tr>
-                    <tr>
-
-                        <td>Apple</td>
-                        <td>0.99</td>
-                        <td>15</td>
-                        <td><img src="apple.jpg" alt="Apple" width="50"></td>
-                        <td>Fruit</td>
-                        <td><a href="editfd.jsp?id=4"><i class="fas fa-pen"></i></a> | <a href="deleteproduct.jsp?id=4"><i class="fas fa-trash"></i></a></td>
-                    </tr>
-
                 </tbody>
+                </c:forEach>
             </table>
         </div>
     </body>

@@ -18,6 +18,7 @@ public class Booking {
     private String timeEnd;
     private int userId;
     private int pitchId;
+    private boolean status;
 
     public Booking() {
     }
@@ -30,6 +31,18 @@ public class Booking {
         this.userId = userId;
         this.pitchId = pitchId;
     }
+
+    public Booking(int bookingId, String bookDay, String timeStart, String timeEnd, int userId, int pitchId, boolean status) {
+        this.bookingId = bookingId;
+        this.bookDay = bookDay;
+        this.timeStart = timeStart;
+        this.timeEnd = timeEnd;
+        this.userId = userId;
+        this.pitchId = pitchId;
+        this.status = status;
+    }
+    
+    
 
     public int getBookingId() {
         return bookingId;
@@ -87,5 +100,13 @@ public class Booking {
     public Pitch getPitch() {
         pitchDAO pDao = new pitchDAO();
         return pDao.getPitchById(this.pitchId);
+    }
+
+    public boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }

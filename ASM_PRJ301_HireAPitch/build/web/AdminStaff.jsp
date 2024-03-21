@@ -65,8 +65,6 @@
                             </td>
                         </tr>    
                     </c:forEach>
-
-                    <!-- Add more customer rows here -->
                 </tbody>
             </table>
         </div>

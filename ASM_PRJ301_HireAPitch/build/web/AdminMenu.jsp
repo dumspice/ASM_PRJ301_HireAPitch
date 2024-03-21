@@ -20,7 +20,7 @@
             <li><a href="AdminHome.jsp">Home</a></li>
             <li><a href="CustomerController">Customers</a></li>
             <li><a href="StaffController">Staffs</a></li>
-            <li><a href="AdminFD.jsp">Food & Drinks</a></li>
+            <li><a href="FDSAdmin">Food & Drinks</a></li>
             <li><a href="stuffAdmin">Stuffs</a></li>
             <li><a href="PitchAdmin">Pitches</a></li>
             <li class="logout-button"><a href="logout">Logout</a></li> <!-- Added logout button with separate class -->

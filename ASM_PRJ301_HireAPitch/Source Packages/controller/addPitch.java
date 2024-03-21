@@ -14,7 +14,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Pitch;
-import model.PitchType;
 
 /**
  *
@@ -67,7 +66,6 @@ public class addPitch extends HttpServlet {
             int price = Integer.parseInt(request.getParameter("price"));
             String img = request.getParameter("image");
             
-            PitchType pt = new PitchType();
             Pitch pitch = new Pitch(name, address, price, img, type, region);
             
             pitchDAO pitchDAO = new pitchDAO();

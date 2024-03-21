@@ -48,7 +48,7 @@
                                 <div class="fds-top__size">
                                     <form class="add-to-cart-form">
                                         <label for="quantity">Số lượng: </label>
-                                        <input type="text" id="quantity" name="quantity" value="0" readonly class="amount-input">
+                                        <input type="text" id="quantity" name="quantity" value="1" readonly class="amount-input">
                                         <br><br>
                                         <button type="button" class="quantity-btn plus" onclick="increaseQuantity()"><i class="fas fa-plus"></i></button>
                                         <button type="button" class="quantity-btn minus" onclick="decreaseQuantity()"><i class="fas fa-minus"></i></button>
@@ -73,7 +73,7 @@
             function decreaseQuantity() {
                 var quantityField = document.getElementById("quantity");
                 var quantity = parseInt(quantityField.value);
-                if (quantity > 0) {
+                if (quantity > 1) {
                     quantityField.value = quantity - 1;
                 }
             }

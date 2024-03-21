@@ -14,18 +14,18 @@ public class FDS {
     private int amount;
     private int price;
     private String image;
-    private int Type_id_FDS;
+    private String type;
 
     public FDS() {
     }
 
-    public FDS(int FDS_id, String FDS_name, int amount, int price, String image, int Type_id_FDS) {
+    public FDS(int FDS_id, String FDS_name, int amount, int price, String image, String type) {
         this.FDS_id = FDS_id;
         this.FDS_name = FDS_name;
         this.amount = amount;
         this.price = price;
         this.image = image;
-        this.Type_id_FDS = Type_id_FDS;
+        this.type = type;
     }
 
     public int getFDS_id() {
@@ -68,18 +68,18 @@ public class FDS {
         this.image = image;
     }
 
-    public int getType_id_FDS() {
-        return Type_id_FDS;
+    public String getType() {
+        return type;
     }
 
-    public void setType_id_FDS(int Type_id_FDS) {
-        this.Type_id_FDS = Type_id_FDS;
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override
     public String toString() {
-        return "FDS{" + "FDS_id=" + FDS_id + ", FDS_name=" + FDS_name + ", amount=" + amount + ", price=" + price + ", image=" + image + ", Type_id_FDS=" + Type_id_FDS + '}';
+        return "FDS{" + "FDS_id=" + FDS_id + ", FDS_name=" + FDS_name + ", amount=" + amount + ", price=" + price + ", image=" + image + ", type=" + type + '}';
     }
-    
+
     
 }
