@@ -153,7 +153,7 @@
                         <div class="time-table col-lg-9">
                             <div class="book-calendar h-100 bg-white pt-5 rounded-8 position-relative">
                                 <div class="header-book d-flex align-items-center justify-content-between mb-4">
-                                    <h3 class="calendar-title fb-bold">Lịch đặt sân</h3>
+                                    <h3 class="calendar-title fb-bold">Đặt sân</h3>
                                 </div>
                                 <div class="book-calendar">
                                     <form class="book-calendar__form" action="BookingServlet" method="post">
@@ -162,13 +162,13 @@
                                         <input style="width: 17%; align-self: end;" type="date" name="datePicker" id="datePicker" min="<%= yyyy + '-' + mm + '-' + dd %>" value="<%= yyyy + '-' + mm + '-' + dd %>" required>
 
                                         <label for="startTime">Start Time:</label>
-                                        <select id="startTimeHour" name="startTimeHour" required>
+                                        <select id="startTimeHour" name="startTimeHour" class="book-calendar__option" required>
                                             <option value="">Hour</option>
                                             <% for (int hour = 0; hour < 24; hour++) { %>
                                             <option value="<%= String.format("%02d", hour) %>"><%= String.format("%02d", hour) %></option>
                                             <% } %>
                                         </select>
-                                        <select id="startTimeMinute" name="startTimeMinute" required>
+                                        <select id="startTimeMinute" name="startTimeMinute" class="book-calendar__option" required>
                                             <option value="">Minute</option>
                                             <!-- Add options for minutes, adjust as needed -->
                                             <% for (int minute = 0; minute < 60; minute += 15) { %>
@@ -178,13 +178,13 @@
                                         <br>
 
                                         <label for="endTime">End Time:</label>
-                                        <select id="endTimeHour" name="endTimeHour" required>
+                                        <select id="endTimeHour" name="endTimeHour" class="book-calendar__option" required>
                                             <option value="">Hour</option>
                                             <% for (int hour = 0; hour < 24; hour++) { %>
                                             <option value="<%= String.format("%02d", hour) %>"><%= String.format("%02d", hour) %></option>
                                             <% } %>
                                         </select>
-                                        <select id="endTimeMinute" name="endTimeMinute" required>
+                                        <select id="endTimeMinute" name="endTimeMinute" class="book-calendar__option" required>
                                             <option value="">Minute</option>
                                             <% for (int minute = 0; minute < 60; minute += 15) { %>
                                             <option value="<%= String.format("%02d", minute) %>"><%= String.format("%02d", minute) %></option>
@@ -193,7 +193,7 @@
                                         <br>
                                         <button type="submit" class="btn btn-success hire-btn" style="font-size: 20px; border-radius: 10px;">Đặt sân</button>
                                     </form>
-                                            <span style="color: #2a952e">${noti}<span>
+                                            <span style="color: #2a952e">${noti}</span>
                                 </div>
                             </div>
                         </div>
@@ -287,7 +287,5 @@
             </div>
         </div>
         <%@include file="footer.jsp" %>
-        
-        </script>
     </body>
 </html>

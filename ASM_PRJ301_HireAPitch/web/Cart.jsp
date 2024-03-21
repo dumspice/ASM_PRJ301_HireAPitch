@@ -124,7 +124,7 @@
             <%@include file="header.jsp" %>
         </header>
         <main>
-            <section class="h-100 p-5" style="background-color: #ddd;">
+            <section class="h-100 p-5" style="background-color: #f4f4f4;">
                 <div class="container h-100 p-5">
                     <div class="row d-flex justify-content-center align-items-center h-100">
                         <div class="col">
