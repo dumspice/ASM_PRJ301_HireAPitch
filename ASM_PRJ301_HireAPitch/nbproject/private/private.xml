@@ -3,20 +3,6 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/Source%20Packages/controller/OrderStuff.java</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/Booking.jsp</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/Source%20Packages/model/Booking.java</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/Source%20Packages/dal/BookingDAO.java</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/Source%20Packages/controller/BookingServlet.java</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/Source%20Packages/model/BookingStuff.java</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/ProductDetails.jsp</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/Source%20Packages/controller/StuffController.java</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/StuffDetails.jsp</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/Source%20Packages/controller/CartController.java</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/Cart.jsp</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/Cartt.jsp</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/StuffList.jsp</file>
-            <file>file:/D:/ASM_PRJ301_HireAPitch/ASM_PRJ301_HireAPitch/web/pitchInfo.jsp</file>
         </group>
     </open-files>
 </project-private>
