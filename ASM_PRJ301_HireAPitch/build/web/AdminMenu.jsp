@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-        <title>Menu Example</title>
+        <title>Menu</title>
         <link href="asset/stylesheet/AdminMenu.css" rel="stylesheet" type="text/css">
     </head>
     <c:if test="${sessionScope.user.role != 'Admin'}"> Access Denied </c:if>
@@ -18,12 +18,12 @@
     <body>
         <ul class="menu">
             <li><a href="AdminHome.jsp">Home</a></li>
-            <li><a href="CustomerController">Customers</a></li>
-            <li><a href="StaffController">Staffs</a></li>
-            <li><a href="FDSAdmin">Food & Drinks</a></li>
-            <li><a href="stuffAdmin">Stuffs</a></li>
-            <li><a href="PitchAdmin">Pitches</a></li>
-            <li class="logout-button"><a href="logout">Logout</a></li> <!-- Added logout button with separate class -->
+            <li><a href="CustomerController">Khách hàng</a></li>
+            <li><a href="StaffController">Nhân viên</a></li>
+            <li><a href="FDSAdmin">Đồ ăn & đồ uống</a></li>
+            <li><a href="stuffAdmin">Thuê đồ</a></li>
+            <li><a href="PitchAdmin">Sân</a></li>
+            <li class="logout-button"><a href="logout">Đăng xuất</a></li> <!-- Added logout button with separate class -->
         </ul>
     </body>
     </c:if>

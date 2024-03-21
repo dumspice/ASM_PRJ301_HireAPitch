@@ -68,7 +68,6 @@ public class FDS_DAO extends DBContext{
             stmt.setString(4, fd.getImage());
             stmt.setString(5, fd.getType());
             stmt.setInt(6, fd.getFDS_id());
-
             stmt.executeUpdate();
             stmt.close();
         } catch (SQLException e) {
@@ -82,7 +81,6 @@ public class FDS_DAO extends DBContext{
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, id);
             statement.executeUpdate();
-            
             statement.close();
         } catch (Exception e) {
         }
@@ -114,7 +112,7 @@ public class FDS_DAO extends DBContext{
     
     public static void main(String[] args) {
         FDS_DAO fDAO = new FDS_DAO();
-        FDS listFDS = fDAO.getFoodAndDrinkById(1);
+        ArrayList<FDS> listFDS = fDAO.getAllFoodAndDrink();
         System.out.println(listFDS);
         
     }

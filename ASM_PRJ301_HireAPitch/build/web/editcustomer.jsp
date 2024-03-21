@@ -14,23 +14,23 @@
     </head>
     <body>
         <div class="container">
-            <h1>Edit Customer</h1>
+            <h1>Thay đổi thông tin người dùng</h1>
             <form action="editCustomer?id=${user.id}" method="POST">
                 <div class="form-group">
-                    <label for="username">Username:</label>
+                    <label for="username">Tên đăng nhập:</label>
                     <input type="text" id="username" name="username" value="${user.username}" required>
                     <span class="error-message">${empty requestScope.usernameExisted ? "" : requestScope.usernameExisted}</span>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password:</label>
+                    <label for="password">Mật khẩu:</label>
                     <input type="text" id="password" name="password" value="${user.password}" required>
                 </div>
                 <div class="form-group">
-                    <label for="displayName">Display Name:</label>
+                    <label for="displayName">Tên hiển thị</label>
                     <input type="text" id="displayName" name="displayName" value="${user.display_name}" required>
                 </div>
                 <div class="form-group">
-                    <label for="phoneNumber">Phone Number:</label>
+                    <label for="phoneNumber">Số điện thoại</label>
                     <input type="text" id="phoneNumber" name="phoneNumber" value="${user.phone_number}" required>
                     <span class="error-message">${empty requestScope.phoneExisted ? "" : requestScope.phoneExisted}</span>
                 </div>

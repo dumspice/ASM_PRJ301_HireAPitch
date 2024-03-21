@@ -16,7 +16,7 @@
         
         <script type="text/javascript">
             function doDelete(id) {
-                if (confirm("Are you sure to delete customer with id = " + id + "?")) {
+                if (confirm("Bạn có muốn xóa người dùng với id = " + id + " không ?")) {
                     window.location = "deleteUser?id=" + id;
                 }
             }
@@ -32,19 +32,19 @@
         %>
         <div class="container">
             <div class="header">
-                <h1>Customer List</h1>
-                <a href="<%=request.getContextPath()%>/addcustomer.jsp" class="add-customer">Add Customer</a>
+                <h1>Danh sách người dùng</h1>
+                <a href="<%=request.getContextPath()%>/addcustomer.jsp" class="add-customer">Thêm người dùng</a>
             </div>
 
             <table>
                 <thead>
                     <tr>
 
-                        <th>Display Name</th>
-                        <th>Phone Number</th>
+                        <th>Tên hiển thị</th>
+                        <th>Số điện thoại</th>
                         <th>Email</th>
-                        <th>Image</th>
-                        <th>Action</th>
+                        <th>Ảnh</th>
+                        <th>Chúc năng</th>
 
                     </tr>
                 </thead>

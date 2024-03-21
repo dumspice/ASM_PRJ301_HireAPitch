@@ -47,8 +47,8 @@
 
         <div class="container">
             <div class="header">
-                <h1>Food & Drink</h1>
-                <button class="addButton" onclick="location.href = 'addfd.jsp'">Add Food&Drink</button>
+                <h1>Đồ ăn & đồ uống</h1>
+                <button class="addButton" onclick="location.href = 'addfd.jsp'">Thêm đồ</button>
             </div>
 
             <div class="filter">
@@ -73,12 +73,12 @@
                 <thead>
                     <tr>
 
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Amount Exist</th>
-                        <th>Image</th>
-                        <th>Type</th>
-                        <th>Action</th>
+                        <th>Tên</th>
+                        <th>Giá</th>
+                        <th>Số lượng còn lại</th>
+                        <th>Ảnh</th>
+                        <th>Thể loại</th>
+                        <th>Chúc năng</th>
                     </tr>
                 </thead>
                 <c:forEach items="${ListFDS}" var="fd">

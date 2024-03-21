@@ -46,8 +46,8 @@
         <%@ include file="AdminMenu.jsp" %>
         <div class="container">
             <div class="header">
-                <h1>Stuff List</h1>
-                <button class="addButton" onclick="location.href = 'addstuff.jsp'">Add Stuff</button>
+                <h1>Danh sách đồ cho thuê</h1>
+                <button class="addButton" onclick="location.href = 'addstuff.jsp'">Thêm đồ</button>
             </div>
 
 
@@ -79,13 +79,13 @@
             <table class="productTable" id="productTable">
                 <thead>
                     <tr>
-                        <th>Name</th>
+                        <th>Tên</th>
                         <th>Size</th>
-                        <th>Amount Exist</th>
-                        <th>Price</th>
-                        <th>Image</th>
-                        <th>Type</th>
-                        <th>Action</th>
+                        <th>Số lượng còn lại</th>
+                        <th>Giá</th>
+                        <th>Ảnh</th>
+                        <th>Loại đồ</th>
+                        <th>Chức năng</th>
                     </tr>
                 </thead>
                 <tbody>

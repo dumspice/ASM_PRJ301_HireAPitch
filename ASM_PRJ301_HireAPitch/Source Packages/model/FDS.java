@@ -9,13 +9,13 @@ package model;
  * @author dumspicy
  */
 public class FDS {
+
     private int FDS_id;
     private String FDS_name;
     private int amount;
     private int price;
     private String image;
     private String type;
-
     public FDS() {
     }
 
@@ -26,6 +26,7 @@ public class FDS {
         this.price = price;
         this.image = image;
         this.type = type;
+
     }
 
     public int getFDS_id() {
@@ -74,12 +75,14 @@ public class FDS {
 
     public void setType(String type) {
         this.type = type;
+
     }
 
     @Override
     public String toString() {
+
         return "FDS{" + "FDS_id=" + FDS_id + ", FDS_name=" + FDS_name + ", amount=" + amount + ", price=" + price + ", image=" + image + ", type=" + type + '}';
+
     }
 
-    
 }

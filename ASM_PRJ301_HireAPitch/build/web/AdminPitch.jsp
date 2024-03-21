@@ -49,8 +49,8 @@
         <%@ include file="AdminMenu.jsp" %>
         <div class="container">
             <div class="header">
-                <h1>Pitch List</h1>
-                <button class="addButton" onclick="location.href = 'addpitch.jsp'">Add Pitch</button>
+                <h1>Danh sách sân</h1>
+                <button class="addButton" onclick="location.href = 'addpitch.jsp'">Thêm sân</button>
             </div>
 
             <div class="filter">
@@ -95,13 +95,13 @@
 
             <table id="pitchTable" class="productTable">
                 <tr>
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>Price</th>
-                    <th>Image</th>
-                    <th>Type</th>
-                    <th>Province</th>
-                    <th>Action</th>
+                    <th>Tên sân</th>
+                    <th>Địa chỉ</th>
+                    <th>Giá</th>
+                    <th>Ảnh</th>
+                    <th>Loại sân</th>
+                    <th>Khu vực</th>
+                    <th>Chức năng</th>
                 </tr>
                 <c:forEach items="${requestScope.PList}" var="p">
                     <tr>
