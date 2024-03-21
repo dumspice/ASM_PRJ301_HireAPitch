@@ -13,15 +13,17 @@
         <link href="asset/stylesheet/addstuff.css" rel="stylesheet" type="text/css">
         <script>
             function changeSizeField() {
-                var stuffType = document.getElementById("stuffType").value;
-                var sizeField = document.getElementById("sizeField");
-                var shoeSizeField = document.getElementById("shoeSizeField");
-                var shirtGloveSizeField = document.getElementById("shirtGloveSizeField");
+                const stuffType = document.getElementById("stuffType").value;
+                const sizeField = document.getElementById("sizeField");
+                const shoeSizeField = document.getElementById("shoeSizeField");
+                const shirtGloveSizeField = document.getElementById("shirtGloveSizeField");
 
+                // Ẩn tất cả các trường kích thước
                 sizeField.style.display = "none";
                 shoeSizeField.style.display = "none";
                 shirtGloveSizeField.style.display = "none";
 
+                // Hiển thị trường kích thước tương ứng với loại đồ dùng đã chọn
                 if (stuffType === "Bóng") {
                     sizeField.style.display = "block";
                 } else if (stuffType === "Giày") {
@@ -29,11 +31,11 @@
                 } else if (stuffType === "Áo Pitch" || stuffType === "Găng") {
                     shirtGloveSizeField.style.display = "block";
                 }
-                
-                sizeField.disabled = !(stuffType === "Bóng");
-                shoeSizeField.disabled = !(stuffType === "Giày");
-                shirtGloveSizeField.disabled = !(stuffType === "Áo Pitch" || stuffType === "Găng");
             }
+
+            window.onload = function () {
+                changeSizeField();
+            };
         </script>
     </head>
     <body>
@@ -46,34 +48,38 @@
                 </div>
                 <div class="form-group">
                     <label for="stuffType">Stuff Type:</label>
-                    <select id="stuffType" name="type" onchange="changeSizeField()" required>
+                    <select id="stuffType" name="type" onchange="changeSizeField()">
                         <option value="">Select Stuff Type</option>
-                        <option value="Bóng">Bóng</option>
-                        <option value="Giày">Giày</option>
-                        <option value="Áo Pitch">Áo Pitch</option>
-                        <option value="Găng">Găng</option>
+                        <option value="Bóng" name="stuffType">Bóng</option>
+                        <option value="Giày" name="stuffType">Giày</option>
+                        <option value="Áo Pitch" name="stuffType">Áo Pitch</option>
+                        <option value="Găng" name="stuffType">Găng</option>
                     </select>
                 </div>
-                <div class="form-group" id="sizeField" style="display: none;">
-                    <label for="size">Size:</label> 
+
+                <div class="form-group" id="sizeField">
+                    <label for="size">Size:</label>
                     <select id="size" name="size">
-                        <option value="">Select Size</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
+                        <option value="" name="size">Select Size</option>
+                       
+                        <option value="4" name="size">4</option>
+                        <option value="5" name="size">5</option>
                     </select>
                 </div>
-                <div class="form-group" id="shoeSizeField" style="display: none;">
+
+                <div class="form-group" id="shoeSizeField">
                     <label for="shoeSize">Size:</label>
-                    <input type="number" id="shoeSize" name="shoeSize" min="38" max="44" required>
+                    <input type="number" id="shoeSize" name="shoeSize" min="35" max="44">
                 </div>
-                <div class="form-group" id="shirtGloveSizeField" style="display: none;">
+
+                <div class="form-group" id="shirtGloveSizeField">
                     <label for="shirtGloveSize">Size:</label>
                     <select id="shirtGloveSize" name="shirtGloveSize">
-                        <option value="">Select Size</option>
-                        <option value="S">S</option>
-                        <option value="M">M</option>
-                        <option value="L">L</option>
-                        <option value="XL">XL</option>
+                        <option value="" name="shirtGloveSize">Select Size</option>
+                        <option value="S" name="shirtGloveSize">S</option>
+                        <option value="M" name="shirtGloveSize">M</option>
+                        <option value="XL" name="shirtGloveSize">XL</option>
+                        <option value="XXL" name="shirtGloveSize">XXL</option>
                     </select>
                 </div>
                 <div class="form-group">

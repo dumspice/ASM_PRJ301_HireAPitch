@@ -13,6 +13,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 import model.Booking;
@@ -76,8 +77,8 @@ public class BookingServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        String pitchId = request.getParameter("pitchId");
-        String userId = request.getParameter("userId");
+        int pitchId = Integer.parseInt(request.getParameter("pitchId"));
+        int userId = Integer.parseInt(request.getParameter("userId"));
         String datePicker = request.getParameter("datePicker");
         String startTimeHour = request.getParameter("startTimeHour");
         String startTimeMinute = request.getParameter("startTimeMinute");
@@ -87,13 +88,14 @@ public class BookingServlet extends HttpServlet {
         String startTime = startTimeHour + ":" + startTimeMinute;
         String endTime = endTimeHour + ":" + endTimeMinute;
         
-        Booking booking = new Booking(0, datePicker, startTime, endTime, Integer.parseInt(userId), Integer.parseInt(pitchId));
+        Booking booking = new Booking(0, datePicker, startTime, endTime, userId, pitchId);
 
         BookingDAO bDAO = new BookingDAO();
 
-        // Insert the booking into the database
         bDAO.insert(booking);  
-        request.setAttribute("noti", "Đặt sân thành công!");
+        ArrayList<Booking> BList = bDAO.getBookingByUP(userId, pitchId);
+        request.setAttribute("BList", BList);
+        request.setAttribute("noti", "Tạo yêu cầu thành công!");
         request.getRequestDispatcher("ProductDetails.jsp").forward(request, response);
     }
 

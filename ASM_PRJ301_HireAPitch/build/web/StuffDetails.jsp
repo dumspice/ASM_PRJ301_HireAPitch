@@ -48,21 +48,28 @@
                                 <div class="stuff-top__size">
                                     <p class="stuff-size">Size: <span><%=s.getSize()%></span></p>
 
-                                    <form class="add-to-cart-form">
+                                    <form class="add-to-cart-form" action="OrderStuff" method="get">
+                                        <input type="hidden" name="id" value="<%=s.getStuffId()%>"/>
                                         <label for="quantity">Số lượng: </label>
-                                        <input type="text" id="quantity" name="quantity" value="0" readonly class="amount-input">
+                                        <input type="text" id="quantity" name="quantity" value="1" readonly class="amount-input">
                                         <br><br>
                                         <button type="button" class="quantity-btn plus" onclick="increaseQuantity()"><i class="fas fa-plus"></i></button>
                                         <button type="button" class="quantity-btn minus" onclick="decreaseQuantity()"><i class="fas fa-minus"></i></button>
                                         <br><br>
                                         <button type="submit" class="add-to-cart-btn">Thêm vào giỏ hàng</button>
-                                    </form>
+                                    </form> 
+                                    </br><p style="color: #2a952e">${noti}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
+                <button onclick="goBack()">Back</button>
+                <script>
+                    function goBack() {
+                        window.history.back();
+                    }
+                </script>                
             </div>
         </main>
         <script>
@@ -75,7 +82,7 @@
             function decreaseQuantity() {
                 var quantityField = document.getElementById("quantity");
                 var quantity = parseInt(quantityField.value);
-                if (quantity > 0) {
+                if (quantity > 1) {
                     quantityField.value = quantity - 1;
                 }
             }

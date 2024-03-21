@@ -5,6 +5,7 @@
 --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,7 +21,7 @@
 
                 for (var i = 1; i < rows.length; i++) { // Start from index 1 to skip the header row
                     var row = rows[i];
-                    var typeCell = row.cells[5].innerText.toLowerCase();
+                    var typeCell = row.cells[5].textContent.toLowerCase();
                     var typeMatch = selectedTypes.includes("all") || selectedTypes.includes(typeCell);
 
                     if (typeMatch) {
@@ -33,7 +34,7 @@
         </script>
         <script type="text/javascript">
             function doDelete(id) {
-                if (confirm("Are you sure to delete sstuff with id = " + id + "?")) {
+                if (confirm("Are you sure to delete stuff with id = " + id + "?")) {
                     window.location = "deleteStuff?id=" + id;
                 }
             }
@@ -57,19 +58,19 @@
                     <label for="allCheckbox">All</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="ballCheckbox" name="typeFilter" value="Bóng" onclick="filterProducts()" checked>
+                    <input type="checkbox" id="ballCheckbox" name="typeFilter" value="bóng" onclick="filterProducts()" checked>
                     <label for="ballCheckbox">Bóng</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="shoesCheckbox" name="typeFilter" value="Giày" onclick="filterProducts()" checked>
+                    <input type="checkbox" id="shoesCheckbox" name="typeFilter" value="giày" onclick="filterProducts()" checked>
                     <label for="shoesCheckbox">Giày</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="shirtCheckbox" name="typeFilter" value="Áo Pitch" onclick="filterProducts()" checked>
+                    <input type="checkbox" id="shirtCheckbox" name="typeFilter" value="áo pitch" onclick="filterProducts()" checked>
                     <label for="shirtCheckbox">Áo Pitch</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="gloveCheckbox" name="typeFilter" value="Găng" onclick="filterProducts()" checked>
+                    <input type="checkbox" id="gloveCheckbox" name="typeFilter" value="găng" onclick="filterProducts()" checked>
                     <label for="gloveCheckbox">Găng</label>
                 </div>
 
@@ -93,10 +94,10 @@
                             <td>${s.stuffName}</td>
                             <td>${s.size}</td>
                             <td>${s.amountExist}</td>
-                            <td>${s.price}</td>
+                            <td><fmt:formatNumber value="${s.price}" pattern="###,###" /></td>
                             <td><img src="${s.image}" alt="Stuff Image"></td>
                             <td>${s.type}</td>
-                            <td><a href="editstuff.jsp?id=1"><i class="fas fa-pen"></i></a> | <a href="#" onclick="doDelete('${s.stuffId}')"><i class="fas fa-trash"></i></a></td>
+                            <td><a href="editStuff?id=${s.stuffId}"><i class="fas fa-pen"></i></a> | <a href="#" onclick="doDelete('${s.stuffId}')"><i class="fas fa-trash"></i></a></td>
                         </tr>
                     </c:forEach>
                     <!-- Other product rows -->

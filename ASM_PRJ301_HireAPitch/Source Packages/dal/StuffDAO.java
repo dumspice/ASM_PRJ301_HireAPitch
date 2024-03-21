@@ -39,6 +39,27 @@ public class StuffDAO extends DBContext{
         return listStuff;
     }
     
+    public void update(Stuff s) {
+        try {
+            String sql = "UPDATE Stuff SET Stuff_name = ?, Size = ?, Amount_exist = ?, Price = ?, [Image] = ?, [Type] = ? WHERE Stuff_id = ?";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+
+            stmt.setString(1, s.getStuffName());
+            stmt.setString(2, s.getSize());
+            stmt.setInt(3, s.getAmountExist());
+            stmt.setInt(4, s.getPrice());
+            stmt.setString(5, s.getImage());
+            stmt.setString(6, s.getType());
+            stmt.setInt(7, s.getStuffId());
+
+            stmt.executeUpdate();
+            stmt.close();
+        } catch (SQLException e) {
+            System.out.println("Error updating stuff: " + e.getMessage());
+        }
+    }
+
+    
     public void add(Stuff stuff) {
         try {
             // Prepare the SQL statement to insert a new stuff
